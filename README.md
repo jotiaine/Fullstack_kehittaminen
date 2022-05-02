@@ -1,2 +1,2 @@
 # Fullstack_kehittaminen
-committi
+committikko
