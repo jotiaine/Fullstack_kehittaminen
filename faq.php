@@ -1,5 +1,5 @@
 <?php 
   /*
-    LOGIN page
+    FAQ page
   */
 ?>

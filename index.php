@@ -2,6 +2,9 @@
   /*
     This is the main page.
   */
+
+  if(isset($_GET['page'])) $page=$_GET['page']; else $page='';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,19 +38,19 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#">HOME</a>
+              <a class="nav-link <?php if($page == '') echo 'active' ?>" href="index.php">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">ABOUT</a>
+              <a class="nav-link <?php if($page == 'about') echo 'active' ?>" href="index.php?page=about">ABOUT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">FAQ</a>
+              <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=fag">FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link pe-0" href="#">Login/</a>
+              <a class="nav-link pe-0 <?php if($page == 'login') echo 'active' ?>" href="index.php?page=login">Login/</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link ps-0" href="#">Register?</a>
+              <a class="nav-link ps-0 <?php if($page == 'register') echo 'active' ?>" href="index.php?page=register">Register?</a>
             </li>
           </ul>
         </div>
@@ -56,8 +59,19 @@
   
       <!-- MAIN SECTION -->
     <main class="bg-light">
-      <h1 class="display-3 text-center">Welcome</h1>
-      <!-- PHP scripts render here -->
+      
+    <!-- PHP scripts render here -->
+      <?php 
+        if($page == 'about') include('about.php');
+        elseif($page == 'faq') include('faq.php');
+        elseif($page == 'login') include('login.php');
+        elseif($page == 'register') include('register.php');
+        else echo '
+        <div class="jumbotron">
+          <h1 class="my-3 display-3 text-light bg-dark p-3 text-center">Welcome to Datadrivers</h1>
+        </div>
+        ';
+      ?>
     </main>
     
     
