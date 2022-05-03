@@ -1,2 +1,0 @@
-# Fullstack_kehittaminen
-committikko

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2022 at 02:35 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: May 03, 2022 at 03:30 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,10 +45,10 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`loginID`, `email`, `password`, `type`, `active`, `active_start`, `active_quit`) VALUES
-(1, 'admin@gmail.com', 'admin', 'Admin', 1, '2022-01-01', NULL),
-(2, 'opettaja@gmail.com', 'opettaja', 'Opettaja', 1, '2022-01-01', NULL),
-(3, 'oppilas@gmail.com', 'oppilas', 'Oppilas', 1, '2022-01-02', NULL),
-(4, 'talkkari@gmail.com', 'talkkari', 'Talkkari', 0, '2022-04-01', '2022-05-01');
+(1, 'admin@gmail.com', 'admin', 'admin', 1, '2022-01-01', NULL),
+(2, 'opettaja@gmail.com', 'opettaja', 'opettaja', 1, '2022-01-01', NULL),
+(3, 'oppilas@gmail.com', 'oppilas', 'oppilas', 1, '2022-01-02', NULL),
+(4, 'talkkari@gmail.com', 'talkkari', 'oppilas', 0, '2022-04-01', '2022-05-01');
 
 -- --------------------------------------------------------
 
