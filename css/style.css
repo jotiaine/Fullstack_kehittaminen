@@ -1,0 +1,19 @@
+#mainlogo {
+  max-width: 7rem;
+  width: 100%;
+  border-radius: 50% !important;
+}
+
+@media (max-width: 231px) {
+  #navbar {
+    justify-content: center;
+  }
+
+  #mainlogo {
+    display: none !important;
+  }
+
+  .nav-link {
+    text-align: center !important;
+  }
+} ;
