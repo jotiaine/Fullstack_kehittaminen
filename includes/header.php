@@ -1,7 +1,7 @@
     <!-- HEADER -->
-    <header>
+    <header id="header-container">
 
-      <nav id="navbar" class="navbar navbar-expand-sm bg-dark navbar-dark px-2">
+      <nav class="navbar fixed-top navbar-expand-sm bg-dark navbar-dark px-2">
 
         <!-- LOGO -->
         <a class="navbar-brand m-0" href="index.php">
@@ -22,7 +22,7 @@
               <a class="nav-link <?php if($page == 'about') echo 'active' ?>" href="index.php?page=about">ABOUT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=fag">FAQ</a>
+              <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=faq">FAQ</a>
             </li>
             <li class="nav-item">
               <a class="nav-link pe-0 <?php if($page == 'login') echo 'active' ?>" href="index.php?page=login">Login/</a>
@@ -34,4 +34,4 @@
         </div>
       </nav>
 
-    <header>
+  </header>
