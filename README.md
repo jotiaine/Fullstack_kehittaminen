@@ -23,3 +23,7 @@ Fourth step: give feedback to students
 First step: registration  
 Second step: login  
 Third step: CRUD = create, read, delete, update if necessary
+
+### Tämä on testi
+
+GitHub toiminnan testi
