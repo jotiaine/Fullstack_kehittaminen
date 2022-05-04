@@ -1,5 +1,5 @@
     <!-- FOOTER -->
-    <footer class="container-fluid bg-transparent p-2">
+    <footer class="container-fluid bg-dark p-2">
       <p class="text-white text-center m-0">FOOTER</p>
     </footer>
 

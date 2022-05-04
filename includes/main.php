@@ -1,12 +1,13 @@
       <!-- MAIN SECTION -->
       <main class="bg-light">
-      
+        <!-- Login button modal -->
+        <?php include('login.php') ?>
+        <?php //include('register.php') ?>
+        
         <!-- PHP scripts render here -->
         <?php 
           if($page == 'about') include('about.php');
           elseif($page == 'faq') include('faq.php');
-          elseif($page == 'login') include('login.php');
-          elseif($page == 'register') include('register.php');
           else echo '
           <div class="jumbotron">
           <h1 class="mb-3 mt-0 display-3 text-light bg-dark p-3 text-center">Welcome to Datadrivers</h1>

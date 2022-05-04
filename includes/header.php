@@ -25,11 +25,11 @@
               <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=faq">FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link pe-0 <?php if($page == 'login') echo 'active' ?>" href="index.php?page=login">Login/</a>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Login
+              </button>
             </li>
-            <li class="nav-item">
-              <a class="nav-link ps-0 <?php if($page == 'register') echo 'active' ?>" href="index.php?page=register">Register?</a>
-            </li>
+
           </ul>
         </div>
       </nav>
