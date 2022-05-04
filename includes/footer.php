@@ -1,6 +1,6 @@
     <!-- FOOTER -->
     <footer class="container-fluid bg-dark p-2">
-      <p class="text-white text-center m-0">FOOTER</p>
+      <p class="text-white text-center m-0">TA42T21K</p>
     </footer>
 
   </div> <?php /* CONTAINER-FLUID END */ ?>

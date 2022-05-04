@@ -22,14 +22,14 @@
               <a class="nav-link <?php if($page == 'about') echo 'active' ?>" href="index.php?page=about">ABOUT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=faq">FAQ</a>
+              <a class="nav-link <?php if($page == 'test') echo 'active' ?>" href="index.php?page=test">TEST</a>
             </li>
             <li class="nav-item">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Login
-              </button>
+              <a class="nav-link <?php if($page == 'feedback') echo 'active' ?>" href="index.php?page=feedback">FEEDBACK</a>
             </li>
-
+            <li class="nav-item">
+              <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=faq">FAQ</a>
+            </li>
           </ul>
         </div>
       </nav>
