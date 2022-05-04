@@ -7,11 +7,12 @@
 ?>
 
 <!-- MODAL -->
-<div id="modal" class="modal">
+<div id="modal" class="modal modal-test">
   <div class="modal-item rounded modal-dialog-scrollable">
     
     <!-- REGISTER FORM -->
-    <form class="bg-light p-4" action="newAccount.php" method="post">
+    <form class="bg-light p-4" action="registerPost.php" method="post">
+      
       <h3 class="my-1 bg-dark text-white p-3">Register Account</h3>
       <div class="form-group">
         <label for="first_name">First name:</label>
@@ -57,13 +58,9 @@
         <label for="password_confirmation">Retype password:</label>
         <input type="password" class="form-control" name="password_confirmation" required>
       </div>
-      <div class="form-group">
-        <label for="password_confirmation">Retype password:</label>
-        <input type="password" class="form-control" name="password_confirmation" required>
-      </div>
 
       <input type="submit" class="btn-lg btn-dark mt-3" value="Register"></input>
-      <button type="button" id="cancel-btn" class="btn-lg btn-danger mt-3">Close</button>
+      <button type="button" class="btn-lg btn-secondary" data-dismiss="modal">Close</button>
     </form>
 
   </div>

@@ -1,9 +1,9 @@
 "use strict";
 
 const cancelBtn = document.getElementById("cancel-btn");
-const modal = document.getElementById("modal");
+const modalTest = document.querySelector("modal-test");
 
 cancelBtn.addEventListener("click", function () {
   console.log("asdas");
-  modal.style.display = "none !important";
+  modalTest.style.display = "none !important";
 });
