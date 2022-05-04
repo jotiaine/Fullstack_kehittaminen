@@ -8,18 +8,18 @@ Has access to home, about, faq, register and login pages
 
 ### Student
 
-First step: registration
-Third step: complete a test
+First step: registration  
+Third step: complete a test  
 Fourth step: receive feedback from a teacher
 
 ### Teacher
 
-First step: registration
-Third step: access students tests
+First step: registration  
+Third step: access students tests  
 Fourth step: give feedback to students
 
 ### Admin
 
-First step: registration
-Second step: login
+First step: registration  
+Second step: login  
 Third step: CRUD = create, read, delete, update if necessary
