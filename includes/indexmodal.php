@@ -33,13 +33,13 @@
 
               <form id="studentForm" class="m-0 text-center d-none" action="main.php" method="post">
                 <div>
-                  <input class="form-control" type="text" placeholder="first name" name="first_name">
+                  <input class="form-control" type="text" placeholder="first name" name="first_name" required>
                 </div>
                 <div  class="my-2">
-                  <input class="form-control" type="text" placeholder="last name" name="last_name">
+                  <input class="form-control" type="text" placeholder="last name" name="last_name" required>
                 </div>
                 <div>
-                  <input class="form-control" type="email" placeholder="email" name="email">
+                  <input class="form-control" type="email" placeholder="email" name="email" required>
                 </div>
                 <div>
                   <button type="submit" class="btn btn-dark mt-3">BEGIN</button>
