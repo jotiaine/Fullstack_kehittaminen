@@ -21,7 +21,7 @@
             <li class="nav-item">
               <a class="nav-link <?php if($page == 'about') echo 'active' ?>" href="index.php?page=about">ABOUT</a>
             </li>
-            <li class="nav-item">
+            <li id="test-page" class="nav-item">
               <a class="nav-link <?php if($page == 'test') echo 'active' ?>" href="index.php?page=test">TEST</a>
             </li>
             <li class="nav-item">

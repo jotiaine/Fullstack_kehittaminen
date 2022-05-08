@@ -1,15 +1,44 @@
 "use strict";
+
 $(document).ready(function () {
-  $("#student").click(() => {
-    $("#myModal").hide();
-  });
+  openModal();
 
-  $("#student").click(() => {
-    $("#teacher").hide();
-    $("#student").hide();
-    $("#studentForm").removeClass("d-none");
-    $("#goBackBtn").removeClass("d-none");
-  });
+  function openModal() {
+    $("#myModal").addClass("d-flex");
 
-  $("#goBackBtn").click("d-none");
+    // Open student form
+    $("#student").click(() => {
+      $("#teacher").hide();
+      $("#student").hide();
+      $("#studentForm").removeClass("d-none");
+      $("#goBackBtn").removeClass("d-none");
+      $("#modalHeadText").hide();
+      $("#modal-title").html("Fill in your details");
+
+      // Go back to choosing student or teacher
+      $("#goBackBtn").click(() => {
+        $("#goBackBtn").addClass("d-none");
+        $("#studentForm").addClass("d-none");
+        $("#teacher").show();
+        $("#student").show();
+        $("#modalHeadText").show();
+        $("#modal-title").html("Select One");
+      });
+    });
+
+    // Close modal
+    $("#closeModal").click(() => {
+      $("#myModal").addClass("d-none");
+    });
+
+    // Choosing Teacher user
+    $("#teacher").click(() => {
+      $("#myModal").addClass("d-none");
+
+      // Hide test.php when teacher user
+      $("#test-page").addClass("d-none");
+
+      // Teacher näkymä kuntoon!
+    });
+  }
 });
