@@ -8,6 +8,17 @@
   margin-bottom: 6.5rem !important;
 }
 
+#myModal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
 @media (max-width: 231px) {
   #header-container {
     margin-bottom: 4rem !important;

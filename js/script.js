@@ -1,9 +1,15 @@
 "use strict";
+$(document).ready(function () {
+  $("#student").click(() => {
+    $("#myModal").hide();
+  });
 
-const cancelBtn = document.getElementById("cancel-btn");
-const modalTest = document.querySelector(".modal-test");
+  $("#student").click(() => {
+    $("#teacher").hide();
+    $("#student").hide();
+    $("#studentForm").removeClass("d-none");
+    $("#goBackBtn").removeClass("d-none");
+  });
 
-cancelBtn.addEventListener("click", function () {
-  console.log("asdas");
-  modalTest.style.display = "none !important";
+  $("#goBackBtn").click("d-none");
 });
