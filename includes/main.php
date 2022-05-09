@@ -29,7 +29,7 @@
             echo print_r($student);
 
             // Testing if user exists
-            $sql = "SELECT * FROM datadrivers WHERE first_name = '$first_name' AND last_name = '$last_name' AND email = '$email'";
+            $sql = "SELECT * FROM student WHERE first_name = '$first_name' AND last_name = '$last_name' AND email = '$email'";
 
             // Query result
             $result = $conn -> query($sql);

@@ -30,7 +30,7 @@
           <button id="student" type="button" class="btn btn-primary">Student</button>
           <button id="teacher" type="button" class="btn btn-secondary">Teacher</button>
         </div>  
-
+              <!-- STUDENT FORM -->
               <form id="studentForm" class="m-0 text-center d-none" action="index.php" method="post">
                 <div>
                   <input class="form-control" type="text" placeholder="first name" name="first_name" required>
