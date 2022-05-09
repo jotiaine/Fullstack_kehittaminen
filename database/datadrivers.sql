@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09.05.2022 klo 14:20
+-- Generation Time: 09.05.2022 klo 17:28
 -- Palvelimen versio: 10.4.21-MariaDB
 -- PHP Version: 8.0.11
 
@@ -123,7 +123,7 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`studentID`, `certificateID`, `first_name`, `last_name`, `email`, `total_result`) VALUES
-(1, 0, 'Testi1', 'Testinen1', 'testi1@gmail.com', 0);
+(1, 1, 'Testi1', 'Testinen1', 'testi1@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -166,7 +166,8 @@ ALTER TABLE `certificate`
 -- Indexes for table `message`
 --
 ALTER TABLE `message`
-  ADD PRIMARY KEY (`messageID`);
+  ADD PRIMARY KEY (`messageID`),
+  ADD KEY `message_ibfk_1` (`studentID`);
 
 --
 -- Indexes for table `question`
@@ -178,13 +179,17 @@ ALTER TABLE `question`
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
-  ADD PRIMARY KEY (`studentID`);
+  ADD PRIMARY KEY (`studentID`),
+  ADD KEY `certificateID` (`certificateID`);
 
 --
 -- Indexes for table `test`
 --
 ALTER TABLE `test`
-  ADD PRIMARY KEY (`testID`);
+  ADD PRIMARY KEY (`testID`),
+  ADD KEY `test_ibfk_1` (`answerID`),
+  ADD KEY `test_ibfk_2` (`questionID`),
+  ADD KEY `test_ibfk_3` (`studentID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -225,6 +230,30 @@ ALTER TABLE `student`
 --
 ALTER TABLE `test`
   MODIFY `testID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Rajoitteet vedostauluille
+--
+
+--
+-- Rajoitteet taululle `message`
+--
+ALTER TABLE `message`
+  ADD CONSTRAINT `message_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Rajoitteet taululle `student`
+--
+ALTER TABLE `student`
+  ADD CONSTRAINT `student_ibfk_1` FOREIGN KEY (`certificateID`) REFERENCES `certificate` (`certificateID`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Rajoitteet taululle `test`
+--
+ALTER TABLE `test`
+  ADD CONSTRAINT `test_ibfk_1` FOREIGN KEY (`answerID`) REFERENCES `answer` (`answerID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `test_ibfk_2` FOREIGN KEY (`questionID`) REFERENCES `question` (`questionID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `test_ibfk_3` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
