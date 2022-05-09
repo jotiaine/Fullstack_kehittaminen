@@ -2,8 +2,8 @@
 
 $host = 'localhost';
 $database = 'datadrivers';
-$dbUser = 'user';
-$dbPassword = 'user'; //salasana on tässä sovelluksessa sama kuin k.tunnus.
+$dbUser = 'fullstack';
+$dbPassword = 'fullstack'; //salasana on tässä sovelluksessa sama kuin k.tunnus.
 
 // making connection 
 $conn = new mysqli($host, $dbUser, $dbPassword, $database);
