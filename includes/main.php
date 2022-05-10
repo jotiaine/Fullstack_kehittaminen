@@ -23,6 +23,10 @@
             // Generate student object
             $student = new Student($first_name, $last_name, $email);
 
+            // Values reassigned from the student object
+            $first_name = $student -> first_name;
+            $last_name = $student -> last_name;
+            $email = $student -> email;
 
             // test tulostus Post succeeded
             echo $first_name . " " . $last_name . " " . $email . "<br>";
