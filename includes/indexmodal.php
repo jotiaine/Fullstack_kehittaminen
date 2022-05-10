@@ -27,11 +27,14 @@
       <div class="d-flex flex-column modal-footer justify-content-center">
 
         <div>
+          <!-- <button id="student" type="button" class="btn btn-primary">Student</button>
+          <button id="teacher" type="button" class="btn btn-secondary">Teacher</button> -->
+          <!-- TEst -->
           <button id="student" type="button" class="btn btn-primary">Student</button>
-          <button id="teacher" type="button" class="btn btn-secondary">Teacher</button>
+          <a id="teacher" type="button" class="btn btn-secondary" href="index.php?user=teacher">Teacher</a>
         </div>  
               <!-- STUDENT FORM -->
-              <form id="studentForm" class="m-0 text-center d-none" action="index.php" method="post">
+              <form id="studentForm" class="m-0 text-center d-none" action="index.php?user=student" method="post">
                 <div>
                   <input class="form-control" type="text" placeholder="first name" name="first_name" required>
                 </div>
@@ -42,7 +45,7 @@
                   <input class="form-control" type="email" placeholder="email" name="email" required>
                 </div>
                 <div>
-                  <button type="submit" class="btn btn-dark mt-3" name="submit">BEGIN</button>
+                  <button id="submit-student-btn" type="submit" class="btn btn-dark mt-3" name="submit">BEGIN</button>
                 </div>
               </form>
 

@@ -1,4 +1,4 @@
-    <!-- HEADER -->
+    <!-- HEADER TEACHER -->
     <header id="header-container">
 
       <nav class="navbar fixed-top navbar-expand-sm bg-dark navbar-dark px-2">
@@ -16,19 +16,16 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link <?php if($page == '') echo 'active' ?>" href="index.php">HOME</a>
+              <a class="nav-link <?php if($page == '') echo 'active' ?>" href="index.php?user=teacher">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($page == 'about') echo 'active' ?>" href="index.php?page=about">ABOUT</a>
-            </li>
-            <li id="test-page" class="nav-item">
-              <a class="nav-link <?php if($page == 'test') echo 'active' ?>" href="index.php?page=test">TEST</a>
+              <a class="nav-link <?php if($page == 'about') echo 'active' ?>" href="index.php?page=about&user=teacher">ABOUT</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($page == 'feedback') echo 'active' ?>" href="index.php?page=feedback">FEEDBACK</a>
+              <a class="nav-link <?php if($page == 'feedback') echo 'active' ?>" href="index.php?page=feedback&user=teacher">FEEDBACK</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=faq">FAQ</a>
+              <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=faq&user=teacher">FAQ</a>
             </li>
           </ul>
         </div>

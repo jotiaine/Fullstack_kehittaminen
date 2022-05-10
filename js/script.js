@@ -4,6 +4,7 @@ $(document).ready(function () {
   openModal();
 
   function openModal() {
+    $isTeacher = false;
     $("#myModal").addClass("d-flex");
 
     // Open student form
@@ -31,14 +32,22 @@ $(document).ready(function () {
       $("#myModal").addClass("d-none");
     });
 
+    // After submitting student form
+    $("#submit-student-btn").click(() => {
+      $("#myModal").addClass("d-none");
+    });
+
     // Choosing Teacher user
     $("#teacher").click(() => {
-      $("#myModal").addClass("d-none");
+      $isTeacher = true;
+      if ($isTeacher) {
+        $("#myModal").addClass("d-none");
 
-      // Hide test.php when teacher user
-      $("#test-page").addClass("d-none");
+        // Hide test.php when teacher user
+        $("#test-page").addClass("d-none");
 
-      // Teacher näkymä kuntoon!
+        // Teacher näkymä kuntoon!
+      }
     });
   }
 });
