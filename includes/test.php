@@ -11,7 +11,7 @@
   $conn->close();
 
 ?>
-  <div style="visibility: hidden;" class="container pt-5 center p-5 text-center bg-light" id="q-form">
+  <div class="container pt-5 center p-5 text-center bg-light d-none" id="q-form">
     <form action="index.php?page=test&user=student" method="get">
       <h3 class="mb-3"> Test of Mensa </h3><br><br>
 
@@ -66,11 +66,6 @@
 
     btn.addEventListener('click', () => {
       const form = document.getElementById('q-form');
-
-      if (form.style.visibility === 'hidden') {
-        form.style.visibility = 'visible';
-      } else {
-        form.style.visibility = 'hidden';
-      }
+      form.classList.toggle('d-none');
 });
 </script>
