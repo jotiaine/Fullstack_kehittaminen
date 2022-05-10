@@ -1,14 +1,13 @@
 <?php 
   /*
     FAQ page
-    liukutoiminto toimii Firefoxilla ja Edgellä, mutta ei oman koneen Chromella
   */
 ?>
 
 <div class="container-fluid">
-  <div class='faq-container'>
+  <div class='FAQ-header'>
     <h1>FAQ - Usein kysytyt kysymykset</h1>
-  <div class='otsikko'>
+  <div class='FAQ-instruction'>
     <p>Klikkaa kysymystä nähdäksesi vastauksen</p>
   </div>
 </div>

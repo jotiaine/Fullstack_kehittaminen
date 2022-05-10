@@ -34,13 +34,24 @@
 
 /* FAQ starts */
 
-.faq-container {
-  padding-bottom: 15px; /* toimii Firefoxilla, mutta Chromella CSS ei näytä vaikuttavan mihinkään*/
+.FAQ-header {
+  padding-bottom: 15px; /* Oman koneen Chromella CSS ei näytä vaikuttavan mihinkään.*/
+  display: none; 
+}
+
+.FAQ-instruction {
+  display: none; 
+}
+
+.question-area {
+  display: none;   /*Toimii Firefoxilla ja Edgellä, mutta ei Chromella, jolla vastaukset alussa näkyvissä.*/
 }
 
 .answer-area {
-  display: none;   /*Toimii Firefoxilla ja Edgellä, mutta ei Chromella*/
+  display: none;   /*Toimii Firefoxilla ja Edgellä, mutta ei Chromella, jolla vastaukset alussa näkyvissä.*/
 }
+
+
 
 /* FAQ ends */
 
