@@ -42,7 +42,7 @@
                   <input class="form-control" type="email" placeholder="email" name="email" required>
                 </div>
                 <div>
-                  <button id="submit-student-btn" type="submit" class="btn btn-dark mt-3" name="submit">BEGIN</button>
+                  <button type="submit" class="btn btn-dark mt-3" name="submit">BEGIN</button>
                 </div>
               </form>
 
