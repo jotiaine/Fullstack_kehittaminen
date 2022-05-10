@@ -31,3 +31,18 @@
     text-align: center !important;
   }
 }
+
+/* FAQ starts */
+
+.faq-container {
+  padding-bottom: 15px; /* toimii Firefoxilla, mutta Chromella CSS ei näytä vaikuttavan mihinkään*/
+}
+
+.answer-area {
+  display: none;   /*Toimii Firefoxilla ja Edgellä, mutta ei Chromella*/
+}
+
+/* FAQ ends */
+
+
+
