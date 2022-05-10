@@ -27,9 +27,6 @@
       <div class="d-flex flex-column modal-footer justify-content-center">
 
         <div>
-          <!-- <button id="student" type="button" class="btn btn-primary">Student</button>
-          <button id="teacher" type="button" class="btn btn-secondary">Teacher</button> -->
-          <!-- TEst -->
           <button id="student" type="button" class="btn btn-primary">Student</button>
           <a id="teacher" type="button" class="btn btn-secondary" href="index.php?user=teacher">Teacher</a>
         </div>  

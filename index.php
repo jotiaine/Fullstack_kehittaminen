@@ -12,11 +12,11 @@
 <?php include('includes/head.php') ?>
 <?php
   // Student
-  if($_GET['user'] === 'teacher') include('includes/header_teacher.php');
+  if($user == 'student') include('includes/header_student.php');
   // Teacher
-  elseif($_GET['user'] === 'student') include('includes/header_student.php');
+  elseif($user == 'teacher') include('includes/header_teacher.php');
   // Default
-  else include('includes/header_default.php')
+  else include('includes/header_default.php');
 ?>
 
 <?php include('includes/main.php') ?>
