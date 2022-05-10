@@ -41,7 +41,8 @@
               // User does not exist
               // SQL-query for inserting student to db
               $sql = "INSERT INTO student (first_name, last_name, email) VALUES ('$first_name', '$last_name', '$email')";
-              
+              $result = $conn -> query($sql);
+
               // If insert succeeded?
               if($result) echo "Insert success!";
               else echo "Insert failed";
