@@ -16,7 +16,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link <?php if($page == '') echo 'active' ?>" href="index.php?page=home">HOME</a>
+              <a class="nav-link <?php if($page == 'home') echo 'active' ?>" href="index.php?page=home">HOME</a>
             </li>
             <li class="nav-item">
               <a class="nav-link <?php if($page == 'about') echo 'active' ?>" href="index.php?page=about">ABOUT</a>
