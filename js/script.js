@@ -1,6 +1,14 @@
 "use strict";
 
-$(document).ready(function () {
+// Establshing no conflict just in case. $ for jQuery works only inside ready function
+$.noConflict();
+jQuery(document).ready(function ($) {
+  // hide test form
+  $("#test-container").hide();
+
+  // hide submit test btn container
+  $("#submit-btn-container").hide();
+
   openModal();
 
   function openModal() {
@@ -31,4 +39,13 @@ $(document).ready(function () {
       $("#myModal").addClass("d-none");
     });
   }
+
+  /* TEST.php */
+  $("#start-test-btn").click(() => {
+    $("#start-btn-container").hide("slow", "linear", () => {
+      $("#test-container").slideToggle("slow", "linear", () => {
+        $("#submit-btn-container").show("slow");
+      });
+    });
+  });
 });
