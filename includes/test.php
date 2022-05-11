@@ -1,17 +1,23 @@
 <?php 
 
-  $sql='SELECT * FROM question WHERE questionID = 2';
+$sql='SELECT * FROM question WHERE questionID = 2';
 
-  $result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql);
 
-  $questions = mysqli_fetch_assoc($result);
+$questions = mysqli_fetch_assoc($result);
 
-  mysqli_free_result($result);
+mysqli_free_result($result);
 
-  $conn->close();
+$conn->close();
 
 ?>
-  <div class="container pt-5 center p-5 text-center bg-light d-none" id="q-form">
+
+  <div id="start-btn-container" class="container-fluid pb-5 pt-3 text-center bg-light">
+    <h2 class="mb-4">Ready to start?</h2>
+    <button id="start-test-btn" class="btn btn-dark text-white"> Show nudes! </button>
+  </div>
+
+  <div id="test-container" class="container p-5 text-center bg-light">
     <form action="index.php?page=test&user=student" method="get">
       <h3 class="mb-3"> Test of Mensa </h3><br><br>
 
@@ -52,20 +58,11 @@
 
             <input class="form-check-input" type="radio" name="radioBtn" id="answerSerie-3.3"/>
             <label class="form-check-label" for="answerSerie-3.3"> Vastaus 3 </label><br>
+            
+            <div id="submit-btn-container" class="container-fluid py-5 text-center bg-light">
+              <button id="submit-test-btn" class="btn btn-dark text-white" type="submit" name="submit"> Submit </button>
+            </div>
   </form>         
   </div> 
 
-  <div class="container pt-5 center p-5 text-center bg-light">
 
-     <button id="btn"> Show nudes! </button>
-     
-</div>
-
-<script>
-  const btn = document.getElementById('btn');
-
-    btn.addEventListener('click', () => {
-      const form = document.getElementById('q-form');
-      form.classList.toggle('d-none');
-});
-</script>

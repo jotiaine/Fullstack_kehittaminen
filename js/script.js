@@ -1,8 +1,27 @@
 "use strict";
 
-$(document).ready(function () {
-  openModal();
+// Establshing no conflict just in case. $ for jQuery works only inside ready function
+$.noConflict();
+jQuery(document).ready(function ($) {
+  /* test.php */
+  // hide test form
+  $("#test-container").hide();
 
+  // hide submit test btn container
+  $("#submit-btn-container").hide();
+
+  /* test.php slides */
+  $("#start-test-btn").click(() => {
+    $("#start-btn-container").hide("slow", "linear", () => {
+      $("#test-container").slideToggle("slow", "linear", () => {
+        $("#submit-btn-container").show("slow");
+      });
+    });
+  });
+  /****END test.php*****/
+
+  /* index.php */
+  openModal();
   function openModal() {
     $("#myModal").addClass("d-flex");
 
@@ -31,48 +50,41 @@ $(document).ready(function () {
       $("#myModal").addClass("d-none");
     });
   }
-});
+  /****END index.php*****/
 
-
-// FAQ starts
-
-$(document).ready(function() {
-  $("#question1").click(function() {
+  /* faq.php */
+  faqSlides();
+  function faqSlides() {
+    $("#question1").click(function () {
       $("#answer1").slideToggle("slow");
-  });
-  $("#answer1").click(function() {
+    });
+    $("#answer1").click(function () {
       $("#answer1").slideUp("slow");
-  });
-  $("#question2").click(function() {
-    $("#answer2").slideToggle("slow");
-  });
-  $("#answer2").click(function() {
-    $("#answer2").slideUp("slow");
-  });
-  $("#question3").click(function() {
-   $("#answer3").slideToggle("slow");
-  });
-  $("#answer3").click(function() {
-   $("#answer3").slideUp("slow");
-  });
-  $("#question4").click(function() {
-    $("#answer4").slideToggle("slow");
-  });
-  $("#answer4").click(function() {
-    $("#answer4").slideUp("slow");
-  });
-  $("#question5").click(function() {
-    $("#answer5").slideToggle("slow");
-  });
-  $("#answer5").click(function() {
-    $("#answer5").slideUp("slow");
-  });
+    });
+    $("#question2").click(function () {
+      $("#answer2").slideToggle("slow");
+    });
+    $("#answer2").click(function () {
+      $("#answer2").slideUp("slow");
+    });
+    $("#question3").click(function () {
+      $("#answer3").slideToggle("slow");
+    });
+    $("#answer3").click(function () {
+      $("#answer3").slideUp("slow");
+    });
+    $("#question4").click(function () {
+      $("#answer4").slideToggle("slow");
+    });
+    $("#answer4").click(function () {
+      $("#answer4").slideUp("slow");
+    });
+    $("#question5").click(function () {
+      $("#answer5").slideToggle("slow");
+    });
+    $("#answer5").click(function () {
+      $("#answer5").slideUp("slow");
+    });
+  }
+  /****END faq.php*****/
 });
-
-$(document).ready(function() {  
-  $(".question-area").fadeTo(1000, 1); //tuo kysymykset hitaasti esiin
-  $(".FAQ-header").fadeTo(300, 1); 
-  $(".FAQ-instruction").fadeTo(350, 1); 
-});
-
-// FAQ ends
