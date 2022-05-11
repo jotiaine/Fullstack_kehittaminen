@@ -3,8 +3,8 @@
     This is the main page.
   */
 
-  if(isset($_GET['page'])) $page=$_GET['page']; else $page='';
-  if(isset($_GET['user'])) $user=$_GET['user']; else $user='';
+  if(isset($_GET['page'])) $page = $_GET['page']; else $page = '';
+  if(isset($_GET['user'])) $user = $_GET['user']; else $user = '';
 
 ?>
 
