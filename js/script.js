@@ -7,6 +7,12 @@ jQuery(document).ready(function ($) {
   // hide test form
   $("#test-container").hide();
 
+  //FAQ page opening fade
+  //$(".question-area").fadeTo(1000, 1); //Bring text slowly visible
+  //$(".FAQ-header").fadeTo(300, 1); 
+  //$(".FAQ-instruction").fadeTo(350, 1); 
+  //FAQ ends
+
   // hide submit test btn container
   $("#submit-btn-container").hide();
 
@@ -85,6 +91,11 @@ jQuery(document).ready(function ($) {
     $("#answer5").click(function () {
       $("#answer5").slideUp("slow");
     });
+
+    // FAQ page opening fade, brings text slowly visible
+    $(".question-area").fadeTo(1000, 1);
+    $(".FAQ-header").fadeTo(300, 1); 
+    $(".FAQ-instruction").fadeTo(350, 1); 
   }
   /****END faq.php*****/
 });

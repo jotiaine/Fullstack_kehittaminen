@@ -15,12 +15,21 @@
 }
 
 /* FAQ starts */
-.faq-container {
-  padding-bottom: 15px; /* toimii Firefoxilla, mutta Chromella CSS ei näytä vaikuttavan mihinkään*/
+.FAQ-header {
+  padding-bottom: 15px; /* Omalla koneella Chromella Dark Mode lisäosa estää kaikki CSS muutokset */
+  display: none;        /* Firefoxilla näkyy normaalisti */
+}
+
+.FAQ-instruction {
+  display: none;        /*First hidden, then slowly visible when opening FAQ page*/
+}
+
+.question-area {
+  display: none;  
 }
 
 .answer-area {
-  display: none; /*Toimii Firefoxilla ja Edgellä, mutta ei Chromella*/
+  display: none;
 }
 /* FAQ ends */
 
