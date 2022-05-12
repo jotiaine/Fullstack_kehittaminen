@@ -4,7 +4,7 @@
         <?php
           // createUser from functions.php
           require_once('classes/student.php');
-          require_once('functions/functions.php');
+          require_once('functions/create_student.php');
           createUser();
         ?>
         
