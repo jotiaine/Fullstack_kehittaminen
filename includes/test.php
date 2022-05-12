@@ -40,7 +40,7 @@
     ** GENERATING A QUESTION OBJECT **
     ********************************
     */
-    $sql='SELECT * FROM question';
+    $sql = "SELECT * FROM question WHERE questionID = '$randomQuestionID'";
     
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
