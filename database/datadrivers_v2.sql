@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2022 at 01:33 AM
+-- Generation Time: May 12, 2022 at 02:59 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -98,7 +98,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`studentID`, `first_name`, `last_name`, `email`) VALUES
-(1, 'joni', 'tiainen', 'joni@gmail.com');
+(1, 'joni', 'tiainen', 'joni@gmail.com'),
+(2, 'jani', 'joo', 'jani@gmail.com'),
+(3, 'sdf', 'sdf', 'sdf@sdfsd');
 
 -- --------------------------------------------------------
 
@@ -182,7 +184,7 @@ ALTER TABLE `reward`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `studentID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `test`
