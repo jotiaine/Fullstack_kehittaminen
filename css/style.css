@@ -17,15 +17,15 @@
 /* FAQ starts */
 .FAQ-header {
   padding-bottom: 15px; /* Omalla koneella Chromella Dark Mode lisäosa estää kaikki CSS muutokset */
-  display: none;        /* Firefoxilla näkyy normaalisti */
+  display: none; /* Firefoxilla näkyy normaalisti */
 }
 
 .FAQ-instruction {
-  display: none;        /*First hidden, then slowly visible when opening FAQ page*/
+  display: none; /*First hidden, then slowly visible when opening FAQ page*/
 }
 
 .question-area {
-  display: none;  
+  display: none;
 }
 
 .answer-area {
