@@ -88,8 +88,32 @@ jQuery(document).ready(function ($) {
 
     // FAQ page opening fade, brings text slowly visible
     $(".question-area").fadeTo(1000, 1);
-    $(".FAQ-header").fadeTo(300, 1); 
-    $(".FAQ-instruction").fadeTo(350, 1); 
+    $(".FAQ-header").fadeTo(300, 1);
+    $(".FAQ-instruction").fadeTo(350, 1);
   }
   /****END faq.php*****/
+
+  // Miksi Vanilla JS ei toimi!?!?!?!?
+  // Hero pic auto text
+  const heroAutoTextEl = document.querySelector("#hero-auto-text");
+  const text = "DATADRIVERS";
+  const homeLink = document.querySelector("#home-link");
+  let idx = 1;
+  let counter = text.length - 1;
+
+  window.addEventListener("load", function () {
+    renderText("text");
+  });
+
+  function renderText(string) {
+    infoTextEl.innerHTML = string.slice(0, idx);
+
+    idx++;
+
+    if (idx > string.length) {
+      idx = 1;
+      return;
+    }
+    setTimeout(() => renderText(text), 1000);
+  }
 });

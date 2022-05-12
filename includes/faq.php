@@ -4,13 +4,13 @@
   */
 ?>
 
-<div class="container-fluid">
+<div class="container-fluid text-center">
   <div class='FAQ-header'>
     <h1>FAQ - Usein kysytyt kysymykset</h1>
-  <div class='FAQ-instruction'>
-    <p>Klikkaa kysymystä nähdäksesi vastauksen</p>
+    <div class='FAQ-instruction'>
+      <p>Klikkaa kysymystä nähdäksesi vastauksen</p>
+    </div>
   </div>
-</div>
   <div id=question1 class='question-area' >
     <h3>kysymys1</h3>
   </div>

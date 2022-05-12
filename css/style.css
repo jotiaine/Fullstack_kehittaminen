@@ -1,11 +1,11 @@
 #mainlogo {
-  max-width: 7rem;
+  max-width: 6rem;
   width: 100%;
   border-radius: 50% !important;
 }
 
 #header-container {
-  margin-bottom: 6.5rem !important;
+  margin-bottom: 6.2rem !important;
 }
 
 #myModal {
@@ -16,7 +16,7 @@
 
 /* FAQ starts */
 .FAQ-header {
-  padding-bottom: 15px; /* Omalla koneella Chromella Dark Mode lisäosa estää kaikki CSS muutokset */
+  padding-bottom: 1rem; /* Omalla koneella Chromella Dark Mode lisäosa estää kaikki CSS muutokset */
   display: none; /* Firefoxilla näkyy normaalisti */
 }
 
@@ -33,14 +33,24 @@
 }
 /* FAQ ends */
 
+#hero-container {
+  position: relative !important;
+}
+
+#hero-text {
+  position: absolute !important;
+  top: 25% !important;
+  /* transform: translateY(-75%); */
+}
+
+#driver-text {
+  font-size: 5rem !important;
+}
+
 /* MEDIA QUERYS always last ones in css */
 @media (max-width: 231px) {
   #header-container {
     margin-bottom: 4rem !important;
-  }
-
-  #navbar {
-    justify-content: center !important;
   }
 
   #mainlogo {
@@ -49,5 +59,17 @@
 
   .nav-link {
     text-align: center !important;
+  }
+}
+
+@media (max-width: 290px) {
+  #driver-text {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media (max-width: 390px) and (min-width: 291px) {
+  #driver-text {
+    font-size: 3rem !important;
   }
 }
