@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2022 at 02:59 PM
+-- Generation Time: May 12, 2022 at 10:49 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -100,7 +100,15 @@ CREATE TABLE `student` (
 INSERT INTO `student` (`studentID`, `first_name`, `last_name`, `email`) VALUES
 (1, 'joni', 'tiainen', 'joni@gmail.com'),
 (2, 'jani', 'joo', 'jani@gmail.com'),
-(3, 'sdf', 'sdf', 'sdf@sdfsd');
+(3, 'sdf', 'sdf', 'sdf@sdfsd'),
+(4, 'asd', 'asd', 'asd@asd'),
+(5, 'juu', 'juu', 'juu@gmail.com'),
+(6, 'gfddf', 'gdfg', 'dfgg@sadf'),
+(7, 'sdf', 'sdf', 'sdf@asdf'),
+(8, 'sdf', 'sdf', 'sdf@sdf'),
+(9, 'fdsf', 'sdf', 'jeesjees@jees'),
+(10, 'fgh', 'fghfg', 'h@sdgf'),
+(11, 'jaakko', 'seppa', 'jaakko@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -130,7 +138,7 @@ CREATE TABLE `test` (
   `user_answer_3` varchar(255) NOT NULL,
   `score` int(1) NOT NULL,
   `teacher_feedback` varchar(255) DEFAULT NULL,
-  `date` date NOT NULL
+  `creationDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -184,7 +192,7 @@ ALTER TABLE `reward`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `studentID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `test`

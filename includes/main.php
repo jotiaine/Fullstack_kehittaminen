@@ -3,7 +3,8 @@
 
         <?php
           // createUser from functions.php
-          include('includes/functions.php');
+          require_once('classes/student.php');
+          require_once('functions/functions.php');
           createUser();
         ?>
         
