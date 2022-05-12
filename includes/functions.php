@@ -13,27 +13,14 @@
                 $last_name = $conn->real_escape_string($_POST['last_name']);
                 $email = $conn->real_escape_string($_POST['email']);
     
-                // Class for student
-                class Student {
-    
-                  function __construct($first_name, $last_name, $email) {
-                    $this -> first_name = $first_name;
-                    $this -> last_name = $last_name;
-                    $this -> email = $email;
-                  }
-                }
-    
                 // Generate student object
+                include('classes/classes.php');
                 $student = new Student($first_name, $last_name, $email);
     
                 // Values reassigned from the student object
                 $first_name = $student -> first_name;
                 $last_name = $student -> last_name;
                 $email = $student -> email;
-    
-                // test tulostus Post succeeded
-                echo $first_name . " " . $last_name . " " . $email . "<br>";
-                echo print_r($student);
     
                 // Testing if user exists
                 $sql = "SELECT * FROM student WHERE first_name = '$first_name' AND last_name = '$last_name' AND email = '$email'";
