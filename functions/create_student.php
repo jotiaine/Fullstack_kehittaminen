@@ -62,7 +62,7 @@ function create_student() {
 
 
                 // Creating empty test for the student
-                $sql = "INSERT INTO test (studentID, questionID, question_1, question_2, question_3, opt_1_1, opt_1_2, opt_1_3, opt_2_1, opt_2_2, opt_2_3, opt_3_1, opt_3_2, opt_3_3, user_answer_1, user_answer_2, user_answer_3, score, teacher_feedback, creationDate) VALUES ('$studentID', '$questionID', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '0', '2022-05-13')";
+                $sql = "INSERT INTO test (studentID, questionID) VALUES ('$studentID', '$questionID')";
                 $result = $conn -> query($sql);
                 if($result) echo "<p class='alert alert-success'>Empty test added</p>";
                 else echo "<p class='alert alert-warning'>Empty test addition failed</p>";
