@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2022 at 10:49 PM
+-- Generation Time: May 14, 2022 at 12:52 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -75,9 +75,34 @@ DROP TABLE IF EXISTS `reward`;
 CREATE TABLE `reward` (
   `rewardID` int(11) NOT NULL,
   `studentID` int(11) NOT NULL,
-  `level` int(11) NOT NULL,
-  `certificate` varchar(255) NOT NULL
+  `level` int(11) DEFAULT NULL,
+  `certificate` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `reward`
+--
+
+INSERT INTO `reward` (`rewardID`, `studentID`, `level`, `certificate`) VALUES
+(3, 112, NULL, NULL),
+(4, 113, NULL, NULL),
+(5, 114, NULL, NULL),
+(6, 115, NULL, NULL),
+(7, 116, NULL, NULL),
+(8, 117, NULL, NULL),
+(9, 118, NULL, NULL),
+(10, 119, NULL, NULL),
+(11, 120, NULL, NULL),
+(12, 121, NULL, NULL),
+(13, 122, NULL, NULL),
+(14, 123, NULL, NULL),
+(15, 124, NULL, NULL),
+(16, 125, NULL, NULL),
+(17, 126, NULL, NULL),
+(18, 127, NULL, NULL),
+(19, 128, NULL, NULL),
+(20, 129, NULL, NULL),
+(21, 130, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -98,17 +123,34 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`studentID`, `first_name`, `last_name`, `email`) VALUES
-(1, 'joni', 'tiainen', 'joni@gmail.com'),
-(2, 'jani', 'joo', 'jani@gmail.com'),
-(3, 'sdf', 'sdf', 'sdf@sdfsd'),
-(4, 'asd', 'asd', 'asd@asd'),
-(5, 'juu', 'juu', 'juu@gmail.com'),
-(6, 'gfddf', 'gdfg', 'dfgg@sadf'),
-(7, 'sdf', 'sdf', 'sdf@asdf'),
-(8, 'sdf', 'sdf', 'sdf@sdf'),
-(9, 'fdsf', 'sdf', 'jeesjees@jees'),
-(10, 'fgh', 'fghfg', 'h@sdgf'),
-(11, 'jaakko', 'seppa', 'jaakko@gmail.com');
+(103, 'joni', 'joppe', 'joni2@gmail.com'),
+(104, 'dfg', 'dfgdfg', 'df@sdfsdf'),
+(105, 'dfg', 'dfg', 'dfg@dfgdfgdf'),
+(106, 'dfg', 'dfg', 'df@sdfdsf'),
+(107, 'gfd', 'dfg', 'fdg@asfdasd'),
+(108, 'dfg', 'sdfgsd', 'dfasdk@asdasd'),
+(109, 'sdf', 'sdfs', 'df@asdasd'),
+(110, 'dfg', 'dfg', 'dfg@asasd'),
+(111, 'dfg', 'dfgd', 'fg@sdfsdf'),
+(112, 'sdf', 'sdfs', 'df2asdasdas@asd'),
+(113, 'sdf', 'sdf', 'sdf@asdasd'),
+(114, 'sdf', 'sdfs', 'df2asdasd@asdas'),
+(115, 'dfg', 'dfgd', 'fg@asdasd'),
+(116, 'fgh', 'fghfg', 'h@sdfds'),
+(117, 'dfg', 'dfg', 'df2asda@asd'),
+(118, 'dfg', 'dfg', 'df2asdasd@asdasd'),
+(119, 'asd', 'asda', 'sd2asdasdasd@asdasd'),
+(120, 'dfg', 'dfg', 'df@asdsd'),
+(121, 'dsf', 'sdf', 'sdf@asdasd'),
+(122, 'sdf', 'sdfs', 'df@dfsdfggfd'),
+(123, 'dfg', 'dfg', 'dfg@sdgfsdf'),
+(124, 'dfgd', 'fgdf', 'g@sdfgsdf'),
+(125, 'dfg', 'dfg', 'dfg2sdfdf@sdfsdf'),
+(126, 'sdf', 'sdf', 'sdf@dfasdasd'),
+(127, 'dfg', 'dfgd', 'fg@asdasdas'),
+(128, 'dfg', 'dfg', 'sdfsfgdf@asdasdasd'),
+(129, 'sdf', 'sdf', 'sdf@asd'),
+(130, 'dfg', 'dfg', 'dfg@asdasdasdasd');
 
 -- --------------------------------------------------------
 
@@ -121,25 +163,59 @@ CREATE TABLE `test` (
   `testID` int(11) NOT NULL,
   `studentID` int(11) NOT NULL,
   `questionID` int(11) NOT NULL,
-  `question_1` varchar(255) NOT NULL,
-  `question_2` varchar(255) NOT NULL,
-  `question_3` varchar(255) NOT NULL,
-  `opt_1_1` varchar(255) NOT NULL,
-  `opt_1_2` varchar(255) NOT NULL,
-  `opt_1_3` varchar(255) NOT NULL,
-  `opt_2_1` varchar(255) NOT NULL,
-  `opt_2_2` varchar(255) NOT NULL,
-  `opt_2_3` varchar(255) NOT NULL,
-  `opt_3_1` varchar(255) NOT NULL,
-  `opt_3_2` varchar(255) NOT NULL,
-  `opt_3_3` varchar(255) NOT NULL,
-  `user_answer_1` varchar(255) NOT NULL,
-  `user_answer_2` varchar(255) NOT NULL,
-  `user_answer_3` varchar(255) NOT NULL,
-  `score` int(1) NOT NULL,
+  `question_1` varchar(255) DEFAULT NULL,
+  `question_2` varchar(255) DEFAULT NULL,
+  `question_3` varchar(255) DEFAULT NULL,
+  `opt_1_1` varchar(255) DEFAULT NULL,
+  `opt_1_2` varchar(255) DEFAULT NULL,
+  `opt_1_3` varchar(255) DEFAULT NULL,
+  `opt_2_1` varchar(255) DEFAULT NULL,
+  `opt_2_2` varchar(255) DEFAULT NULL,
+  `opt_2_3` varchar(255) DEFAULT NULL,
+  `opt_3_1` varchar(255) DEFAULT NULL,
+  `opt_3_2` varchar(255) DEFAULT NULL,
+  `opt_3_3` varchar(255) DEFAULT NULL,
+  `user_answer_1` varchar(255) DEFAULT NULL,
+  `user_answer_2` varchar(255) DEFAULT NULL,
+  `user_answer_3` varchar(255) DEFAULT NULL,
+  `score` int(1) DEFAULT NULL,
   `teacher_feedback` varchar(255) DEFAULT NULL,
-  `creationDate` date NOT NULL
+  `creationDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`testID`, `studentID`, `questionID`, `question_1`, `question_2`, `question_3`, `opt_1_1`, `opt_1_2`, `opt_1_3`, `opt_2_1`, `opt_2_2`, `opt_2_3`, `opt_3_1`, `opt_3_2`, `opt_3_3`, `user_answer_1`, `user_answer_2`, `user_answer_3`, `score`, `teacher_feedback`, `creationDate`) VALUES
+(46, 103, 4, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(47, 104, 7, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(48, 105, 2, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(49, 106, 7, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(50, 107, 9, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(51, 108, 8, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(52, 109, 7, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(53, 110, 1, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(54, 111, 2, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(55, 112, 2, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(56, 113, 6, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(57, 114, 10, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(58, 115, 4, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(59, 116, 6, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(60, 117, 3, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(61, 118, 1, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(62, 119, 9, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, '0', '2022-05-13'),
+(63, 120, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(64, 121, 9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(65, 122, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(66, 123, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(67, 124, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(68, 125, 10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(69, 126, 7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(70, 127, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(71, 128, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(72, 129, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(73, 130, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -169,7 +245,7 @@ ALTER TABLE `student`
 --
 ALTER TABLE `test`
   ADD PRIMARY KEY (`testID`),
-  ADD KEY `userID` (`studentID`),
+  ADD KEY `studentID` (`studentID`),
   ADD KEY `questionID` (`questionID`);
 
 --
@@ -186,19 +262,19 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT for table `reward`
 --
 ALTER TABLE `reward`
-  MODIFY `rewardID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rewardID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `studentID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
-  MODIFY `testID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `testID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- Constraints for dumped tables
