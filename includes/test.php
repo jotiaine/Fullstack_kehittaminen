@@ -2,6 +2,34 @@
   require('includes/dbConnect.php'); 
   require('classes/question_series.php');
   require('classes/test.php');
+  require('classes/student.php');
+  require('functions/create_student.php');
+
+  /*****************/
+  /** SUBMIT STUDENT **/ 
+  /*****************/
+  // Create student object & save object to student.json
+  if(isset($_POST['submit-student'])) {
+    create_student();
+    echo "<pre>";
+    echo print_r($student);
+    echo "</pre>";
+
+    // Read the JSON file 
+    //fopen($fp); // Do we need fopen & fclose here?
+    $json = file_get_contents('file/student.json');
+      
+    // Decode the JSON file
+    $json_data = json_decode($json,true);
+      
+    // Display data
+    echo "<pre>";
+    echo print_r($json_data);
+    echo "</pre>";
+
+    //fclose($fp);
+  }
+
 
 
   function getStudentID($conn, $first_namei, $last_namei, $emaili) {
@@ -12,9 +40,9 @@
       $last_name = $last_namei;
       $email = $emaili;
   
-      echo $first_name . "<br>";
-      echo $last_name . "<br>";
-      echo $email . "<br>";
+      echo "first name: " . $first_name . "<br>";
+      echo "last name: " . $last_name . "<br>";
+      echo "email: " . $email . "<br>";
   
       $sql = "SELECT studentID FROM student WHERE first_name = '$first_name' AND last_name = '$last_name' AND email = '$email'";
       $result = mysqli_query($conn, $sql);
@@ -22,7 +50,6 @@
   
       if($result) {
         $studentID = $row['studentID'];
-        echo $studentID;
         return $studentID;
         // Getting the studendID
   
@@ -30,7 +57,7 @@
 
 
 
-    } else echo "<p>Ei toimi SAatana</p>";
+    } else echo "<p>EI TOIMI SUBMIT STUDENT</p>";
   }
 
 
@@ -40,7 +67,6 @@
     $email =  $_POST['email'];
     getStudentID($conn, $first_name, $last_name, $email);
     $studentID = getStudentID($conn, $first_name, $last_name, $email);
-    echo $studentID;
 
     // Getting correct questionID
     $sql = "SELECT questionID FROM test WHERE studentID = '$studentID'";
@@ -59,7 +85,7 @@
                 $questions = mysqli_fetch_assoc($result);
                 
                 
-                mysqli_free_result($result); 
+                // mysqli_free_result($result); 
     
     // Shuffle options
     $q1_options = array("opt_1_1", "opt_1_2", "opt_1_3");
