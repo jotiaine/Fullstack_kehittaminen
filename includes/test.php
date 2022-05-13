@@ -90,7 +90,6 @@
       $sql = "SELECT studentID FROM student WHERE first_name = '$first_name' AND last_name = '$last_name' AND email = '$email'";
       $result = mysqli_query($conn, $sql);
       $row = mysqli_fetch_assoc($result);
-      echo $row['studentID'];
   
       if($result -> num_rows == 1) {
         // Getting the studendID
@@ -107,6 +106,7 @@
       // creation date
       $creationDate = date('Y-m-d H:i:s');
   
+      // NEW TEST OBJECT
       $test = new Test('null', $studentID, $question_series -> questionID,  $question_series -> question_1,  $question_series -> question_2,  $question_series -> question_3,  $question_series -> opt_1_1, $question_series -> opt_1_2, $question_series -> opt_1_3, $question_series -> opt_2_1, $question_series -> opt_2_2, $question_series -> opt_2_3, $question_series -> opt_3_1, $question_series -> opt_3_2, $question_series -> opt_3_3, $user_answer_1, $user_answer_2, $user_answer_3, $score, 'null', $creationDate);
       echo "<pre>";
       echo print_r($test);
