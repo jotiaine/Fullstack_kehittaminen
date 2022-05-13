@@ -3,30 +3,63 @@
   require('classes/question_series.php');
   require('classes/test.php');
 
-    /*
-    ********************************
-    ** GENERATING A RANDOM QUESTIONNAIRE **
-    ********************************
-    */
 
-    $sql = 'SELECT * FROM question';
+  function getStudentID($conn, $first_namei, $last_namei, $emaili) {
+
     
+    if(isset($_POST['submit-student'])) {
+      $first_name = $first_namei;
+      $last_name = $last_namei;
+      $email = $emaili;
+  
+      echo $first_name . "<br>";
+      echo $last_name . "<br>";
+      echo $email . "<br>";
+  
+      $sql = "SELECT studentID FROM student WHERE first_name = '$first_name' AND last_name = '$last_name' AND email = '$email'";
+      $result = mysqli_query($conn, $sql);
+      $row = mysqli_fetch_assoc($result);
+  
+      if($result) {
+        $studentID = $row['studentID'];
+        echo $studentID;
+        return $studentID;
+        // Getting the studendID
+  
+      }
+
+
+
+    } else echo "<p>Ei toimi SAatana</p>";
+  }
+
+
+    // Get studentID
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $email =  $_POST['email'];
+    getStudentID($conn, $first_name, $last_name, $email);
+    $studentID = getStudentID($conn, $first_name, $last_name, $email);
+    echo $studentID;
+
+    // Getting correct questionID
+    $sql = "SELECT questionID FROM test WHERE studentID = '$studentID'";
     $result = mysqli_query($conn, $sql);
-    // The "length" of question table
-    $rows = mysqli_num_rows($result);
-    echo $rows . "<br>";
+    $row  = mysqli_fetch_assoc($result);
+    $questionID = $row['questionID'];
     
-    // Random number between 1-$rows
-    $randomQuestionID = rand(1, $rows);
-    echo $randomQuestionID; 
-    
-    if($rows > 0) {
-      $sql = "SELECT * FROM question WHERE questionID = '$randomQuestionID'";
-      $result = mysqli_query($conn, $sql); 
-      $questions = mysqli_fetch_assoc($result);
-    }
-    
-    mysqli_free_result($result); 
+                /*
+                ********************************
+                ** PRINTING RANDOM QUESTION(QuestionID is defined already and shuffle options)**
+                ********************************
+                */
+                $sql = "SELECT * FROM question WHERE questionID = '$questionID'";
+                $result = mysqli_query($conn, $sql); 
+                // $row = mysqli_fetch_assoc($result);
+                $questions = mysqli_fetch_assoc($result);
+                
+                
+                mysqli_free_result($result); 
     
     // Shuffle options
     $q1_options = array("opt_1_1", "opt_1_2", "opt_1_3");
@@ -42,7 +75,7 @@
     ** GENERATING A QUESTION OBJECT **
     ********************************
     */
-    $sql = "SELECT * FROM question WHERE questionID = '$randomQuestionID'";
+    $sql = "SELECT * FROM question WHERE questionID = '$questionID'";
     
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
@@ -61,41 +94,6 @@
 
 
 
-    function getStudentID($conn, $first_namei, $last_namei, $emaili) {
-
-      if(isset($_POST['submit-student'])) {
-  
-        $first_name = $first_namei;
-        $last_name = $last_namei;
-        $email = $emaili;
-    
-        echo $first_name . "<br>";
-        echo $last_name . "<br>";
-        echo $email . "<br>";
-    
-        $sql = "SELECT studentID FROM student WHERE first_name = '$first_name' AND last_name = '$last_name' AND email = '$email'";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($result);
-    
-        if($result) {
-          $studentID = $row['studentID'];
-          echo $studentID;
-          return $studentID;
-          // Getting the studendID
-    
-        }
-
- 
-
-      } else echo "<p>Ei toimi SAatana</p>";
-    }
-
-      $first_name = $_POST['first_name'];
-      $last_name = $_POST['last_name'];
-      $email =  $_POST['email'];
-      getStudentID($conn, $first_name, $last_name, $email);
-      $studentID = getStudentID($conn, $first_name, $last_name, $email);
-      echo $studentID;
 
 
 
@@ -110,12 +108,12 @@
       $question_1 = $_POST['question_1'];
       $question_2 = $_POST['question_2'];
       $question_3 = $_POST['question_3'];
-      sendTest($conn, $question_series, $studentID );
+      sendTest($conn, $question_series, $studentID, $questionID );
     }
 
-    function sendTest ($conn, $question_series, $studentID) {
+    function sendTest ($conn, $question_series, $studentID, $questionID) {
 
-  
+        // Student answers
         $user_answer_1 = $_POST['question_1'];
         $user_answer_2 = $_POST['question_2'];
         $user_answer_3 = $_POST['question_3'];
@@ -130,37 +128,37 @@
         if($testIsApproved) $score = 1;
         else $score = 0;
     
-        // creation date
-        // $time = strtotime('10/16/2003');
-        // $datetime_variable = new DateTime();
-        // $datetime_formatted = date_format($datetime_variable, 'Y-m-d H:i:s');
-        // $creationDate = $datetime_formatted;
-    
-        // NEW TEST OBJECT
-        $test = new Test('null', $studentID, $question_series -> questionID,  $question_series -> question_1,  $question_series -> question_2,  $question_series -> question_3,  $question_series -> opt_1_1, $question_series -> opt_1_2, $question_series -> opt_1_3, $question_series -> opt_2_1, $question_series -> opt_2_2, $question_series -> opt_2_3, $question_series -> opt_3_1, $question_series -> opt_3_2, $question_series -> opt_3_3, $user_answer_1, $user_answer_2, $user_answer_3, $score, 'null', "Paevaa");
-        echo "<pre>";
-        echo print_r($test);
-        echo "</pre>";
-    
         /*
         ********************************
         ** INSERT TEST TO DB **
         ********************************
         */
-        $sql = "INSERT INTO test (studentID, questionID, question_1, question_2, question_3, opt_1_1, opt_1_2, opt_1_3, opt_2_1, opt_2_2, opt_2_3, opt_3_1, opt_3_2, opt_3_3, user_answer_1, user_answer_2, user_answer_3, score, teacher_feedback, creationDate) VALUES ('$studentID', '$question_series -> questionID',  '$question_series -> question_1',  '$question_series -> question_2',  '$question_series -> question_3',  '$question_series -> opt_1_1', '$question_series -> opt_1_2', '$question_series -> opt_1_3', '$question_series -> opt_2_1', '$question_series -> opt_2_2', '$question_series -> opt_2_3', '$question_series -> opt_3_1', '$question_series -> opt_3_2', '$question_series -> opt_3_3', '$user_answer_1', '$user_answer_2', '$user_answer_3', '$score', 'null', NOW())";
+        // Date lisäys
+        // $creationDate = 'SELECT NOW()';
+        $creationDate = new DateTime();
+        $creationDate -> format('Y-m-d H:i:s');
+        $sql = "UPDATE test SET (question_1 = '$question_series -> question_1', question_2 = '$question_series -> question_2', question_3 = '$question_series -> question_3', opt_1_1 = '$question_series -> opt_1_1', opt_1_2 = '$question_series -> opt_1_2', opt_1_3 = '$question_series -> opt_1_3', opt_2_1 = '$question_series -> opt_2_1', opt_2_2 = '$question_series -> opt_2_2', opt_2_3 = '$question_series -> opt_2_3', opt_3_1 = '$question_series -> opt_3_1', opt_3_2 = '$question_series -> opt_3_2', opt_3_3 = '$question_series -> opt_3_3', user_answer_1 = '$user_answer_1', user_answer_2 = '$user_answer_2', user_answer_3 = '$user_answer_3', score = '$score', teacher_feedback = 'null', creationDate = '$creationDate') WHERE studentID = '$studentID' AND questionID = '$questionID'";
         $result = mysqli_query($conn, $sql);
+
         if($result) echo "Insert success!";
         else echo "Insert failed";
 
+
+                // NEW TEST OBJECT
+                $test = new Test('null', $studentID, $question_series -> questionID,  $question_series -> question_1,  $question_series -> question_2,  $question_series -> question_3,  $question_series -> opt_1_1, $question_series -> opt_1_2, $question_series -> opt_1_3, $question_series -> opt_2_1, $question_series -> opt_2_2, $question_series -> opt_2_3, $question_series -> opt_3_1, $question_series -> opt_3_2, $question_series -> opt_3_3, $user_answer_1, $user_answer_2, $user_answer_3, $score, 'null', "Paevaa");
+                echo "<pre>";
+                echo print_r($test);
+                echo "</pre>";
+
         return $test;
-  
       }
-    
 
 
     $conn->close();
 
     ?>
+
+
 
 <div id="start-btn-container" class="container-fluid pb-5 pt-3 text-center bg-light">
     <h2 class="mb-4">Ready to start?</h2>
