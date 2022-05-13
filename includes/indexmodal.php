@@ -31,7 +31,7 @@
           <a id="teacher" type="button" class="btn btn-secondary" href="index.php?user=teacher">Teacher</a>
         </div>  
               <!-- STUDENT FORM -->
-              <form id="studentForm" class="m-0 text-center d-none" action="index.php?user=student" method="post">
+              <form id="studentForm" class="m-0 text-center d-none" action="index.php?page=test&user=student" method="post">
                 <div>
                   <input class="form-control" type="text" placeholder="first name" name="first_name" required>
                 </div>

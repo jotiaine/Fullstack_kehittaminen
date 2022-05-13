@@ -11,11 +11,6 @@ function createUser() {
               // Generate student object
               $student = new Student($first_name, $last_name, $email);
   
-              // Values reassigned from the student object
-              $first_name = $student -> first_name;
-              $last_name = $student -> last_name;
-              $email = $student -> email;
-  
               // Testing if user exists
               $sql = "SELECT * FROM student WHERE first_name = '$first_name' AND last_name = '$last_name' AND email = '$email'";
   

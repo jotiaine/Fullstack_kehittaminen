@@ -8,16 +8,16 @@
 
 ?>
 
-<?php require_once('includes/dbConnect.php') ?>
-<?php require_once('includes/head.php') ?>
+<?php require('includes/dbConnect.php') ?>
+<?php require('includes/head.php') ?>
 <?php
   // Student
-  if($user == 'student') require_once('includes/header_student.php');
+  if($user == 'student') require('includes/header_student.php');
   // Teacher
-  elseif($user == 'teacher') require_once('includes/header_teacher.php');
+  elseif($user == 'teacher') require('includes/header_teacher.php');
   // Default
-  else require_once('includes/header_default.php');
+  else require('includes/header_default.php');
 ?>
 
-<?php require_once('includes/main.php') ?>
-<?php require_once('includes/footer.php') ?>
+<?php require('includes/main.php') ?>
+<?php require('includes/footer.php') ?>
