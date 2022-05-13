@@ -3,6 +3,7 @@
   require('classes/question_series.php');
   require('classes/test.php');
   require('classes/student.php');
+  require('classes/reward.php');
   require('functions/create_student.php');
 
   /*****************/
@@ -10,10 +11,8 @@
   /*****************/
   // Create student object & save object to student.json
   if(isset($_POST['submit-student'])) {
+    // creating student obj, json file, insert empty test & reward
     create_student();
-    echo "<pre>";
-    echo print_r($student);
-    echo "</pre>";
 
     // Read the JSON file 
     //fopen($fp); // Do we need fopen & fclose here?
@@ -39,10 +38,6 @@
       $first_name = $first_namei;
       $last_name = $last_namei;
       $email = $emaili;
-  
-      echo "first name: " . $first_name . "<br>";
-      echo "last name: " . $last_name . "<br>";
-      echo "email: " . $email . "<br>";
   
       $sql = "SELECT studentID FROM student WHERE first_name = '$first_name' AND last_name = '$last_name' AND email = '$email'";
       $result = mysqli_query($conn, $sql);
@@ -96,28 +91,7 @@
     shuffle($q3_options);
     /******************************/
 
-    /*
-    ********************************
-    ** GENERATING A QUESTION OBJECT **
-    ********************************
-    */
-    $sql = "SELECT * FROM question WHERE questionID = '$questionID'";
     
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-    $questionTableValues = array();
-
-    foreach ($row as $key => $value) {
-      array_push($questionTableValues, $value);
-    }   
-
-    // Constructing object
-    $question_series = new Question_Series($questionTableValues[0], $questionTableValues[1], $questionTableValues[2], $questionTableValues[3], $questionTableValues[4], $questionTableValues[5], $questionTableValues[6], $questionTableValues[7], $questionTableValues[8], $questionTableValues[9], $questionTableValues[10], $questionTableValues[11], $questionTableValues[12], $questionTableValues[13], $questionTableValues[14], $questionTableValues[15],); 
-    echo "<pre>";
-    echo print_r($question_series);
-    echo "</pre>";
-    /******************************/
-
 
 
 
