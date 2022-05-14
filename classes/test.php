@@ -26,6 +26,16 @@
                     $this -> teacher_feedback = $teacher_feedback;
                     $this -> date = $date;
                   }
+
+                  // Some methods just in case if they are needed at front-end side
+
+                  public function getScore() {
+                    return $this -> score;
+                  }
+
+                  public function getDate() {
+                    return $this -> date;
+                  }                  
                 } 
 
 ?>

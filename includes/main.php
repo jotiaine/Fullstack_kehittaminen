@@ -15,6 +15,7 @@
           elseif($page == 'faq') include('faq.php');
           elseif($page == 'test') include('test.php');
           elseif($page == 'feedback') include('feedback.php');
+          elseif($page == 'testpage') include('testpage.php');  //väliaikainen testpage
           else echo '
           <div class="jumbotron">
            <h1 class="my-0 mt-0 display-3 text-light bg-dark p-3 text-center">Welcome to Datadrivers</h1>
