@@ -6,28 +6,44 @@
   require('classes/reward.php');
   require('functions/create_student.php');
 
-  /*****************/
-  /** SUBMIT STUDENT **/ 
-  /*****************/
+  /***********************************/
+  /** SUBMIT STUDENT, TEST, REWARD ***/ 
+  /***********************************/
   // Create student object & save object to student.json
   if(isset($_POST['submit-student'])) {
     // creating student obj, json file, insert empty test & reward
     create_student();
 
-    // Read the JSON file 
-    //fopen($fp); // Do we need fopen & fclose here?
+    // Read the JSON file, Testing that it works 
     $json = file_get_contents('file/student.json');
-      
+    
     // Decode the JSON file
     $json_data = json_decode($json,true);
-      
+    
     // Display data
     echo "<pre>";
     echo print_r($json_data);
     echo "</pre>";
+    
+    
+    // Test: read file
+    // $file_pointer = fopen('file/poista.json', 'r');
+    // echo fread($file_pointer, filesize('file/poista.json'));
+    // fclose($file_pointer);
+    
+    // //Test: Create a file and write
+    // $new_file = fopen('file/new_file.json', 'w');
+    // fwrite($new_file, 'Testing creating a file');
+    // fclose($new_file);
+    
+    // Test: open file, write, close & DELETE file
+    // $file_pointer = fopen('file/poista.json', 'w');
+    // fwrite($file_pointer, 'Testing writing and DELETING');
+    // fclose($file_pointer);
+    // unlink('file/poista.json'); // Deletes a file, be careful
 
-    //fclose($fp);
   }
+  /*****************/
 
 
 
