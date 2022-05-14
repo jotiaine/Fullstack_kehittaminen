@@ -1,12 +1,7 @@
       <!-- MAIN SECTION -->
       <main class="container-fluid px-1 bg-light min-vh-100">
 
-        <?php
-          // createUser from functions.php
-          require_once('classes/student.php');
-          require_once('functions/create_student.php');
-          createUser();
-        ?>
+
         
         <!-- PHP scripts render here -->
         <?php 

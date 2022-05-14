@@ -1,42 +1,102 @@
 <?php
   require_once('includes/dbConnect.php'); 
-  require_once('classes/test.php');
 
     /*
     ********************************
-    ** INSERTING TEST TO DB **
+    ** Get students and their tests from db **
+    ** and use AJAX to update the part of the site to get more tests & students? **
+    ** Udate Teacher feedback to db****
+    ** First done without AJAX **
+    ** JSON prolly not needed here **
     ********************************
     */
 
-    // Tässä on pohjaa valmiina
+  $sql = "SELECT * FROM test INNER JOIN student ON test.studentID = student.studentID ORDER BY student.last_name, student.first_name, student.studentID";
+  $result = $conn -> query($sql);
+  $rows = mysqli_num_rows($result);
+
+  // Updating feedback to DB using AJAX
 
 
-    // $sql = "INSERT INTO test VALUES studentID = '$studentID', questionID = '$questionID', question_1 = '$question_1', question_2 = '$question_2', question_3 = '$question_3', opt_1_1 = '$opt_1_1', opt_1_2 = '$opt_1_2', opt_1_3 = '$opt_1_3', opt_2_1 = '$opt_2_1', opt_2_2 = '$opt_2_2', opt_2_3 = '$opt_2_3', opt_3_1 = '$opt_3_1', opt_3_2 = '$opt_3_2', opt_3_3 = '$opt_3_3', user_answer_1 = '$user_answer_1', user_answer_2 = '$user_answer_2', user_answer_3 = '$user_answer_3', score = '$score', teacher_feedback = '$teacher_feedback', creationDate = '$creationDate'";
+  if(isset($_POST['submit-feedback'])) {
     
-    // $result = mysqli_query($conn, $sql);  
+  $hiddenStudentID = $conn->real_escape_string($_REQUEST['hiddenStudentID']);
+  $teacher_feedback = $conn->real_escape_string($_POST['teacher_feedback']);
+  echo "<p class='alert alert-success'>". $hiddenStudentID . "</p>";
+  echo "<p class='alert alert-success'>" . $teacher_feedback . "</p>";
+  $sql = "UPDATE test SET teacher_feedback = '$teacher_feedback' WHERE studentID = '$hiddenStudentID'";
+  $result = $conn -> query($sql);
 
-    // if(!$result) {
-    //   die("Connection failed: " . $conn->connect_error);
-    // }
-    /******************************/
+  if($result) echo "<p class='alert alert-success'>Updating feedback for studentID:" . $hiddenStudentID . " is a success!</p>";
+  else echo "<p class='alert alert-warning'>Updating feedback failed</p>";
+  //$conn -> close();
+}
 
-    /*
-    ********************************
-    ** GENERATING A TEST OBJECT **
-    ********************************
-    */
+?>
 
-    // Tähän arrayhin kerätään studentin vastaukset
-    // $testTableValues = array();
+<div class="container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark">
+  <div class='FAQ-header text-white'>
+    <h1 class="display-2">STUDENTS</h1>
+    <div class='FAQ-instruction'>
+      <p>Press student and open test</p>
+    </div>
+  </div>
 
-    // // Luodaan uus testi olio käyttäjän vastauksilla
-    // // Constructing object
-    // $test = new Test($testTableValues[0], $testTableValues[1], $testTableValues[2], $testTableValues[3], $testTableValues[4], $testTableValues[5], $testTableValues[6], $testTableValues[7], $testTableValues[8], $testTableValues[9], $testTableValues[10], $testTableValues[11], $testTableValues[12], $testTableValues[13], $testTableValues[14], $testTableValues[15], $testTableValues[16], $testTableValues[17], $testTableValues[18], $testTableValues[19]); 
-    // echo "<pre>";
-    // echo print_r($test);
-    // echo "</pre>";
-    // /******************************/
+  <table id="feedback-table" class="table table-dark table-striped table-hover w-50 text-center">
+      <!-- Results here -->
+      <?php 
+        if($rows > 0) {
+          // Tests exist, print the tests
+          $i = 0;
+          while($i < $rows) {
+            while($row = $result -> fetch_assoc()) {
+              
+              
+              for($x = 0; $x < 1; $x++) {
+                $studentID = $row['studentID'];
+                $first_name = $row['first_name'];
+                $last_name = $row['last_name'];
+                echo "<thead>";
+                echo "<th colspan='2' class='student-name display-3'>" . $studentID . " " . $first_name . " " . $last_name . "</th>";
+                echo "</thead>";
+                echo "<tbody class='student-body'>";
+                
+                foreach($row as $key => $value) {
+                  echo "<tr class='student-row table-dark'>";
+                  echo "<td>". $key . "</td>" ;
+                  echo "<td>" . $value . "</td>" ;
+                  echo "</tr>";
+                }
+                /* FORM */
+                echo "<form action='index.php?page=feedback&user=teacher' method='post'>";
+                echo "<td colspan='2' class='px-4 py-3'>";
+                echo "<label for='feedback' class='form-label text-danger'>Feedback</label>";
+                echo "<textarea name='teacher_feedback' id='feedback' class='form-control bg-dark text-white border border-danger' placeholder='The test went well!' required>";
+                echo "</textarea>";
+                echo "<div class='mt-2'>";
+                /* Sending studentID hidden in form input */
+                echo "<input type='hidden' name='hiddenStudentID' value='$studentID'>";
+                echo "<input type='submit' name='submit-feedback' class='btn btn-dark text-white' value='Send'>";
+                echo "</div>";
+                echo "</td>";
+                echo "</form>";
+                /* /FORM */
+                echo "</tbody>";
+                
+              }
+            }
+            
+            
+            $i++;
 
-    // $conn->close();
+          }
+      
+        } 
+        // echo "<p class='alert alert-warning'>No Tests!</p>"
+      
+      ?>
 
-    ?>
+  </table>
+
+  
+</div>
