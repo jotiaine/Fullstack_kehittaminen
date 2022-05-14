@@ -93,6 +93,14 @@ jQuery(document).ready(function ($) {
   }
   /****END faq.php*****/
 
+  /******************/
+  /**    FEEDBACK   **/
+  /*******************/
+  $(".student-body").hide();
+  $(".student-name").click(function () {
+    $(this).parent().parent().next(".student-body").fadeToggle("400", "swing");
+  });
+
   // Miksi Vanilla JS ei toimi!?!?!?!?
   // Hero pic auto text
   const heroAutoTextEl = document.querySelector("#hero-auto-text");
