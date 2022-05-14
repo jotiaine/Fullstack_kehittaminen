@@ -26,7 +26,7 @@
     echo "</pre>";
     
     
-    // Test: read file
+    // Test: read file "new_file.json" & "poista.json" for testing
     // $file_pointer = fopen('file/poista.json', 'r');
     // echo fread($file_pointer, filesize('file/poista.json'));
     // fclose($file_pointer);
