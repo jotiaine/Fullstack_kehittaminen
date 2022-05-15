@@ -45,12 +45,46 @@
   }
   /*****************/
 
+  // Get studentID
+  $first_name = $_POST['first_name'];
+  $last_name = $_POST['last_name'];
+  $email =  $_POST['email'];
+  getStudentID($conn, $first_name, $last_name, $email);
+  $studentID = getStudentID($conn, $first_name, $last_name, $email);
+
+  // Getting correct questionID
+  $sql = "SELECT questionID FROM test WHERE studentID = '$studentID'";
+  $result = mysqli_query($conn, $sql);
+  $row  = mysqli_fetch_assoc($result);
+  $questionID = $row['questionID'];
+    
+  /*
+    ********************************
+  ** PRINTING RANDOM QUESTION(QuestionID is defined already and shuffle options)**
+  ********************************
+  */
+  $sql = "SELECT * FROM question WHERE questionID = '$questionID'";
+  $result = mysqli_query($conn, $sql); 
+  // $row = mysqli_fetch_assoc($result);
+  $questions = mysqli_fetch_assoc($result);
+                
+              
+  // mysqli_free_result($result); 
+  
+  // Shuffle options
+  $q1_options = array("opt_1_1", "opt_1_2", "opt_1_3");
+  shuffle($q1_options);
+  $q2_options = array("opt_2_1", "opt_2_2", "opt_2_3");
+  shuffle($q2_options);                   
+  $q3_options = array("opt_3_1", "opt_3_2", "opt_3_3");
+  shuffle($q3_options);
+  /******************************/
+
 
 
   function getStudentID($conn, $first_namei, $last_namei, $emaili) {
 
     
-    if(isset($_POST['submit-student'])) {
       $first_name = $first_namei;
       $last_name = $last_namei;
       $email = $emaili;
@@ -68,50 +102,10 @@
 
 
 
-    } else echo "<p>EI TOIMI SUBMIT STUDENT</p>";
+     else echo "<p>Not getting studentID</p>";
   }
 
-
-    // Get studentID
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $email =  $_POST['email'];
-    getStudentID($conn, $first_name, $last_name, $email);
-    $studentID = getStudentID($conn, $first_name, $last_name, $email);
-
-    // Getting correct questionID
-    $sql = "SELECT questionID FROM test WHERE studentID = '$studentID'";
-    $result = mysqli_query($conn, $sql);
-    $row  = mysqli_fetch_assoc($result);
-    $questionID = $row['questionID'];
-    
-                /*
-                ********************************
-                ** PRINTING RANDOM QUESTION(QuestionID is defined already and shuffle options)**
-                ********************************
-                */
-                $sql = "SELECT * FROM question WHERE questionID = '$questionID'";
-                $result = mysqli_query($conn, $sql); 
-                // $row = mysqli_fetch_assoc($result);
-                $questions = mysqli_fetch_assoc($result);
-                
-                
-                // mysqli_free_result($result); 
-    
-    // Shuffle options
-    $q1_options = array("opt_1_1", "opt_1_2", "opt_1_3");
-    shuffle($q1_options);
-    $q2_options = array("opt_2_1", "opt_2_2", "opt_2_3");
-    shuffle($q2_options);                   
-    $q3_options = array("opt_3_1", "opt_3_2", "opt_3_3");
-    shuffle($q3_options);
-    /******************************/
-
-    
-
-
-
-
+  
 
     /*
     ********************************
@@ -124,6 +118,8 @@
       $question_1 = $_POST['question_1'];
       $question_2 = $_POST['question_2'];
       $question_3 = $_POST['question_3'];
+      $studentID = $_POST['studentID'];
+      $questionID = $_POST['questionID'];
       sendTest($conn, $question_series, $studentID, $questionID );
     }
 
@@ -146,7 +142,7 @@
     
         /*
         ********************************
-        ** INSERT TEST TO DB **
+        ** UPDATE TEST TO DB **
         ********************************
         */
         // Date lisäys
@@ -156,15 +152,15 @@
         $sql = "UPDATE test SET (question_1 = '$question_series -> question_1', question_2 = '$question_series -> question_2', question_3 = '$question_series -> question_3', opt_1_1 = '$question_series -> opt_1_1', opt_1_2 = '$question_series -> opt_1_2', opt_1_3 = '$question_series -> opt_1_3', opt_2_1 = '$question_series -> opt_2_1', opt_2_2 = '$question_series -> opt_2_2', opt_2_3 = '$question_series -> opt_2_3', opt_3_1 = '$question_series -> opt_3_1', opt_3_2 = '$question_series -> opt_3_2', opt_3_3 = '$question_series -> opt_3_3', user_answer_1 = '$user_answer_1', user_answer_2 = '$user_answer_2', user_answer_3 = '$user_answer_3', score = '$score', teacher_feedback = 'null', creationDate = '$creationDate') WHERE studentID = '$studentID' AND questionID = '$questionID'";
         $result = mysqli_query($conn, $sql);
 
-        if($result) echo "Insert success!";
-        else echo "Insert failed";
+        if($result) echo "Update success!";
+        else echo "Update failed";
 
 
-                // NEW TEST OBJECT
-                $test = new Test('null', $studentID, $question_series -> questionID,  $question_series -> question_1,  $question_series -> question_2,  $question_series -> question_3,  $question_series -> opt_1_1, $question_series -> opt_1_2, $question_series -> opt_1_3, $question_series -> opt_2_1, $question_series -> opt_2_2, $question_series -> opt_2_3, $question_series -> opt_3_1, $question_series -> opt_3_2, $question_series -> opt_3_3, $user_answer_1, $user_answer_2, $user_answer_3, $score, 'null', "Paevaa");
-                echo "<pre>";
-                echo print_r($test);
-                echo "</pre>";
+        // NEW TEST OBJECT
+        $test = new Test('null', $studentID, $question_series -> questionID,  $question_series -> question_1,  $question_series -> question_2,  $question_series -> question_3,  $question_series -> opt_1_1, $question_series -> opt_1_2, $question_series -> opt_1_3, $question_series -> opt_2_1, $question_series -> opt_2_2, $question_series -> opt_2_3, $question_series -> opt_3_1, $question_series -> opt_3_2, $question_series -> opt_3_3, $user_answer_1, $user_answer_2, $user_answer_3, $score, 'null', "Paevaa");
+        echo "<pre>";
+        echo print_r($test);
+        echo "</pre>";
 
         return $test;
       }
@@ -188,6 +184,9 @@
       <!-- QUESTION 1 -->
         <h4 class="mb-3"> <?php echo htmlspecialchars($questions['question_1']); ?> </h4>
 
+          <!-- Sending studentId and questionId hidde with submit-test -->
+          <input type="hidden" name="questionID" value='$questionID'>"/>
+          <input type="hidden" name="studentID" value='$studentID'>"/>
           <input class="form-check-input" type="radio" name="question_1" id="answerSerie-1.1" value="<?php echo htmlspecialchars($questions[$q1_options[2]]); ?>"/>
           <label class="form-check-label" for="answerSerie-1.1"> <?php echo htmlspecialchars($questions[$q1_options[2]]); ?> </label><br>
 
