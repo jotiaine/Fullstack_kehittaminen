@@ -1,14 +1,15 @@
 <?php 
   /*
     This is the main page.
-  */
-
-  if(isset($_GET['page'])) $page = $_GET['page']; else $page = '';
-  if(isset($_GET['user'])) $user = $_GET['user']; else $user = '';
-
+    */
 ?>
-
 <?php require('includes/dbConnect.php') ?>
+
+  <?php
+  if(isset($_GET['page'])) $page = $conn -> real_escape_string($_GET['page']); else $page = '';
+  if(isset($_GET['user'])) $user = $conn -> real_escape_string($_GET['user']); else $user = '';
+  ?>
+
 <?php require('includes/head.php') ?>
 <?php
   // Student

@@ -11,7 +11,6 @@ function create_student() {
               $first_name = $conn->real_escape_string($_POST['first_name']);
               $last_name = $conn->real_escape_string($_POST['last_name']);
               $email = $conn->real_escape_string($_POST['email']);
-              $studentID = 0;
               /******************************/
 
               // Testing if student exists
@@ -78,7 +77,7 @@ function create_student() {
                   $questionID = $row['questionID'];
                 }
                 
-                mysqli_free_result($result); 
+                //mysqli_free_result($result); 
 
                 // QUESTION ROW
                 $sql = "SELECT * FROM question WHERE questionID = '$questionID'";
@@ -107,12 +106,32 @@ function create_student() {
                 $result = $conn -> query($sql);
                 if($result) echo "<p class='alert alert-success'>Insert empty test is a success!</p>";
                 else echo "<p class='alert alert-warning'>Empty test addition failed</p>";
+                // Getting testID also
+                $sql = "SELECT testID FROM test WHERE studentID = '$studentID'";
+                $result = $conn -> query($sql);
+                $row = mysqli_fetch_assoc($result);
+
+                if($result) {
+                  echo "<p class='alert alert-success'>Insert empty test is a success!</p>";
+                  $testID = $row['testID'];
+                }
+                else echo "<p class='alert alert-warning'>Empty test addition failed</p>";
                
                 // Creating empty reward row for student
                 $sql = "INSERT INTO reward (studentID) VALUES ('$studentID')";
                 $result = $conn -> query($sql);
                 if($result) echo "<p class='alert alert-success'>Insert empty reward is a success!</p>";
                 else echo "<p class='alert alert-warning'>Empty reward addition failed</p>";
+                // Getting rewardID also
+                $sql = "SELECT rewardID FROM reward WHERE studentID = '$studentID'";
+                $result = $conn -> query($sql);
+                $row = mysqli_fetch_assoc($result);
+
+                if($result) {
+                  echo "<p class='alert alert-success'>Getting rewardID is a success!</p>";
+                  $rewardID = $row['rewardID'];
+                }
+                else echo "<p class='alert alert-warning'>Failed to get rewardID!</p>";
                 
                 /******************************/
 
@@ -130,7 +149,7 @@ function create_student() {
                 echo "</pre>";
                 
                 // Generate test object
-                $test = new Test('NULL', $studentID, $questionID, $questionTableValues['1'], $questionTableValues['2'], $questionTableValues['3'], $questionTableValues['4'], $questionTableValues['5'], $questionTableValues['6'], $questionTableValues['7'], $questionTableValues['8'], $questionTableValues['9'], $questionTableValues['10'], $questionTableValues['11'], $questionTableValues['12'], 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL' );
+                $test = new Test($testID, $studentID, $questionID, $questionTableValues['1'], $questionTableValues['2'], $questionTableValues['3'], $questionTableValues['4'], $questionTableValues['5'], $questionTableValues['6'], $questionTableValues['7'], $questionTableValues['8'], $questionTableValues['9'], $questionTableValues['10'], $questionTableValues['11'], $questionTableValues['12'], 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL' );
                 echo "<pre class='bg-info p-3'>";
                 echo print_r($test);
                 echo "</pre>";
@@ -142,53 +161,52 @@ function create_student() {
                 echo "</pre>";
                 
                 // Generate reward object
-                $reward = new Reward('NULL', $studentID, '0', 'NULL');
+                $reward = new Reward($rewardID, $studentID, '0', 'NULL');
                 echo "<pre class='bg-info p-3'>";
                 echo print_r($reward);
                 echo "</pre>";
                 /******************************/
 
-
-                
-
-
-                /*
-                ********************************
-                ** SAVING OBJECTS TO JSON FILES **
-                ********************************
-                */
-
-                // Save Student object to student.json
-                $fp = fopen('file/student.json', 'w');
-                fwrite($fp, json_encode($student));
-                fclose($fp);
-
-                // Save Test object to test.json
-                $fp = fopen('file/test.json', 'w');
-                fwrite($fp, json_encode($test));
-                fclose($fp);
-
-                // Save Question_Qeries object to question_series.json
-                $fp = fopen('file/question_series.json', 'w');
-                fwrite($fp, json_encode($question_series));
-                fclose($fp);
-                
-                // Save Reward object to reward.json
-                $fp = fopen('file/reward.json', 'w');
-                fwrite($fp, json_encode($reward));
-                fclose($fp);
-
-
-                
-                /*
-                ********************************
-                ** AFTER THIS script **
-                ** TEST & REWARD wait for UPDATES **
-                ********************************
-                */
-                
-
-                return $student;
+  
+  
+  /*
+  ********************************
+  ** SAVING OBJECTS TO JSON FILES **
+  ********************************
+  */
+  
+  // Save Student object to student.json
+  $fp = fopen('file/student.json', 'w');
+  fwrite($fp, json_encode($student));
+  fclose($fp);
+  
+  // Save Test object to test.json
+  $fp = fopen('file/test.json', 'w');
+  fwrite($fp, json_encode($test));
+  fclose($fp);
+  
+  // Save Question_Qeries object to question_series.json
+  $fp = fopen('file/question_series.json', 'w');
+  fwrite($fp, json_encode($question_series));
+  fclose($fp);
+  
+  // Save Reward object to reward.json
+  $fp = fopen('file/reward.json', 'w');
+  fwrite($fp, json_encode($reward));
+  fclose($fp);
+  
+  
+  
+  /*
+  ********************************
+  ** AFTER THIS script **
+  ** TEST & REWARD wait for UPDATES **
+  ********************************
+  */
+  
+  
+  
+  return $student;
               }
                       
   
