@@ -42,6 +42,15 @@
           echo print_r($json_data_reward);
           echo "</pre>";
           
+
+          // Shuffle options
+          $q1_options = array("opt_1_1", "opt_1_2", "opt_1_3");
+          shuffle($q1_options);
+          $q2_options = array("opt_2_1", "opt_2_2", "opt_2_3");
+          shuffle($q2_options);                   
+          $q3_options = array("opt_3_1", "opt_3_2", "opt_3_3");
+          shuffle($q3_options);
+          
           
           // Test: read file "new_file.json" & "poista.json" for testing
           // $file_pointer = fopen('file/poista.json', 'r');
@@ -66,72 +75,77 @@
 
 
 <?php
-  // Using JSONS to find studentID, first_name and last_name and email
-    $json_student = file_get_contents('file/student.json');
-    $json_question_series = file_get_contents('file/question_series.json');
-    $json_test = file_get_contents('file/test.json');
-    
-    // Decode the JSON file
-    $student = json_decode($json_student,true);
-    $question_series = json_decode($json_question_series,true);
-    $test = json_decode($json_test,true);
 
-    // All necessary info
-    $studentID = $student['studentID'];
-    $first_name = $student['first_name'];
-    $last_name = $student['last_name'];
-    $email = $student['email'];
-    $questionID = $question_series['questionID'];
-    $question_1 = $question_series['question_1'];
-    $question_2 = $question_series['question_2'];
-    $question_3 = $question_series['question_3'];
-    $opt_1_1 = $question_series['opt_1_1'];
-    $opt_1_2 = $question_series['opt_1_2'];
-    $opt_1_3 = $question_series['opt_1_3'];
-    $opt_2_1 = $question_series['opt_2_1'];
-    $opt_2_2 = $question_series['opt_2_2'];
-    $opt_2_3 = $question_series['opt_2_3'];
-    $opt_3_1 = $question_series['opt_3_1'];
-    $opt_3_2 = $question_series['opt_3_2'];
-    $opt_3_3 = $question_series['opt_3_3'];
-    $correct_answer_1 = $question_series['correct_answer_1'];
-    $correct_answer_2 = $question_series['correct_answer_2'];
-    $correct_answer_3 = $question_series['correct_answer_3'];
-    $testID = $test['testID'];
-    
-    // Getting correct questionID
-    $sql = "SELECT score, creationDate FROM test WHERE studentID = '$studentID'";
-    $result = mysqli_query($conn, $sql);
-    $row  = mysqli_fetch_assoc($result);
+    if($_GET['user'] == 'student' && $_GET['page'] == 'test' || isset($_POST['submit-test'])) {
 
-    // get score & creationDate
-    $score = $row['score'];
-    $creationDate = $row['creationDate'];
+      // Using JSONS to find studentID, first_name and last_name and email
+      $json_student = file_get_contents('file/student.json');
+      $json_question_series = file_get_contents('file/question_series.json');
+      $json_test = file_get_contents('file/test.json');
+      
+      // Decode the JSON file
+      $student = json_decode($json_student,true);
+      $question_series = json_decode($json_question_series,true);
+      $test = json_decode($json_test,true);
+  
+      // All necessary info
+      $studentID = $student['studentID'];
+      $first_name = $student['first_name'];
+      $last_name = $student['last_name'];
+      $email = $student['email'];
+      $questionID = $question_series['questionID'];
+      $question_1 = $question_series['question_1'];
+      $question_2 = $question_series['question_2'];
+      $question_3 = $question_series['question_3'];
+      $opt_1_1 = $question_series['opt_1_1'];
+      $opt_1_2 = $question_series['opt_1_2'];
+      $opt_1_3 = $question_series['opt_1_3'];
+      $opt_2_1 = $question_series['opt_2_1'];
+      $opt_2_2 = $question_series['opt_2_2'];
+      $opt_2_3 = $question_series['opt_2_3'];
+      $opt_3_1 = $question_series['opt_3_1'];
+      $opt_3_2 = $question_series['opt_3_2'];
+      $opt_3_3 = $question_series['opt_3_3'];
+      $correct_answer_1 = $question_series['correct_answer_1'];
+      $correct_answer_2 = $question_series['correct_answer_2'];
+      $correct_answer_3 = $question_series['correct_answer_3'];
+      $testID = $test['testID'];
+      
+      // Getting correct questionID
+      $sql = "SELECT score, creationDate FROM test WHERE studentID = '$studentID'";
+      $result = mysqli_query($conn, $sql);
+      $row  = mysqli_fetch_assoc($result);
+  
+      // get score & creationDate
+      $score = $row['score'];
+      $creationDate = $row['creationDate'];
+  
+      // Has or hasn't done the test?
+      $testIsNotDone = empty($score) && empty($creationDate);
+      $testFailed = $score == 0 && !empty($creationDate) ;
+      $testApproved = $score == 1 && !empty($creationDate) ;
+  
+      if( $testIsNotDone ) {
+        echo "<p class='alert alert-warning'> Student hasn't made the test yet! </p>";
+          
+  
+      } elseif ( $testFailed ) {
+        echo "<p class='alert alert-warning'> Student has made the test but failed! </p>";
+      } elseif ($testApproved ) {
+        echo "<p class='alert alert-warning'> Student has succesfully made the test! </p>";
+  
+      }
 
-    // Has or hasn't done the test?
-    $testIsNotDone = $score == NULL && $creationDate == NULL ;
-    $testFailed = $score == 0 && $creationDate != NULL ;
-    $testApproved = $score == 1 && $creationDate != NULL ;
-
-    if( $testIsNotDone ) {
-      echo "<p class='alert alert-warning'> Student hasn't made the test yet! </p>";
-        
-
-    } elseif ( $testFailed ) {
-      echo "<p class='alert alert-warning'> Student has made the test but failed! </p>";
-    } elseif ($testApproved ) {
-      echo "<p class='alert alert-warning'> Student has succesfully made the test! </p>";
+                // Shuffle options
+                $q1_options = array("opt_1_1", "opt_1_2", "opt_1_3");
+                shuffle($q1_options);
+                $q2_options = array("opt_2_1", "opt_2_2", "opt_2_3");
+                shuffle($q2_options);                   
+                $q3_options = array("opt_3_1", "opt_3_2", "opt_3_3");
+                shuffle($q3_options);
+  
 
     }
-
-    // Shuffle options
-    $q1_options = array("opt_1_1", "opt_1_2", "opt_1_3");
-    shuffle($q1_options);
-    $q2_options = array("opt_2_1", "opt_2_2", "opt_2_3");
-    shuffle($q2_options);                   
-    $q3_options = array("opt_3_1", "opt_3_2", "opt_3_3");
-    shuffle($q3_options);
-        
 
 ?>
 
@@ -153,9 +167,9 @@
 
       
               // Student answers
-              $user_answer_1 = $_POST['question_1'];
-              $user_answer_2 = $_POST['question_2'];
-              $user_answer_3 = $_POST['question_3'];
+              $user_answer_1 = $conn->real_escape_string($_POST['question_1']);
+              $user_answer_2 = $conn->real_escape_string($_POST['question_2']);
+              $user_answer_3 = $conn->real_escape_string($_POST['question_3']);
               echo $user_answer_1 . "<br>";
               echo $user_answer_2 . "<br>";
               echo $user_answer_3;
@@ -172,9 +186,7 @@
               ** UPDATE TEST TO DB **
               ********************************
               */
-              // Date lisäys
-              // $creationDate = 'SELECT NOW()';
-              // $creationDate = new DateTime();
+
               $creationDate  = date('Y-m-d H:i:s');
               $sql = "UPDATE test SET question_1 = '$question_1', question_2 = '$question_2', question_3 = '$question_3', opt_1_1 = '$opt_1_1', opt_1_2 = '$opt_1_2', opt_1_3 = '$opt_1_3', opt_2_1 = '$opt_2_1', opt_2_2 = '$opt_2_2', opt_2_3 = '$opt_2_3', opt_3_1 = '$opt_3_1', opt_3_2 = '$opt_3_2', opt_3_3 = '$opt_3_3', user_answer_1 = '$user_answer_1', user_answer_2 = '$user_answer_2', user_answer_3 = '$user_answer_3', score = '$score', teacher_feedback = 'NULL', creationDate = '$creationDate' WHERE studentID = '$studentID' AND questionID = '$questionID'";
               $result = mysqli_query($conn, $sql);
@@ -193,7 +205,7 @@
     
 
 
-    //$conn->close();
+    $conn->close();
 
 
 
@@ -208,7 +220,7 @@
 
   <div id="test-container" class="container-fluid p-5 text-center bg-dark text-white">
     <form action="index.php?page=test&user=student" method="post" class="d-flex flex-column align-items-center justify-content-center">
-      <h3 class="mb-3"> Test of Mensa </h3><br><br>
+      <h3 class="mb-3"> Test of Mensa </h3>
 
       
       <table class="table table-dark text-white table-striped table-hover w-75 text-center text-dark table-bordered ">
