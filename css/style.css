@@ -1,6 +1,7 @@
 :root {
   --feedback-hover-color: rgb(18, 18, 18) !important;
   --feedback-header-color: rgb(14, 14, 14) !important;
+  --feedback-text-color: rgb(16, 16, 16) !important;
 }
 
 /* {
@@ -169,9 +170,20 @@
 /* Feedback */
 #th-feedback,
 #tr-feedback,
-#btn-feedback {
+#btn-feedback,
+#start-test-btn,
+#submit-test-btn {
   background-color: var(--feedback-header-color);
   color: gray !important;
+  border: none !important;
+}
+
+.var-header {
+  color: gray !important;
+}
+
+.var-text {
+  color: var(--feedback-text-color);
 }
 
 #th-feedback:hover,

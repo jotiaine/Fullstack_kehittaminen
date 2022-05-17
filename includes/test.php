@@ -213,20 +213,20 @@
     ?>
 
     
-<div id="start-btn-container" class="container-fluid pb-5 pt-3 text-center bg-light">
-    <h2 class="mb-4">Ready to start?</h2>
+<div id="start-btn-container" class="container-fluid pb-5 pt-3 text-center bg-dark text-white">
+    <h2 class="var-header mb-4">Ready to start?</h2>
     <button id="start-test-btn" class="btn btn-dark text-white"> Show nudes! </button>
   </div>
 
   <div id="test-container" class="container-fluid p-5 text-center bg-dark text-white">
     <form action="index.php?page=test&user=student" method="post" class="d-flex flex-column align-items-center justify-content-center">
-      <h3 class="mb-3"> Test of Mensa </h3>
+      <h3 class="var-header mb-3"> Test of Mensa </h3>
 
       
       <table class="table table-dark text-white table-striped table-hover w-75 text-center text-dark table-bordered ">
           <thead>
             <!-- QUESTION 1 -->
-            <th colspan='3' class='p-5 fs-4'>
+            <th colspan='3' class='var-header p-5 fs-4'>
               <?php echo htmlspecialchars($question_series['question_1']); ?> 
             </th>
           </thead>
@@ -246,7 +246,7 @@
           </tbody>
           <thead>
             <!-- QUESTION 2 -->
-            <th colspan='3' class='p-5 fs-4'>
+            <th colspan='3' class='var-header p-5 fs-4'>
               <?php echo htmlspecialchars($question_series['question_2']); ?>
             </th>
           </thead>
@@ -266,7 +266,7 @@
           </tbody>
           <thead>
             <!-- QUESTION 3 -->
-            <th colspan='3' class='p-5 fs-4'>
+            <th colspan='3' class='var-header p-5 fs-4'>
               <?php echo htmlspecialchars($question_series['question_3']); ?>
             </th>
           </thead>
@@ -288,7 +288,7 @@
         </table>
         
         <div id="submit-btn-container" class="container-fluid py-5 text-center bg-dark">
-          <button id="submit-test-btn" class="btn fs-1 btn-primary text-white bg-dark" type="submit" name="submit-test"> Submit </button>
+          <button id="submit-test-btn" class="btn fs-1 btn-primary" type="submit" name="submit-test"> Submit </button>
         </div>
 
           <!-- Sending studentId and questionId hidden with submit-test -->
