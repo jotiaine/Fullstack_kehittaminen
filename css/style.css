@@ -161,6 +161,18 @@
   font-size: 5rem !important;
 }
 
+#th-feedback,
+#tr-feedback,
+#btn-feedback {
+  background-color: black !important;
+  color: gray !important;
+}
+
+#header-feedback {
+  background-color: transparent !important;
+  color: rgb(211, 211, 211) !important;
+}
+
 @media (max-width: 231px) {
   #header-container {
     margin-bottom: 4rem !important;

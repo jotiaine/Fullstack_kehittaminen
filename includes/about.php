@@ -14,7 +14,7 @@ $rows=mysqli_num_rows($result);
 
 ?>
 <h3>All Students  (<?php echo $rows ?>kpl)</h3>
-<table class="table table-striped">
+<table class="table table-striped table-dark text-white">
     <thead>
       <tr>
         <th>StudentID</th>
@@ -45,7 +45,7 @@ $result=$conn->query($sql);
 $rows=mysqli_num_rows($result);
 ?>
 <br><h3>All Tests (<?php echo $rows ?>kpl)</h3>
-<table class="table table-striped">
+<table class="table table-striped table-dark text-white">
     <thead>
       <tr>
         <th>TestID</th>
@@ -76,7 +76,7 @@ $result=$conn->query($sql);
 $rows=mysqli_num_rows($result);
 ?>
 <br><h3>All Questions (<?php echo $rows ?>kpl)</h3>
-<table class="table table-striped">
+<table class="table table-striped table-dark text-white">
     <thead>
       <tr>
         <th>questionID</th>
@@ -113,7 +113,7 @@ $result=$conn->query($sql);
 $rows=mysqli_num_rows($result);
 ?>
 <br><h3>All Rewards (<?php echo $rows ?>kpl)</h3>
-<table class="table table-striped">
+<table class="table table-striped table-dark text-white">
     <thead>
       <tr>
         <th>rewardID</th>
