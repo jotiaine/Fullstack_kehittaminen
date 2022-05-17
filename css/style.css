@@ -164,8 +164,14 @@
 #th-feedback,
 #tr-feedback,
 #btn-feedback {
-  background-color: black !important;
+  background-color: rgb(14, 14, 14) !important;
   color: gray !important;
+}
+
+#th-feedback:hover,
+#tr-feedback:hover,
+#btn-feedback:hover {
+  background-color: rgb(18, 18, 18) !important;
 }
 
 #header-feedback {
