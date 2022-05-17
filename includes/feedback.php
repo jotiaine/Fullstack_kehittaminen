@@ -35,14 +35,14 @@
 ?>
 
 <div class="container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100">
-  <div id="header-feedback" class='FAQ-header text-white'>
-    <h1 class="display-2">STUDENTS</h1>
+  <div id="header-feedback" class='FAQ-header text-white shadow-lg w-100 mb-3'>
+    <h1 class="display-2 m-0">STUDENTS</h1>
     <div class='FAQ-instruction'>
-      <p>Press student and open test</p>
+      <p class="m-0">Press student and open test</p>
     </div>
   </div>
 
-  <table id="feedback-table" class="table table-dark table-bordered  table-hover w-50 text-center">
+  <table id="feedback-table" class="table table-dark table-bordered  table-hover w-50 text-center shadow-lg">
       <!-- Results here -->
       <?php 
         if($rows > 0) {

@@ -1,3 +1,8 @@
+:root {
+  --feedback-hover-color: rgb(18, 18, 18) !important;
+  --feedback-header-color: rgb(14, 14, 14) !important;
+}
+
 /* {
   margin: 0;
   padding: 0;
@@ -161,17 +166,18 @@
   font-size: 5rem !important;
 }
 
+/* Feedback */
 #th-feedback,
 #tr-feedback,
 #btn-feedback {
-  background-color: rgb(14, 14, 14) !important;
+  background-color: var(--feedback-header-color);
   color: gray !important;
 }
 
 #th-feedback:hover,
 #tr-feedback:hover,
 #btn-feedback:hover {
-  background-color: rgb(18, 18, 18) !important;
+  background-color: var(--feedback-hover-color);
 }
 
 #header-feedback {
