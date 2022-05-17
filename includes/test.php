@@ -88,7 +88,7 @@
       $question_series = json_decode($json_question_series,true);
       $test = json_decode($json_test,true);
   
-      // All necessary info
+      // All necessary info gathered from jsons
       $studentID = $student['studentID'];
       $first_name = $student['first_name'];
       $last_name = $student['last_name'];

@@ -11,12 +11,12 @@
     ********************************
     */
 
-  $sql = "SELECT * FROM test INNER JOIN student ON test.studentID = student.studentID ORDER BY student.last_name, student.first_name, student.studentID";
-  $result = $conn -> query($sql);
-  $rows = mysqli_num_rows($result);
-
-  // Updating feedback to DB using AJAX
-
+    
+    // Updating feedback to DB using AJAX
+    
+    $sql = "SELECT * FROM test INNER JOIN student ON test.studentID = student.studentID ORDER BY student.last_name, student.first_name, student.studentID";
+    $result = $conn -> query($sql);
+    $rows = mysqli_num_rows($result);
 
   if(isset($_POST['submit-feedback'])) {
     
