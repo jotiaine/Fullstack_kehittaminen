@@ -20,7 +20,7 @@ jQuery(document).ready(function ($) {
   $("#search-text").keyup(function () {
     $("#search-result").removeClass("d-none");
     console.log("asdasd");
-    let searchTxt = $(this).val();
+    var searchTxt = $(this).val();
     if (searchTxt != "") {
       load_students(searchTxt);
     } else {
