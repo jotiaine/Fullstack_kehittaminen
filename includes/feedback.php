@@ -1,5 +1,5 @@
 <?php
-  require_once('includes/dbConnect.php'); 
+  require('includes/dbConnect.php'); 
 
     /*
     ********************************
@@ -18,19 +18,19 @@
     $result = $conn -> query($sql);
     $rows = mysqli_num_rows($result);
 
-  if(isset($_POST['submit-feedback'])) {
+//   if(isset($_POST['submit-feedback'])) {
     
-  $hiddenStudentID = $conn->real_escape_string($_REQUEST['hiddenStudentID']);
-  $teacher_feedback = $conn->real_escape_string($_POST['teacher_feedback']);
-  echo "<p class='alert alert-success'>". $hiddenStudentID . "</p>";
-  echo "<p class='alert alert-success'>" . $teacher_feedback . "</p>";
-  $sql = "UPDATE test SET teacher_feedback = '$teacher_feedback' WHERE studentID = '$hiddenStudentID'";
-  $result = $conn -> query($sql);
+//   $hiddenStudentID = $conn->real_escape_string($_REQUEST['hiddenStudentID']);
+//   $teacher_feedback = $conn->real_escape_string($_POST['teacher_feedback']);
+//   echo "<p class='alert alert-success'>". $hiddenStudentID . "</p>";
+//   echo "<p class='alert alert-success'>" . $teacher_feedback . "</p>";
+//   $sql = "UPDATE test SET teacher_feedback = '$teacher_feedback' WHERE studentID = '$hiddenStudentID'";
+//   $result = $conn -> query($sql);
 
-  if($result) echo "<p class='alert alert-success'>Updating feedback for studentID:" . $hiddenStudentID . " is a success!</p>";
-  else echo "<p class='alert alert-warning'>Updating feedback failed</p>";
-  //$conn -> close();
-}
+//   if($result) echo "<p class='alert alert-success'>Updating feedback for studentID:" . $hiddenStudentID . " is a success!</p>";
+//   else echo "<p class='alert alert-warning'>Updating feedback failed</p>";
+//   //$conn -> close();
+// }
 
 ?>
 
@@ -66,6 +66,7 @@
               
               for($x = 0; $x < 1; $x++) {
                 $studentID = $row['studentID'];
+                $testID = $row['testID'];
                 $first_name = $row['first_name'];
                 $last_name = $row['last_name'];
                 echo "<thead>";
@@ -74,13 +75,26 @@
                 echo "<tbody class='student-body'>";
                 
                 foreach($row as $key => $value) {
-                  echo "<tr id='tr-feedback' class='student-row table-dark'>";
-                  echo "<td>". $key . "</td>" ;
-                  echo "<td>" . $value . "</td>" ;
-                  echo "</tr>";
+                  if($key == "teacher_feedback") {
+                  echo "<tr id='tr-feedback' class='feedback-hover student-row table-dark'>";
+                    echo "<td>". $key . "</td>" ;
+                    echo "<td id='current_t_feedback'>";
+                    echo $value;
+                    // DELETE ICON on hover
+                    echo "<i id='delete-icon' class='fa fa-trash ms-5 text-danger hover'></i>";
+                    echo  "</td>" ;
+                    echo "</tr>";
+
+                  } else {
+                    echo "<tr id='tr-feedback' class='student-row table-dark'>";
+                    echo "<td>". $key . "</td>" ;
+                    echo "<td>" . $value . "</td>" ;
+                    echo "</tr>";
+
+                  }
                 }
                 /* FORM */
-                //echo "<form action='index.php?page=feedback&user=teacher' method='post'>";
+                // echo "<form>";
                 echo "<td colspan='2' class='px-4 py-3'>";
                 echo "<label for='feedback' class='form-label text-danger'>Feedback</label>";
                 echo "<textarea name='teacher_feedback' id='feedback' class='form-control bg-dark text-white border border-danger' placeholder='The test went well!' required>";
@@ -89,10 +103,11 @@
                 /* Sending studentID & testID hidden in form input */
                 echo "<input type='hidden' name='hiddenStudentID' id='hiddenStudentID' value='$studentID'>";
                 echo "<input type='hidden' name='hiddenTestID' id='hiddenTestID' value='$testID'>";
-                echo "<input type='submit' name='submit-feedback' class='btn btn-dark text-white submit-feedback' id='submit-feedback' value='Send'>";
+                echo "<button id='submit-feedback' name='submit-feedback' class='btn btn-dark text-white submit-feedback'>";
+                echo "Send</button>";
                 echo "</div>";
                 echo "</td>";
-                //echo "</form>";
+                // echo "</form>";
                 /* /FORM */
                 echo "</tbody>";
                 

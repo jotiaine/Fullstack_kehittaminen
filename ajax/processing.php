@@ -1,5 +1,5 @@
 <?php 
-  include("dbConnect.php");
+  include("../includes/dbConnect.php");
   $output = "";
   
   if(isset($_POST['query'])) {

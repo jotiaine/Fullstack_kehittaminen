@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
 
   function load_students(query) {
     $.ajax({
-      url: "includes/processing.php",
+      url: "ajax/processing.php",
       method: "POST",
       data: { query: query },
       success: function (data) {
@@ -19,7 +19,6 @@ jQuery(document).ready(function ($) {
 
   $("#search-text").keyup(function () {
     $("#search-result").removeClass("d-none");
-    console.log("asdasd");
     var searchTxt = $(this).val();
     if (searchTxt != "") {
       load_students(searchTxt);
@@ -27,6 +26,36 @@ jQuery(document).ready(function ($) {
       load_students();
     }
   });
+
+  /* =========================
+  === FEEDBACK ===
+  ==========================*/
+  function sendFeedback(hiddenID, t_feedback) {
+    $.ajax({
+      url: "ajax/send_feedback.php",
+      method: "POST",
+      data: { hiddenID: hiddenID, t_feedback: t_feedback },
+      success: function (data) {
+        $("#current_t_feedback").html(data);
+      },
+    });
+  }
+
+  $("#submit-feedback").click(function () {
+    var hiddenID = $("#hiddenTestID").val();
+    var t_feedback = $(this).parent().prev().val();
+
+    if (t_feedback != "") {
+      sendFeedback(hiddenID, t_feedback);
+    } else {
+      alert("Please fill the feedback!");
+    }
+  });
+
+  // Show DELETE icon on
+  // $(".current_t_feedback").click(function () {
+  //   $("#delete-icon").removeClass("d-none");
+  // });
 
   /*===========================*/
   /*===========================*/
