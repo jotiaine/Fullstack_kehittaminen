@@ -1,5 +1,5 @@
     <!-- HEADER TEACHER -->
-    <header id="header-container">
+    <header id="header-container" class="shadow">
 
       <nav class="navbar fixed-top navbar-expand-sm bg-dark navbar-dark px-2">
 

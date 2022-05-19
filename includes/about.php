@@ -14,7 +14,7 @@ $rows=mysqli_num_rows($result);
 
 ?>
 <h3>All Students  (<?php echo $rows ?>kpl)</h3>
-<table class="table table-striped table-dark text-white">
+<table class="table table-striped table-dark text-white shadow">
     <thead>
       <tr>
         <th>StudentID</th>

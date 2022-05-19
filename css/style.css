@@ -197,6 +197,10 @@
   color: rgb(211, 211, 211) !important;
 }
 
+.teacher_feedback:hover {
+  transform: scale(1.5);
+}
+
 @media (max-width: 231px) {
   #header-container {
     margin-bottom: 4rem !important;

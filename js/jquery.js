@@ -1,6 +1,41 @@
 // Establshing no conflict just in case. $ for jQuery works only inside ready function
 $.noConflict();
 jQuery(document).ready(function ($) {
+  /* =========================
+  === FEEDBACK SEARCH AJAX ===
+  ==========================*/
+  load_students();
+
+  function load_students(query) {
+    $.ajax({
+      url: "includes/processing.php",
+      method: "POST",
+      data: { query: query },
+      success: function (data) {
+        $("#search-result").html(data);
+      },
+    });
+  }
+
+  $("#search-text").keyup(function () {
+    $("#search-result").removeClass("d-none");
+    console.log("asdasd");
+    let searchTxt = $(this).val();
+    if (searchTxt != "") {
+      load_students(searchTxt);
+    } else {
+      load_students();
+    }
+  });
+
+  $("#search-btn").click(function () {
+    console.log("asdasd");
+  });
+
+  /*===========================*/
+  /*===========================*/
+  /*===========================*/
+
   /* test.php */
   // hide test form
   $("#test-container").hide();
@@ -98,6 +133,4 @@ jQuery(document).ready(function ($) {
   $(".student-name").click(function () {
     $(this).parent().parent().next(".student-body").fadeToggle("400", "swing");
   });
-
-
 });
