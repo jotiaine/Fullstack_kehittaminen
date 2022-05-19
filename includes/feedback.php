@@ -1,5 +1,6 @@
 <?php
   require_once('includes/dbConnect.php'); 
+  require('classes/send_feedback.php');
 
     /*
     ********************************
@@ -25,21 +26,23 @@
 
   // Updating feedback to DB using AJAX
 
-
+  /*
   if(isset($_POST['submit-feedback'])) {
-    
   $hiddenStudentID = $conn->real_escape_string($_REQUEST['hiddenStudentID']);
+  $hiddenTestID = $conn->real_escape_string($_REQUEST['hiddenTestID']);
   $teacher_feedback = $conn->real_escape_string($_POST['teacher_feedback']);
   echo "<p class='alert alert-success'>". $hiddenStudentID . "</p>";
+  echo "<p class='alert alert-success'>". $hiddenTestID . "</p>";
   echo "<p class='alert alert-success'>" . $teacher_feedback . "</p>";
-  $sql = "UPDATE test SET teacher_feedback = '$teacher_feedback' WHERE studentID = '$hiddenStudentID'";
+  $sql = "UPDATE test SET teacher_feedback = '$teacher_feedback' WHERE studentID = '$hiddenTestID'";
   $result = $conn -> query($sql);
 
   if($result) echo "<p class='alert alert-success'>Updating feedback for studentID:" . $hiddenStudentID . " is a success!</p>";
   else echo "<p class='alert alert-warning'>Updating feedback failed</p>";
-  //$conn -> close();
+  //$conn -> close(); 
+  
 }
-
+*/
 ?>
 
 <div class="container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark">
@@ -62,6 +65,7 @@
               
               for($x = 0; $x < 1; $x++) {
                 $studentID = $row['studentID'];
+                $testID = $row['testID'];
                 $first_name = $row['first_name'];
                 $last_name = $row['last_name'];
                 echo "<thead>";
@@ -76,18 +80,19 @@
                   echo "</tr>";
                 }
                 /* FORM */
-                echo "<form action='index.php?page=feedback&user=teacher' method='post'>";
+                //echo "<form action='index.php?page=feedback&user=teacher' method='post'>";
                 echo "<td colspan='2' class='px-4 py-3'>";
                 echo "<label for='feedback' class='form-label text-danger'>Feedback</label>";
                 echo "<textarea name='teacher_feedback' id='feedback' class='form-control bg-dark text-white border border-danger' placeholder='The test went well!' required>";
                 echo "</textarea>";
                 echo "<div class='mt-2'>";
-                /* Sending studentID hidden in form input */
-                echo "<input type='hidden' name='hiddenStudentID' value='$studentID'>";
-                echo "<input type='submit' name='submit-feedback' class='btn btn-dark text-white' value='Send'>";
+                /* Sending studentID & testID hidden in form input */
+                echo "<input type='hidden' name='hiddenStudentID' id='hiddenStudentID' value='$studentID'>";
+                echo "<input type='hidden' name='hiddenTestID' id='hiddenTestID' value='$testID'>";
+                echo "<input type='submit' name='submit-feedback' class='btn btn-dark text-white submit-feedback' id='submit-feedback' value='Send'>";
                 echo "</div>";
                 echo "</td>";
-                echo "</form>";
+                //echo "</form>";
                 /* /FORM */
                 echo "</tbody>";
                 
@@ -105,6 +110,5 @@
       ?>
 
   </table>
-
   
 </div>

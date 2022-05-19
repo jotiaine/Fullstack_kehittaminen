@@ -96,11 +96,41 @@ jQuery(document).ready(function ($) {
   /******************/
   /**    FEEDBACK   **/
   /*******************/
+
+
+    $('.submit-feedback').click(function(){
+
+      var hiddenID = $('#hiddenTestID').val();
+      var t_feedback = $('#feedback').val();
+      console.log(hiddenID);
+      console.log(t_feedback);
+      if(t_feedback == ''){
+        alert("Please fill the feedback!");
+        return false;
+      } else {
+
+        $.ajax({
+
+          url:"classes/send_feedback.php",
+          method:"POST",
+          data:{hiddenID:hiddenID, t_feedback:t_feedback},
+          success:function(data){
+            alert(data);
+            
+          }
+        })
+
+      }
+
+    })
+
+
   $(".student-body").hide();
   $(".student-name").click(function () {
     $(this).parent().parent().next(".student-body").fadeToggle("400", "swing");
   });
 
+  
   // Miksi Vanilla JS ei toimi!?!?!?!?
   // Hero pic auto text
   const heroAutoTextEl = document.querySelector("#hero-auto-text");
