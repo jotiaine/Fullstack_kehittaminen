@@ -47,7 +47,7 @@
     <div class="form-outline">
       <input id="search-text" name="search-text" type="text" class="form-control" placeholder="Search" />
     </div>
-    <button id="search-btn" type="button" class="btn btn-primary">
+    <button type="button" class="btn btn-primary">
       <i class="fas fa-search"></i>
     </button>
   </div>
