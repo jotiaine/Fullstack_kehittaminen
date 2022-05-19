@@ -1,3 +1,9 @@
+:root {
+  --feedback-hover-color: rgb(18, 18, 18) !important;
+  --feedback-header-color: rgb(14, 14, 14) !important;
+  --feedback-text-color: rgb(16, 16, 16) !important;
+}
+
 /* {
   margin: 0;
   padding: 0;
@@ -159,6 +165,40 @@
 
 #driver-text {
   font-size: 5rem !important;
+}
+
+/* Feedback */
+#th-feedback,
+#tr-feedback,
+#btn-feedback,
+#start-test-btn,
+#submit-test-btn {
+  background-color: var(--feedback-header-color);
+  color: gray !important;
+  border: none !important;
+}
+
+.var-header {
+  color: gray !important;
+}
+
+.var-text {
+  color: var(--feedback-text-color);
+}
+
+#th-feedback:hover,
+#tr-feedback:hover,
+#btn-feedback:hover {
+  background-color: var(--feedback-hover-color);
+}
+
+#header-feedback {
+  background-color: transparent !important;
+  color: rgb(211, 211, 211) !important;
+}
+
+.teacher_feedback:hover {
+  transform: scale(1.5);
 }
 
 @media (max-width: 231px) {

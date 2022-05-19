@@ -34,15 +34,27 @@
 
 ?>
 
-<div class="container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark">
-  <div class='FAQ-header text-white'>
-    <h1 class="display-2">STUDENTS</h1>
+<div class="container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100">
+  <div id="header-feedback" class='FAQ-header text-white shadow w-100 mb-3'>
+    <h1 class="display-2 m-0">STUDENTS</h1>
     <div class='FAQ-instruction'>
-      <p>Press student and open test</p>
+      <p class="m-0">Press student and open test</p>
     </div>
   </div>
 
-  <table id="feedback-table" class="table table-dark table-striped table-hover w-50 text-center">
+  <!-- SEARCH BAR & AJAX -->
+  <div class="input-group d-flex justify-content-center align-center pb-3 shadow-sm w-75">
+    <div class="form-outline">
+      <input id="search-text" name="search-text" type="text" class="form-control" placeholder="Search" />
+    </div>
+    <button id="search-btn" type="button" class="btn btn-primary">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+
+  <table id="search-result" class="table table-striped table-dark text-white d-none w-50 mb-5"></table>
+
+  <table id="feedback-table" class="table table-dark table-striped table-bordered table-hover w-50 text-center shadow">
       <!-- Results here -->
       <?php 
         if($rows > 0) {
@@ -57,12 +69,12 @@
                 $first_name = $row['first_name'];
                 $last_name = $row['last_name'];
                 echo "<thead>";
-                echo "<th colspan='2' class='student-name display-3'>" . $studentID . " " . $first_name . " " . $last_name . "</th>";
+                echo "<th id='th-feedback' colspan='2' class='student-name display-4'>" . $studentID . " " . $first_name . " " . $last_name . "</th>";
                 echo "</thead>";
                 echo "<tbody class='student-body'>";
                 
                 foreach($row as $key => $value) {
-                  echo "<tr class='student-row table-dark'>";
+                  echo "<tr id='tr-feedback' class='student-row table-dark'>";
                   echo "<td>". $key . "</td>" ;
                   echo "<td>" . $value . "</td>" ;
                   echo "</tr>";
@@ -76,7 +88,7 @@
                 echo "<div class='mt-2'>";
                 /* Sending studentID hidden in form input */
                 echo "<input type='hidden' name='hiddenStudentID' value='$studentID'>";
-                echo "<input type='submit' name='submit-feedback' class='btn btn-dark text-white' value='Send'>";
+                echo "<input id='btn-feedback' type='submit' name='submit-feedback' class='btn btn-dark text-white' value='Send'>";
                 echo "</div>";
                 echo "</td>";
                 echo "</form>";
