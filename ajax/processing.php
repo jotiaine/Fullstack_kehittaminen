@@ -102,7 +102,7 @@
       echo $output;
 
     } else {
-      echo "<p class='alert alert-warning text-white'>Student not found...</p>";
+      echo "<p class='alert alert-dark bg-dark text-white'>Student not found...</p>";
     }
 
 

@@ -80,9 +80,11 @@
                     echo "<td>". $key . "</td>" ;
                     echo "<td id='current_t_feedback'>";
                     echo $value;
-                    // DELETE ICON on hover
-                    echo "<i id='delete-icon' class='fa fa-trash ms-5 text-danger hover'></i>";
                     echo  "</td>" ;
+                    // DELETE ICON on hover
+                    echo "<td>";
+                    echo "<i id='delete-icon' name='delete-icon' class='fa fa-trash text-danger'></i>";
+                    echo "</td>";
                     echo "</tr>";
 
                   } else {

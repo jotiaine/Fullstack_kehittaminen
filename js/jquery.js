@@ -28,7 +28,7 @@ jQuery(document).ready(function ($) {
   });
 
   /* =========================
-  === FEEDBACK ===
+  === FEEDBACK update ===
   ==========================*/
   function sendFeedback(hiddenID, t_feedback) {
     $.ajax({
@@ -52,10 +52,30 @@ jQuery(document).ready(function ($) {
     }
   });
 
-  // Show DELETE icon on
-  // $(".current_t_feedback").click(function () {
-  //   $("#delete-icon").removeClass("d-none");
-  // });
+  /* =========================
+  === FEEDBACK delete icon ===
+  ==========================*/
+  function deleteFeedback(hiddenID, t_feedback) {
+    $.ajax({
+      url: "ajax/delete_feedback.php",
+      method: "POST",
+      data: { hiddenID: hiddenID, t_feedback: t_feedback },
+      success: function (data) {
+        $("#current_t_feedback").html(data);
+      },
+    });
+  }
+
+  $("#delete-icon").click(function () {
+    var hiddenID = $("#hiddenTestID").val();
+    var t_feedback = $(this).parent().prev().val();
+
+    if ($("#current_t_feedback").html() == "") {
+      alert("Feedback is empty already!");
+    } else {
+      deleteFeedback(hiddenID, t_feedback);
+    }
+  });
 
   /*===========================*/
   /*===========================*/
