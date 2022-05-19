@@ -80,18 +80,19 @@
                   echo "</tr>";
                 }
                 /* FORM */
-                echo "<form action='index.php?page=feedback&user=teacher' method='post'>";
+                //echo "<form action='index.php?page=feedback&user=teacher' method='post'>";
                 echo "<td colspan='2' class='px-4 py-3'>";
                 echo "<label for='feedback' class='form-label text-danger'>Feedback</label>";
                 echo "<textarea name='teacher_feedback' id='feedback' class='form-control bg-dark text-white border border-danger' placeholder='The test went well!' required>";
                 echo "</textarea>";
                 echo "<div class='mt-2'>";
-                /* Sending studentID hidden in form input */
-                echo "<input type='hidden' name='hiddenStudentID' value='$studentID'>";
-                echo "<input id='btn-feedback' type='submit' name='submit-feedback' class='btn btn-dark text-white' value='Send'>";
+                /* Sending studentID & testID hidden in form input */
+                echo "<input type='hidden' name='hiddenStudentID' id='hiddenStudentID' value='$studentID'>";
+                echo "<input type='hidden' name='hiddenTestID' id='hiddenTestID' value='$testID'>";
+                echo "<input type='submit' name='submit-feedback' class='btn btn-dark text-white submit-feedback' id='submit-feedback' value='Send'>";
                 echo "</div>";
                 echo "</td>";
-                echo "</form>";
+                //echo "</form>";
                 /* /FORM */
                 echo "</tbody>";
                 
@@ -109,6 +110,5 @@
       ?>
 
   </table>
-
   
 </div>
