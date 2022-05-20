@@ -2,7 +2,6 @@
 
 require('../includes/dbConnect.php');
 
-
 if(isset($_POST['hiddenID']))
 {
     $hiddenID = $conn -> real_escape_string($_POST['hiddenID']);

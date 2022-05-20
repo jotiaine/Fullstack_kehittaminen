@@ -49,6 +49,7 @@ jQuery(document).ready(function ($) {
   }
 
   $("#submit-feedback").click(function () {
+    console.log("submit-feedback");
     var hiddenID = $("#hiddenTestID").val();
     var t_feedback = $(this).parent().prev().val();
 
@@ -186,7 +187,7 @@ jQuery(document).ready(function ($) {
     $(this).parent().parent().next(".student-body").fadeToggle("400", "swing");
   });
 
-  search - table - body;
-  search - table - heading;
-  $(".search-table-body").hide();
+  // search - table - body;
+  // search - table - heading;
+  // $(".search-table-body").hide();
 });
