@@ -26,16 +26,16 @@
   <!-- SEARCH BAR & AJAX -->
   <div  id="search-bar" class="input-group d-flex justify-content-center align-center pb-3 shadow-sm w-75">
     <div class="form-outline">
-      <input id="search-text" name="search-text" type="text" class="form-control bordered border-danger bg-dark text-white" placeholder="Search" />
+      <input id="search-text" name="search-text" type="text" class="form-control bordered border-primary bg-dark text-white" placeholder="Search" />
     </div>
     <button id="search-icon" type="button" class="btn btn-primary">
       <i  class="fas fa-search"></i>
     </button>
   </div>
   
-  <table id="search-result" class="table table-striped table-dark text-white d-none w-50 mb-5"></table>
+  <table id="search-result" class="table table-borderless table-dark table-striped table-hover text-white d-none w-50 mb-5 shadow"></table>
   
-  <table id="feedback-table" class="table table-dark table-striped table-bordered table-hover w-50 text-center shadow">
+  <table id="feedback-table" class="table table-borderless table-dark table-striped table-hover w-50 shadow">
     <!-- Results here -->
     <?php 
         if($rows > 0) {
@@ -64,7 +64,7 @@
                     echo  "</td>" ;
                     // DELETE ICON on click with AJAX
                     echo "<td>";
-                    echo "<i id='delete-icon' name='delete-icon' class='fa fa-trash text-danger'></i>";
+                    echo "<i id='delete-icon' name='delete-icon' class='fa fa-trash text-primary'></i>";
                     echo "</td>";
                     echo "</tr>";
                     
@@ -77,8 +77,8 @@
                   }
                 }
                 echo "<td colspan='2' class='px-4 py-3'>";
-                echo "<label for='feedback' class='form-label text-danger'>Feedback</label>";
-                echo "<textarea name='teacher_feedback' id='feedback' class='form-control bg-dark text-white border border-danger' placeholder='The test went well!' required>";
+                echo "<label for='feedback' class='form-label text-light'>Feedback</label>";
+                echo "<textarea name='teacher_feedback' id='feedback' class='form-control bg-dark text-white  border-dark' placeholder='The test went well!' required>";
                 echo "</textarea>";
                 echo "<div class='mt-2'>";
                 /* studentID & testID hidden */

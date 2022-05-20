@@ -185,4 +185,8 @@ jQuery(document).ready(function ($) {
   $(".student-name").click(function () {
     $(this).parent().parent().next(".student-body").fadeToggle("400", "swing");
   });
+
+  search - table - body;
+  search - table - heading;
+  $(".search-table-body").hide();
 });

@@ -33,65 +33,65 @@
         $link = "#" . $studentID;
         $output .= '
           <thead>;
-            <th colspan="2" class="display-4">' . $first_name . " " . $last_name . '
+            <th colspan="2"  class="display-4 search-table-heading">' . $first_name . " " . $last_name . '
             <a href="' . $link . '" class="text-white">
               <i id="link-to-student" class="fa-solid fa-anchor text-primary hover"></i>
             </a>
             </th>
             </thead>
-            <tbody>
-          <tr>
-            <td>studentID</td>
-            <td>' . $studentID . '</td>
-          </tr>
-          <tr>
-            <td>testID</td>
-            <td>' . $testID . '</td>
-          </tr>
-          <tr>
-          <td>questionID</td>
-          <td>' . $questionID . '</td>
-          </tr>
-          <tr>
-            <td>question_1</td>
-            <td>' . $question_1 . '</td>
-          </tr>
-          <tr>
-            <td>question_2</td>
-            <td>' . $question_2 . '</td>
-          </tr>
-          <tr>
-            <td>question_3</td>
-            <td>' . $question_3 . '</td>
-          </tr>
-          <tr>
-            <td>user_answer_1</td>
-            <td>' . $user_answer_1 . '</td>
-          </tr>
-          <tr>
-            <td>user_answer_2</td>
-            <td>' . $user_answer_2 . '</td>
-          </tr>
-          <tr>
-            <td>user_answer_3</td>
-            <td>' . $user_answer_3 . '</td>
-          </tr>
-          <tr>
-            <td>score</td>
-            <td>' . $score . '</td>
-          </tr>
-          <tr>
-            <td>creationDate</td>
-            <td>' . $creationDate . '</td>
-          </tr>
-          <tr class="feedback-hover">
-            <td>teacher_feedback</td>
-            <td>' . $teacher_feedback . '</td>
-          </tr>
-          <tr>
-          <td colspan="2" class="px-4 py-3">
-          </td>
-          </tr>
+            <tbody class="search-table-body">
+              <tr>
+                <td>studentID</td>
+                <td>' . $studentID . '</td>
+              </tr>
+              <tr>
+                <td>testID</td>
+                <td>' . $testID . '</td>
+              </tr>
+              <tr>
+              <td>questionID</td>
+              <td>' . $questionID . '</td>
+              </tr>
+              <tr>
+                <td>question_1</td>
+                <td>' . $question_1 . '</td>
+              </tr>
+              <tr>
+                <td>question_2</td>
+                <td>' . $question_2 . '</td>
+              </tr>
+              <tr>
+                <td>question_3</td>
+                <td>' . $question_3 . '</td>
+              </tr>
+              <tr>
+                <td>user_answer_1</td>
+                <td>' . $user_answer_1 . '</td>
+              </tr>
+              <tr>
+                <td>user_answer_2</td>
+                <td>' . $user_answer_2 . '</td>
+              </tr>
+              <tr>
+                <td>user_answer_3</td>
+                <td>' . $user_answer_3 . '</td>
+              </tr>
+              <tr>
+                <td>score</td>
+                <td>' . $score . '</td>
+              </tr>
+              <tr>
+                <td>creationDate</td>
+                <td>' . $creationDate . '</td>
+              </tr>
+              <tr class="feedback-hover">
+                <td>teacher_feedback</td>
+                <td>' . $teacher_feedback . '</td>
+              </tr>
+              <tr>
+              <td colspan="2" class="px-4 py-3">
+              </td>
+              </tr>
           </tbody>
           ';
       };
