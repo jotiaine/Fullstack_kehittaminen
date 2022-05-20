@@ -3,35 +3,16 @@
 
     /*
     ********************************
-    ** Get students and their tests from db **
-    ** and use AJAX to update the part of the site to get more tests & students? **
-    ** Udate Teacher feedback to db****
-    ** First done without AJAX **
-    ** JSON prolly not needed here **
+    **     Feedback with ajax     **
     ********************************
     */
 
     
-    // Updating feedback to DB using AJAX
     
     $sql = "SELECT * FROM test INNER JOIN student ON test.studentID = student.studentID ORDER BY student.last_name, student.first_name, student.studentID";
     $result = $conn -> query($sql);
     $rows = mysqli_num_rows($result);
-
-//   if(isset($_POST['submit-feedback'])) {
     
-//   $hiddenStudentID = $conn->real_escape_string($_REQUEST['hiddenStudentID']);
-//   $teacher_feedback = $conn->real_escape_string($_POST['teacher_feedback']);
-//   echo "<p class='alert alert-success'>". $hiddenStudentID . "</p>";
-//   echo "<p class='alert alert-success'>" . $teacher_feedback . "</p>";
-//   $sql = "UPDATE test SET teacher_feedback = '$teacher_feedback' WHERE studentID = '$hiddenStudentID'";
-//   $result = $conn -> query($sql);
-
-//   if($result) echo "<p class='alert alert-success'>Updating feedback for studentID:" . $hiddenStudentID . " is a success!</p>";
-//   else echo "<p class='alert alert-warning'>Updating feedback failed</p>";
-//   //$conn -> close();
-// }
-
 ?>
 
 <div class="container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100">
@@ -41,22 +22,22 @@
       <p class="m-0">Press student and open test</p>
     </div>
   </div>
-
+  
   <!-- SEARCH BAR & AJAX -->
-  <div class="input-group d-flex justify-content-center align-center pb-3 shadow-sm w-75">
+  <div  id="search-bar" class="input-group d-flex justify-content-center align-center pb-3 shadow-sm w-75">
     <div class="form-outline">
-      <input id="search-text" name="search-text" type="text" class="form-control" placeholder="Search" />
+      <input id="search-text" name="search-text" type="text" class="form-control bordered border-danger bg-dark text-white" placeholder="Search" />
     </div>
     <button type="button" class="btn btn-primary">
       <i class="fas fa-search"></i>
     </button>
   </div>
-
+  
   <table id="search-result" class="table table-striped table-dark text-white d-none w-50 mb-5"></table>
-
+  
   <table id="feedback-table" class="table table-dark table-striped table-bordered table-hover w-50 text-center shadow">
-      <!-- Results here -->
-      <?php 
+    <!-- Results here -->
+    <?php 
         if($rows > 0) {
           // Tests exist, print the tests
           $i = 0;
@@ -69,48 +50,45 @@
                 $testID = $row['testID'];
                 $first_name = $row['first_name'];
                 $last_name = $row['last_name'];
-                echo "<thead>";
+                echo "<thead id='$studentID'>";
                 echo "<th id='th-feedback' colspan='2' class='student-name display-4'>" . $studentID . " " . $first_name . " " . $last_name . "</th>";
                 echo "</thead>";
                 echo "<tbody class='student-body'>";
                 
                 foreach($row as $key => $value) {
                   if($key == "teacher_feedback") {
-                  echo "<tr id='tr-feedback' class='feedback-hover student-row table-dark'>";
+                    echo "<tr id='tr-feedback' class='feedback-hover student-row table-dark'>";
                     echo "<td>". $key . "</td>" ;
                     echo "<td id='current_t_feedback'>";
                     echo $value;
                     echo  "</td>" ;
-                    // DELETE ICON on hover
+                    // DELETE ICON on click with AJAX
                     echo "<td>";
                     echo "<i id='delete-icon' name='delete-icon' class='fa fa-trash text-danger'></i>";
                     echo "</td>";
                     echo "</tr>";
-
+                    
                   } else {
                     echo "<tr id='tr-feedback' class='student-row table-dark'>";
                     echo "<td>". $key . "</td>" ;
                     echo "<td>" . $value . "</td>" ;
                     echo "</tr>";
-
+                    
                   }
                 }
-                /* FORM */
-                // echo "<form>";
                 echo "<td colspan='2' class='px-4 py-3'>";
                 echo "<label for='feedback' class='form-label text-danger'>Feedback</label>";
                 echo "<textarea name='teacher_feedback' id='feedback' class='form-control bg-dark text-white border border-danger' placeholder='The test went well!' required>";
                 echo "</textarea>";
                 echo "<div class='mt-2'>";
-                /* Sending studentID & testID hidden in form input */
+                /* studentID & testID hidden */
                 echo "<input type='hidden' name='hiddenStudentID' id='hiddenStudentID' value='$studentID'>";
                 echo "<input type='hidden' name='hiddenTestID' id='hiddenTestID' value='$testID'>";
+                // Updating feedback to DB using AJAX
                 echo "<button id='submit-feedback' name='submit-feedback' class='btn btn-dark text-white submit-feedback'>";
                 echo "Send</button>";
                 echo "</div>";
                 echo "</td>";
-                // echo "</form>";
-                /* /FORM */
                 echo "</tbody>";
                 
               }

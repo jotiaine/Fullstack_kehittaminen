@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
 
   function load_students(query) {
     $.ajax({
-      url: "ajax/processing.php",
+      url: "ajax/load_tests.php",
       method: "POST",
       data: { query: query },
       success: function (data) {
@@ -25,6 +25,13 @@ jQuery(document).ready(function ($) {
     } else {
       load_students();
     }
+    $("html, body").animate(
+      {
+        scrollTop: $("#header-feedback"),
+      },
+      300,
+      "swing"
+    );
   });
 
   /* =========================

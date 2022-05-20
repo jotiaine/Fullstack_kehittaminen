@@ -215,8 +215,18 @@
   opacity: 1;
 }
 
-#delete-icon:active {
+#delete-icon:active,
+#link-to-student:active {
   transform: scale(0.97) !important;
+}
+
+#search-bar {
+  position: sticky !important;
+  top: 20% !important;
+}
+
+#link-to-student:hover {
+  color: rgb(9, 9, 212) !important;
 }
 
 @media (max-width: 231px) {
