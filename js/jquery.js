@@ -2,7 +2,7 @@
 $.noConflict();
 jQuery(document).ready(function ($) {
   /* =========================
-  === FEEDBACK SEARCH AJAX ===
+  === FEEDBACK LOAD TESTS AJAX ===
   ==========================*/
   load_students();
 
@@ -35,7 +35,7 @@ jQuery(document).ready(function ($) {
   });
 
   /* =========================
-  === FEEDBACK update ===
+  === FEEDBACK update feedback ===
   ==========================*/
   function sendFeedback(hiddenID, t_feedback) {
     $.ajax({
@@ -60,7 +60,7 @@ jQuery(document).ready(function ($) {
   });
 
   /* =========================
-  === FEEDBACK delete icon ===
+  === FEEDBACK delete feedback ===
   ==========================*/
   function deleteFeedback(hiddenID, t_feedback) {
     $.ajax({
