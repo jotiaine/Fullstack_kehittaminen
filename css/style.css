@@ -295,3 +295,9 @@
     top: 17% !important;
   }
 }
+
+@media (min-width: 1150px) and (orientation: landscape) {
+  #search-bar {
+    top: 10% !important;
+  }
+}
