@@ -1,3 +1,9 @@
+:root {
+  --feedback-hover-color: rgb(18, 18, 18) !important;
+  --feedback-header-color: rgb(14, 14, 14) !important;
+  --feedback-text-color: rgb(16, 16, 16) !important;
+}
+
 /* {
   margin: 0;
   padding: 0;
@@ -161,6 +167,68 @@
   font-size: 5rem !important;
 }
 
+/* Feedback */
+#th-feedback,
+#tr-feedback,
+#btn-feedback,
+#start-test-btn,
+#submit-test-btn {
+  background-color: var(--feedback-header-color);
+  color: gray !important;
+  border: none !important;
+}
+
+.var-header {
+  color: gray !important;
+}
+
+.var-text {
+  color: var(--feedback-text-color);
+}
+
+#th-feedback:hover,
+#tr-feedback:hover,
+#btn-feedback:hover {
+  background-color: var(--feedback-hover-color);
+}
+
+#header-feedback {
+  background-color: transparent !important;
+  color: rgb(211, 211, 211) !important;
+}
+
+.feedback-hover {
+  transition: all 0.3s ease-in-out;
+}
+
+.feedback-hover:hover {
+  transform: scale(1.1) !important;
+}
+
+#delete-icon {
+  opacity: 0.7;
+  transition: all 0.2s ease-in-out;
+}
+
+#delete-icon:hover {
+  color: rgb(255, 72, 0) !important;
+  opacity: 1;
+}
+
+#delete-icon:active,
+#link-to-student:active {
+  transform: scale(0.97) !important;
+}
+
+#search-bar {
+  position: sticky !important;
+  top: 20% !important;
+}
+
+#link-to-student:hover {
+  color: rgb(9, 9, 212) !important;
+}
+
 @media (max-width: 231px) {
   #header-container {
     margin-bottom: 4rem !important;
@@ -179,10 +247,57 @@
   #driver-text {
     font-size: 2.5rem !important;
   }
+
+  #search-icon {
+    display: none !important;
+  }
+
+  #feedback-table,
+  #search-result {
+    width: 95% !important;
+  }
 }
 
 @media (max-width: 390px) and (min-width: 291px) {
   #driver-text {
     font-size: 3rem !important;
+  }
+
+  #search-icon {
+    display: none !important;
+  }
+
+  #feedback-table,
+  #search-result {
+    width: 95% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  #search-bar {
+    top: 18% !important;
+  }
+
+  #feedback-table,
+  #search-result {
+    width: 80% !important;
+  }
+}
+
+@media (min-width: 900px) {
+  #search-bar {
+    top: 16% !important;
+  }
+}
+
+@media (min-width: 1100px) {
+  #search-bar {
+    top: 17% !important;
+  }
+}
+
+@media (min-width: 1150px) and (orientation: landscape) {
+  #search-bar {
+    top: 10% !important;
   }
 }
