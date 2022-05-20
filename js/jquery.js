@@ -37,24 +37,23 @@ jQuery(document).ready(function ($) {
   /* =========================
   === FEEDBACK update feedback ===
   ==========================*/
-  function sendFeedback(hiddenID, t_feedback) {
+  function sendFeedback(hiddenTestID, t_feedbackEl) {
     $.ajax({
       url: "ajax/send_feedback.php",
       method: "POST",
-      data: { hiddenID: hiddenID, t_feedback: t_feedback },
+      data: { hiddenTestID: hiddenTestID, t_feedback: t_feedbackEl.val() },
       success: function (data) {
-        $("#current_t_feedback").html(data);
+        t_feedbackEl.val("");
       },
     });
   }
 
-  $("#submit-feedback").click(function () {
-    console.log("submit-feedback");
-    var hiddenID = $("#hiddenTestID").val();
-    var t_feedback = $(this).parent().prev().val();
+  $(".submit-feedback").click(function () {
+    let hiddenTestID = $(this).next().val();
+    let t_feedbackEl = $(this).parent().prev();
 
-    if (t_feedback != "") {
-      sendFeedback(hiddenID, t_feedback);
+    if (t_feedbackEl.val() != "") {
+      sendFeedback(hiddenTestID, t_feedbackEl);
     } else {
       alert("Please fill the feedback!");
     }
@@ -63,25 +62,25 @@ jQuery(document).ready(function ($) {
   /* =========================
   === FEEDBACK delete feedback ===
   ==========================*/
-  function deleteFeedback(hiddenID, t_feedback) {
+  function deleteFeedback(hiddenTestID, t_feedbackEl) {
     $.ajax({
       url: "ajax/delete_feedback.php",
       method: "POST",
-      data: { hiddenID: hiddenID, t_feedback: t_feedback },
+      data: { hiddenTestID: hiddenTestID, t_feedback: t_feedbackEl.html() },
       success: function (data) {
-        $("#current_t_feedback").html(data);
+        t_feedbackEl.html(data);
       },
     });
   }
 
-  $("#delete-icon").click(function () {
-    var hiddenID = $("#hiddenTestID").val();
-    var t_feedback = $(this).parent().prev().val();
+  $(".delete-icon").click(function () {
+    let hiddenTestID = $(this).next().val();
+    let t_feedbackEl = $(this).parent().prev();
 
-    if ($("#current_t_feedback").html() == "") {
-      alert("Feedback is empty already!");
+    if (t_feedbackEl.html() != "") {
+      deleteFeedback(hiddenTestID, t_feedbackEl);
     } else {
-      deleteFeedback(hiddenID, t_feedback);
+      alert("Feedback is empty already!");
     }
   });
 

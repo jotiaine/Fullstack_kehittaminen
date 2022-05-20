@@ -59,12 +59,16 @@
                   if($key == "teacher_feedback") {
                     echo "<tr id='tr-feedback' class='feedback-hover student-row table-dark'>";
                     echo "<td>". $key . "</td>" ;
-                    echo "<td id='current_t_feedback'>";
+                    // Teacher feedback value
+                    echo "<td class='current_teacher_feedback_td'>";
                     echo $value;
                     echo  "</td>" ;
-                    // DELETE ICON on click with AJAX
+                    // DELETE ICON onclick with AJAX
                     echo "<td>";
-                    echo "<i id='delete-icon' name='delete-icon' class='fa fa-trash text-primary'></i>";
+                    echo "<i name='delete-icon' class='delete-icon fa fa-trash text-primary'></i>";
+                    /* studentID & testID hidden */
+                    echo "<input type='hidden' value='$testID'>";
+                    // echo "<input type='hidden' name='hiddenStudentID' id='hiddenStudentID' value='$studentID'>";
                     echo "</td>";
                     echo "</tr>";
                     
@@ -77,16 +81,15 @@
                   }
                 }
                 echo "<td colspan='2' class='px-4 py-3'>";
-                echo "<label for='feedback' class='form-label text-light'>Feedback</label>";
-                echo "<textarea name='teacher_feedback' id='feedback' class='form-control bg-dark text-white  border-dark' placeholder='The test went well!' required>";
-                echo "</textarea>";
+                echo "<label for='teacher_feedback' class='form-label text-light'>Feedback</label>";
+                // Teacher feedback value
+                echo "<input type='text' name='teacher_feedback' class='form-control bg-dark text-white border-dark' placeholder='The test went well!' required>";
                 echo "<div class='mt-2'>";
-                /* studentID & testID hidden */
-                echo "<input type='hidden' name='hiddenStudentID' id='hiddenStudentID' value='$studentID'>";
-                echo "<input type='hidden' name='hiddenTestID' id='hiddenTestID' value='$testID'>";
                 // Updating feedback to DB using AJAX
-                echo "<button id='submit-feedback' name='submit-feedback' class='btn btn-dark text-white submit-feedback'>";
+                echo "<button class='submit-feedback btn btn-dark text-white'>";
                 echo "Send</button>";
+                /* testID hidden */
+                echo "<input type='hidden' value='$testID'>";
                 echo "</div>";
                 echo "</td>";
                 echo "</tbody>";

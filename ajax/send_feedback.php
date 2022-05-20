@@ -6,9 +6,9 @@ require('../includes/dbConnect.php');
 if(isset($_POST['t_feedback']))
 {
     $t_feedback = $conn -> real_escape_string($_POST['t_feedback']);
-    $hiddenID = $conn -> real_escape_string($_POST['hiddenID']);
+    $hiddenTestID = $conn -> real_escape_string($_POST['hiddenTestID']);
 
-    $query = "UPDATE test SET teacher_feedback = '$t_feedback' WHERE testID = '$hiddenID'";
+    $query = "UPDATE test SET teacher_feedback = '$t_feedback' WHERE testID = '$hiddenTestID'";
 
     $result = $conn->query($query);
 
