@@ -15,7 +15,7 @@
     
 ?>
 
-<div class="container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100">
+<div id="feedback-container" class="container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100">
   <div id="header-feedback" class='FAQ-header text-white shadow w-100 mb-3'>
     <h1 class="display-2 m-0">STUDENTS</h1>
     <div class='FAQ-instruction'>
@@ -28,8 +28,8 @@
     <div class="form-outline">
       <input id="search-text" name="search-text" type="text" class="form-control bordered border-danger bg-dark text-white" placeholder="Search" />
     </div>
-    <button type="button" class="btn btn-primary">
-      <i class="fas fa-search"></i>
+    <button id="search-icon" type="button" class="btn btn-primary">
+      <i  class="fas fa-search"></i>
     </button>
   </div>
   
