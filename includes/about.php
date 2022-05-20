@@ -32,6 +32,7 @@ $rows=mysqli_num_rows($result);
           echo '<td>'.$row['last_name'].'</td>';
           echo '<td>'.$row['email'].'</td>';
           echo '</tr>';
+          echo '<td><a href = index.php?page=cerPDF&user=teacher&pID='.$row['studentID'].'><button>Sertifikaatti</button></a></td>';
       }
       //$conn->close(); 
       ?>
