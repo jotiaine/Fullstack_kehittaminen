@@ -13,7 +13,7 @@
 
 <?php
 
-//include('classes/student.php');
+include('classes/student.php');
 
 $oppilas = new Student("456", "Mikko", "Mallikas", "mikko@mallikas.net");  // esimerkkioppilas
 

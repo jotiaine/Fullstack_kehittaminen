@@ -22,8 +22,8 @@
 
 /* FAQ starts */
 .FAQ-header {
-  padding-bottom: 1rem; /* Omalla koneella Chromella Dark Mode lisäosa estää kaikki CSS muutokset */
-  display: none; /* Firefoxilla näkyy normaalisti */
+  padding-bottom: 1rem; 
+  display: none; 
 }
 
 .FAQ-instruction {
