@@ -33,13 +33,13 @@
         $link = "#" . $studentID;
         $output .= '
           <thead>;
-            <th colspan="2"  class="display-4 search-table-heading">' . $first_name . " " . $last_name . '
+            <th colspan="2" class="student-name-search display-4">' . $first_name . " " . $last_name . '
             <a href="' . $link . '" class="text-white">
               <i id="link-to-student" class="fa-solid fa-anchor text-primary hover"></i>
             </a>
             </th>
             </thead>
-            <tbody class="search-table-body">
+            <tbody class="search-table-body d-none">
               <tr>
                 <td>studentID</td>
                 <td>' . $studentID . '</td>

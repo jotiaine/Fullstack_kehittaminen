@@ -33,9 +33,9 @@
     </button>
   </div>
   
-  <table id="search-result" class="table table-borderless table-dark table-striped table-hover text-white d-none w-50 mb-5 shadow"></table>
+  <table id="search-result" class="table-style table gy-3 text-light table-borderless table-dark table-striped table-hover d-none w-50 mb-5 shadow"></table>
   
-  <table id="feedback-table" class="table table-borderless table-dark table-striped table-hover w-50 shadow">
+  <table  id="feedback-table" class="table-style table text-light table-borderless table-dark table-striped table-hover w-50 shadow">
     <!-- Results here -->
     <?php 
         if($rows > 0) {
@@ -60,17 +60,16 @@
                     echo "<tr id='tr-feedback' class='feedback-hover student-row table-dark'>";
                     echo "<td>". $key . "</td>" ;
                     // Teacher feedback value
-                    echo "<td class='current_teacher_feedback_td'>";
+                    echo "<td class='current_teacher_feedback_td fs-5 text-primary'>";
                     echo $value;
                     echo  "</td>" ;
                     // DELETE ICON onclick with AJAX
                     echo "<td>";
-                    echo "<i name='delete-icon' class='delete-icon fa fa-trash text-primary'></i>";
+                    echo "<i name='delete-icon' class='delete-icon fa fa-trash'></i>";
                     /* studentID & testID hidden */
                     echo "<input type='hidden' value='$testID'>";
-                    // echo "<input type='hidden' name='hiddenStudentID' id='hiddenStudentID' value='$studentID'>";
                     echo "</td>";
-                    echo "</tr>";
+
                     
                   } else {
                     echo "<tr id='tr-feedback' class='student-row table-dark'>";
@@ -80,18 +79,21 @@
                     
                   }
                 }
+                echo "</tr>";
                 echo "<td colspan='2' class='px-4 py-3'>";
-                echo "<label for='teacher_feedback' class='form-label text-light'>Feedback</label>";
+                echo "<label for='teacher_feedback' class='form-label text-light shadow'>Feedback</label>";
                 // Teacher feedback value
-                echo "<input type='text' name='teacher_feedback' class='form-control bg-dark text-white border-dark' placeholder='The test went well!' required>";
+                echo "<textarea type='text' name='teacher_feedback' class='form-control bg-dark text-white border-0 shadow' placeholder='The test went well!' required>";
+                echo "</textarea>";
                 echo "<div class='mt-2'>";
                 // Updating feedback to DB using AJAX
-                echo "<button class='submit-feedback btn btn-dark text-white'>";
+                echo "<button name='submit-feedback' class='submit-feedback btn btn-dark text-white shadow'>";
                 echo "Send</button>";
                 /* testID hidden */
                 echo "<input type='hidden' value='$testID'>";
                 echo "</div>";
                 echo "</td>";
+
                 echo "</tbody>";
                 
               }

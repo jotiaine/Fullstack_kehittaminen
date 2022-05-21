@@ -2,6 +2,8 @@
   --feedback-hover-color: rgb(18, 18, 18) !important;
   --feedback-header-color: rgb(14, 14, 14) !important;
   --feedback-text-color: rgb(16, 16, 16) !important;
+  --grey-text: #212529 !important;
+  --light-grey-text: #808080 !important;
 }
 
 /* {
@@ -173,9 +175,13 @@
 #btn-feedback,
 #start-test-btn,
 #submit-test-btn {
-  background-color: var(--feedback-header-color);
+  background-color: var(--feedback-header-color) !important;
   color: gray !important;
   border: none !important;
+}
+
+.student-name-search {
+  background-color: var(--feedback-header-color) !important;
 }
 
 .var-header {
@@ -205,19 +211,25 @@
   transform: scale(1.1) !important;
 }
 
-#delete-icon {
-  opacity: 0.7;
+.delete-icon {
+  font-size: 1.5rem;
+  color: rgb(21, 21, 246) !important;
+  opacity: 0.8;
   transition: all 0.2s ease-in-out;
 }
 
-#delete-icon:hover {
-  color: rgb(255, 72, 0) !important;
+.delete-icon:hover {
+  color: rgb(12, 12, 194) !important;
   opacity: 1;
 }
 
-#delete-icon:active,
+.delete-icon:active,
 #link-to-student:active {
   transform: scale(0.97) !important;
+}
+
+#link-to-student:hover {
+  color: rgb(9, 9, 212) !important;
 }
 
 #search-bar {
@@ -225,8 +237,9 @@
   top: 17% !important;
 }
 
-#link-to-student:hover {
-  color: rgb(9, 9, 212) !important;
+.table-style {
+  border-collapse: separate !important;
+  border-spacing: 0.7rem !important;
 }
 
 @media (max-width: 231px) {

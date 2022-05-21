@@ -37,12 +37,16 @@ jQuery(document).ready(function ($) {
   /* =========================
   === FEEDBACK update feedback ===
   ==========================*/
-  function sendFeedback(hiddenTestID, t_feedbackEl) {
+  function sendFeedback(hiddenTestID, t_feedbackEl, t_feedback_TD) {
     $.ajax({
       url: "ajax/send_feedback.php",
       method: "POST",
-      data: { hiddenTestID: hiddenTestID, t_feedback: t_feedbackEl.val() },
+      data: {
+        hiddenTestID_SFB: hiddenTestID,
+        t_feedback_SFB: t_feedbackEl.val(),
+      },
       success: function (data) {
+        t_feedback_TD.html(data);
         t_feedbackEl.val("");
       },
     });
@@ -51,9 +55,19 @@ jQuery(document).ready(function ($) {
   $(".submit-feedback").click(function () {
     let hiddenTestID = $(this).next().val();
     let t_feedbackEl = $(this).parent().prev();
+    let t_feedback_TD = $(this)
+      .parent()
+      .parent()
+      .parent()
+      .prev()
+      .prev()
+      .prev()
+      .prev()
+      .prev()
+      .find(".current_teacher_feedback_td");
 
     if (t_feedbackEl.val() != "") {
-      sendFeedback(hiddenTestID, t_feedbackEl);
+      sendFeedback(hiddenTestID, t_feedbackEl, t_feedback_TD);
     } else {
       alert("Please fill the feedback!");
     }
@@ -186,7 +200,7 @@ jQuery(document).ready(function ($) {
     $(this).parent().parent().next(".student-body").fadeToggle("400", "swing");
   });
 
-  // search - table - body;
-  // search - table - heading;
-  // $(".search-table-body").hide();
+  // $("#student-name-search").click(() => {
+  //   console.log("asdasd");
+  // });
 });
