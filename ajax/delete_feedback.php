@@ -15,6 +15,6 @@ if(isset($_POST['hiddenTestID']))
         echo $output;
     } else echo "<p class='alert alert-danger'>query failed</p>";
 
-} else echo "<p class='alert alert-danger'>t_feedback is not set</p>";
+} else echo "<p class='alert alert-danger'>hiddenTestID is not set</p>";
 
 ?>

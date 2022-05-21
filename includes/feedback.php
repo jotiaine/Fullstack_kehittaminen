@@ -57,10 +57,10 @@
                 
                 foreach($row as $key => $value) {
                   if($key == "teacher_feedback") {
-                    echo "<tr id='tr-feedback' class='feedback-hover student-row table-dark'>";
-                    echo "<td>". $key . "</td>" ;
+                    echo "<tr id='tr-feedback' class=' student-row table-dark'>";
+                    echo "<td class='feedback-hover'>". $key . "</td>" ;
                     // Teacher feedback value
-                    echo "<td class='current_teacher_feedback_td fs-5 text-primary'>";
+                    echo "<td class='feedback-hover current_teacher_feedback_td fs-5 text-primary'>";
                     echo $value;
                     echo  "</td>" ;
                     // DELETE ICON onclick with AJAX
@@ -83,7 +83,7 @@
                 echo "<td colspan='2' class='px-4 py-3'>";
                 echo "<label for='teacher_feedback' class='form-label text-light shadow'>Feedback</label>";
                 // Teacher feedback value
-                echo "<textarea type='text' name='teacher_feedback' class='form-control bg-dark text-white border-0 shadow' placeholder='The test went well!' required>";
+                echo "<textarea type='text' name='teacher_feedback' class='textarea-feedback form-control bg-dark text-white border-0 shadow' placeholder='The test went well!' required>";
                 echo "</textarea>";
                 echo "<div class='mt-2'>";
                 // Updating feedback to DB using AJAX
