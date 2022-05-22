@@ -75,7 +75,7 @@
 
 
 <?php
-
+    // user ja page turhia?(kun student on sisällä ja vaihtaa sivuja) 
     if($_GET['user'] == 'student' && $_GET['page'] == 'test' || isset($_POST['submit-test'])) {
 
       // Using JSONS to find studentID, first_name and last_name and email

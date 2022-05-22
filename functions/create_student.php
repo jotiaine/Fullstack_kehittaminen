@@ -1,3 +1,80 @@
+<?php 
+                /*
+                  Ohjelman toiminta:
+                  1. Ladataaan index
+                  2. Oppilas, Opettaja vai Default käyttäjä?
+                    2.1 Default käyttäjä
+                      - Näkymä: home, faq ja logosta -> vaihe 2.
+                    2.2 Opettaja
+                      - Näkymä: home, faq, raportti, palaute(feedback) ja logosta -> vaihe 2.
+                      - Toiminnallisuudet:
+                        - Raportti:
+                          -> Mahdollisuus nähdä visuaalisesti tietokannan dataa raportti sivulla
+                          -> Mahdollisuus ladata pdf-tiedoston datasta
+                        - Palaute/Feedback
+                          -> Ladataan kaikki testit ja koko sivu(ei AJAX, hirveä looppi renderoi testit)
+                            -> AJAX
+                              - send_feedback.php 
+                              - delete_feedback.php
+                              - search-toiminto -> load_tests.php
+                            -> jQuery 
+                              - sendFeedback()
+                              - deleteFeedback()
+                              - loadStudents()
+                    2.3 Oppilas -> (submit-student -> create_student())
+                      - Onko oppilas olemassa? if-else
+                        - ON:
+                          -> Ladataan koko sivu kerran(ei AJAX)
+                          -> Testi tehty? if-else
+                            - ON: 
+                              - Hyväksytty || Hylätty
+                                -> Näytetään testi
+                            - EI:
+                              -> Generoidaan uusi testi
+                        - EI:
+                          -> create_student() - if(isset(submit-student))
+                            1. Tallennetaan oppilaan tiedot muuttujiin
+                              - $first_name 
+                              - $last_name 
+                              - $email 
+                            2. -> vaihe 2.3
+                            3. SQL(INSERT) -> Uusi käyttäjä tietokantaan tauluun -> student
+                            4. SQ(SELECT) -> Haetaan studentID
+                              - $studentID
+                            5. SQL(SELECT) -> Haetaan random testi tietokannasta
+                                    - $questionID
+                                    - Talllennetaan questionTableValues Arrayhin kysymyssarjan key => values
+                                    - SQL(INSERT)
+                                      -> Tauluihin test & reward uudet tyhjät rivit tietokantaan
+                                        - Käytetään tähän mennessä haettuja muuttujia:
+                                        - $studentID 
+                                        - $questionID 
+
+                            6. Luodaan oliot:
+                              - student
+                              - test
+                              - reward
+                              - question_series
+                            7. Tallennetaan oliot JSON-tiedostoihin(file kansio):
+                              - student.json
+                              - test.json
+                              - reward.json
+                              - question_series.json
+                            8. Funktio loppuu
+                              - test ja reward taulut
+                              - jäävät odottamaan päivityksiä
+                              - testien teosta ja palautteista(SQL:UPDATE)
+                            
+                            
+                            
+                            
+                              test.php
+
+                  
+                */
+?>
+
+
 <?php // Creating a student to the db
 function create_student() {
               require('includes/dbConnect.php'); 
@@ -26,8 +103,217 @@ function create_student() {
               */
               
               if($result -> num_rows > 0) {
+                // - ON:
+                // -> Ladataan koko sivu kerran(ei AJAX)
+                // -> Testi tehty?
+                //   - ON: 
+                //     - Hyväksytty || Hylätty
+                //       -> Näytetään testi
+                //   - EI:
+                //     -> Generoidaan uusi testi
                 // User exists
                 echo "<p class='alert alert-warning'>User exists!</p>";
+
+                // studentID
+                $row = mysqli_fetch_assoc($result);
+                $studentID = $row['studentID'];
+                echo "<p class='alert alert-success'>STudentID" . $studentID . "</p>";
+
+                // Get score, creationDate
+                $sql = "SELECT * FROM test WHERE studentID = '$studentID'";
+                
+                // Query result
+                $result = $conn -> query($sql);
+                if($result) {
+                  echo "<p class='alert alert-success'>studentID success</p>";
+                } else {
+                  echo "<p class='alert alert-warning'>studentID failed</p>";
+                }
+                $row = mysqli_fetch_assoc($result);
+
+                // Variables score & creationDate
+                $score = $row['score'];
+                $creationDate = $row['creationDate'];
+
+                // Test approved || failed || is not done
+                $testApproved = $score == 1;
+                $testFailed = $score == 0 || $score == NULL && $creationDate != NULL;
+                //$testIsNotDone = $score == 0 && $creationDate == NULL; 
+
+                  // Test done
+                  if($testApproved || $testFailed) {
+
+                    $sql = "SELECT * FROM student INNER JOIN test ON student.studentID = test.studentID INNER JOIN reward ON student.studentID = reward.studentID WHERE student.studentID = '$studentID'";
+  
+                    $result = $conn -> query($sql);
+                    if($result) {
+                      echo "<p class='alert alert-success'>Kolmosliitos success</p>";
+                    } else {
+                      echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
+                    }
+
+                    $row = mysqli_fetch_assoc($result);
+                    
+                        $first_name = $row['first_name'];
+                        $last_name = $row['last_name'];
+                        $email = $row['email'];
+                        $studentID = $row['studentID'];
+                        $testID = $row['testID'];
+                        $questionID = $row['questionID'];
+                        $question_1 = $row['question_1'];
+                        $question_2 = $row['question_2'];
+                        $question_3 = $row['question_3'];
+                        $opt_1_1 = $row['opt_1_1'];
+                        $opt_1_2 = $row['opt_1_2'];
+                        $opt_1_3 = $row['opt_1_3'];
+                        $opt_2_1 = $row['opt_2_1'];
+                        $opt_2_2 = $row['opt_2_2'];
+                        $opt_2_3 = $row['opt_2_3'];
+                        $opt_3_1 = $row['opt_3_1'];
+                        $opt_3_2 = $row['opt_3_2'];
+                        $opt_3_3 = $row['opt_3_3'];
+                        $user_answer_1 = $row['user_answer_1'];
+                        $user_answer_2 = $row['user_answer_2'];
+                        $user_answer_3 = $row['user_answer_3'];
+                        $score = $row['score'];
+                        $creationDate = $row['creationDate'];
+                        $teacher_feedback = $row['teacher_feedback'];
+                        $level = $row['level'];
+                        $certificate = $row['certificate'];
+                        $output = '
+                        <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+                          <table class="table-style table gy-3 text-light table-borderless table-dark table-striped table-hover w-75 mb-5 shadow text-center">
+                            <thead>;
+                              <th colspan="2" class="student-test-result display-4">' . $first_name . " " . $last_name . '
+                              <a class="text-white">
+                                <i class="fa-solid fa-anchor text-primary hover"></i>
+                              </a>
+                              </th>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>studentID</td>
+                                <td>' . $studentID . '</td>
+                              </tr>
+                              <tr>
+                                <td>testID</td>
+                                <td>' . $testID . '</td>
+                              </tr>
+                              <tr>
+                              <td>questionID</td>
+                              <td>' . $questionID . '</td>
+                              </tr>
+                              <tr>
+                                <td>question_1</td>
+                                <td>' . $question_1 . '</td>
+                              </tr>
+                              <tr>
+                                <td>question_2</td>
+                                <td>' . $question_2 . '</td>
+                              </tr>
+                              <tr>
+                                <td>question_3</td>
+                                <td>' . $question_3 . '</td>
+                              </tr>
+                              <tr>
+                                <td>opt_1_1</td>
+                                <td>' . $opt_1_1 . '</td>
+                              </tr>
+                              <tr>
+                                <td>opt_1_2</td>
+                                <td>' . $opt_1_2 . '</td>
+                              </tr>
+                              <tr>
+                                <td>opt_1_3</td>
+                                <td>' . $opt_1_3 . '</td>
+                              </tr>
+                              <tr>
+                                <td>opt_2_1</td>
+                                <td>' . $opt_2_1 . '</td>
+                              </tr>
+                              <tr>
+                                <td>opt_2_2</td>
+                                <td>' . $opt_2_2 . '</td>
+                              </tr>
+                              <tr>
+                                <td>opt_2_3</td>
+                                <td>' . $opt_2_3 . '</td>
+                              </tr>
+                              <tr>
+                                <td>opt_3_1</td>
+                                <td>' . $opt_3_1 . '</td>
+                              </tr>
+                              <tr>
+                                <td>opt_3_2</td>
+                                <td>' . $opt_3_2 . '</td>
+                              </tr>
+                              <tr>
+                                <td>opt_3_3</td>
+                                <td>' . $opt_3_3 . '</td>
+                              </tr>
+                              <tr>
+                                <td>user_answer_1</td>
+                                <td>' . $user_answer_1 . '</td>
+                              </tr>
+                              <tr>
+                                <td>user_answer_2</td>
+                                <td>' . $user_answer_2 . '</td>
+                              </tr>
+                              <tr>
+                                <td>user_answer_3</td>
+                                <td>' . $user_answer_3 . '</td>
+                              </tr>
+                              <tr>
+                                <td>score</td>
+                                <td>' . $score . '</td>
+                              </tr>
+                              <tr>
+                                <td>creationDate</td>
+                                <td>' . $creationDate . '</td>
+                              </tr>
+                              <tr class="feedback-hover">
+                                <td>teacher_feedback</td>
+                                <td>' . $teacher_feedback . '</td>
+                              </tr>
+                              <tr class="feedback-hover">
+                                <td>level</td>
+                                <td>' . $level . '</td>
+                              </tr>
+                              <tr class="feedback-hover">
+                                <td>certificate</td>
+                                <td>' . $certificate . '</td>
+                              </tr>
+                              </tbody>
+                              </table>
+                          <div id="certificate-container" class="text-light border border-primary rounded p-3 shadow">
+                              <h3 class="display-3 text-center shadow">Certificate<h3>
+                              <p>Congratulations for completing the test succesfully!</p>
+                              <p>Here"s your certificate</p>
+                              <div class="d-flex justify-content-center align-items-center">
+                                <span class="me-1">Download</span>
+                                <i class="certificate fa fa-certificate text-primary"></i>                              </div>
+                              </div>
+                          </div>
+
+                          ';
+
+                    echo $output;
+
+
+                    //return ;
+                    if($result) {
+                      echo "<p class='alert alert-success'>Query success</p>";
+                    } else {
+                      echo "<p class='alert alert-warning'>Query failed</p>";
+                    }
+
+                  } else {
+                    // Test not done
+                    // Generate new test
+                    //return ;
+                  }
+
+
               } else {
 
                 /*

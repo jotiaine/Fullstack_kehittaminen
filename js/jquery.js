@@ -4,9 +4,9 @@ jQuery(document).ready(function ($) {
   /* =========================
   === FEEDBACK LOAD TESTS AJAX ===
   ==========================*/
-  load_students();
+  loadStudentsSearch();
 
-  function load_students(query) {
+  function loadStudentsSearch(query) {
     $.ajax({
       url: "ajax/load_tests.php",
       method: "POST",
@@ -19,11 +19,11 @@ jQuery(document).ready(function ($) {
 
   $("#search-text").keyup(function () {
     $("#search-result").removeClass("d-none");
-    var searchTxt = $(this).val();
+    let searchTxt = $(this).val();
     if (searchTxt != "") {
-      load_students(searchTxt);
+      loadStudentsSearch(searchTxt);
     } else {
-      load_students();
+      loadStudentsSearch();
     }
     $("html, body").animate(
       {
@@ -200,7 +200,13 @@ jQuery(document).ready(function ($) {
     $(this).parent().parent().next(".student-body").fadeToggle("400", "swing");
   });
 
+  // Dynamic data -> use .on('event', 'selector', 'callback')
   $("body").on("click", ".search-tbody-toggle", function () {
+    $(this).next().fadeToggle("400", "swing");
+  });
+
+  // test.php
+  $("body").on("click", "#student-test-result", function () {
     $(this).next().fadeToggle("400", "swing");
   });
 });
