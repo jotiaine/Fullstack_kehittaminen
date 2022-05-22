@@ -206,7 +206,7 @@ jQuery(document).ready(function ($) {
   });
 
   // test.php
-  $("body").on("click", "#student-test-result", function () {
+  $("body").on("click", "#student-test-result-heading", function () {
     $(this).next().fadeToggle("400", "swing");
   });
 });

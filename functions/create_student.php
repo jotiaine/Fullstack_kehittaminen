@@ -183,7 +183,7 @@ function create_student() {
                         $output = '
                         <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
                           <table class="table-style table gy-3 text-light table-borderless table-dark table-striped table-hover w-75 mb-5 shadow text-center">
-                            <thead>;
+                            <thead id="student-test-result-heading">;
                               <th colspan="2" class="student-test-result display-4">' . $first_name . " " . $last_name . '
                               <a class="text-white">
                                 <i class="fa-solid fa-anchor text-primary hover"></i>
