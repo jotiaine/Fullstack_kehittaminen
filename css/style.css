@@ -213,7 +213,7 @@
 }
 
 .delete-icon,
-.certification {
+.certificate {
   font-size: 1.5rem;
   color: rgb(21, 21, 246) !important;
   opacity: 0.8;
@@ -262,7 +262,7 @@
 
 #certificate-container:hover {
   transform: scale(1.01) !important;
-  border: 2px solid blue !important;
+  border: 2px solid rgb(13, 13, 65) !important;
 }
 
 @media (max-width: 231px) {

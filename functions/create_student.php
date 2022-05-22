@@ -105,15 +105,7 @@ function create_student() {
               */
               
               if($result -> num_rows > 0) {
-                // - ON:
-                // -> Ladataan koko sivu kerran(ei AJAX)
-                // -> Testi tehty?
-                //   - ON: 
-                //     - Hyväksytty || Hylätty
-                //       -> Näytetään testi
-                //   - EI:
-                //     -> Generoidaan uusi testi
-                // User exists
+
                 echo "<p class='alert alert-warning'>User exists!</p>";
 
                 // studentID
@@ -182,8 +174,28 @@ function create_student() {
                         $teacher_feedback = $row['teacher_feedback'];
                         $level = $row['level'];
                         $certificate = $row['certificate'];
-                        $output = '
-                        <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+
+                        $sql = "SELECT * FROM question WHERE questionID = '$questionID'";
+  
+                        $result = $conn -> query($sql);
+                        if($result) {
+                          echo "<p class='alert alert-success'>Kolmosliitos success</p>";
+                        } else {
+                          echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
+                        }
+      
+                        $row = mysqli_fetch_assoc($result);
+      
+                        $correct_answer_1 = $row['correct_answer_1'];
+                        $correct_answer_2 = $row['correct_answer_2'];
+                        $correct_answer_3 = $row['correct_answer_3'];
+
+
+                        $output = "";
+
+                        if($score == 1) {
+                          $output = '
+                          <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
                           <table class="table-style table gy-3 text-light table-borderless table-dark table-striped table-hover w-75 mb-5 shadow text-center">
                             <thead id="student-test-result-heading">;
                               <th colspan="2" class="student-test-result display-4">' . $first_name . " " . $last_name . '
@@ -254,6 +266,18 @@ function create_student() {
                                 <td>' . $opt_3_3 . '</td>
                               </tr>
                               <tr>
+                                <td>correct_answer_1</td>
+                                <td>' . $correct_answer_1 . '</td>
+                              </tr>
+                              <tr>
+                                <td>correct_answer_2</td>
+                                <td>' . $correct_answer_2 . '</td>
+                              </tr>
+                              <tr>
+                                <td>correct_answer_3</td>
+                                <td>' . $correct_answer_3 . '</td>
+                              </tr>
+                              <tr>
                                 <td>user_answer_1</td>
                                 <td>' . $user_answer_1 . '</td>
                               </tr>
@@ -290,23 +314,146 @@ function create_student() {
 
                           </div>
 
+                          <div id="certificate-container" class="mx-auto text-light border border-primary rounded p-3 shadow w-50">
+                          <h3 class="display-3 text-center shadow">Certificate<h3>
+                          <p>Congratulations for completing the test succesfully!</p>
+                          <p>Here"s your certificate</p>
+                          <div class="d-flex justify-content-center align-items-center">
+                            <span class="me-1">Download</span>
+                            <i class="certificate fa fa-certificate text-primary"></i>                              </div>
+                          </div>
+                          </div>
                           ';
+                        } else {
 
-                          if($score == 1) {
-                            $output .= '
-                            <div id="certificate-container" class="mx-auto text-light border border-primary rounded p-3 shadow w-50">
-                            <h3 class="display-3 text-center shadow">Certificate<h3>
-                            <p>Congratulations for completing the test succesfully!</p>
-                            <p>Here"s your certificate</p>
-                            <div class="d-flex justify-content-center align-items-center">
-                              <span class="me-1">Download</span>
-                              <i class="certificate fa fa-certificate text-primary"></i>                              </div>
+                          $output = '
+                          <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
+                            <table class="table-style table gy-3 text-light table-borderless table-dark table-striped table-hover w-75 mb-5 shadow text-center">
+                              <thead id="student-test-result-heading">;
+                                <th colspan="2" class="student-test-result display-4">' . $first_name . " " . $last_name . '
+                                <a class="text-white">
+                                  <i class="fa-solid fa-anchor text-primary hover"></i>
+                                </a>
+                                </th>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>studentID</td>
+                                  <td>' . $studentID . '</td>
+                                </tr>
+                                <tr>
+                                  <td>testID</td>
+                                  <td>' . $testID . '</td>
+                                </tr>
+                                <tr>
+                                <td>questionID</td>
+                                <td>' . $questionID . '</td>
+                                </tr>
+                                <tr>
+                                  <td>question_1</td>
+                                  <td>' . $question_1 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>question_2</td>
+                                  <td>' . $question_2 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>question_3</td>
+                                  <td>' . $question_3 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>opt_1_1</td>
+                                  <td>' . $opt_1_1 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>opt_1_2</td>
+                                  <td>' . $opt_1_2 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>opt_1_3</td>
+                                  <td>' . $opt_1_3 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>opt_2_1</td>
+                                  <td>' . $opt_2_1 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>opt_2_2</td>
+                                  <td>' . $opt_2_2 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>opt_2_3</td>
+                                  <td>' . $opt_2_3 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>opt_3_1</td>
+                                  <td>' . $opt_3_1 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>opt_3_2</td>
+                                  <td>' . $opt_3_2 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>opt_3_3</td>
+                                  <td>' . $opt_3_3 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>correct_answer_1</td>
+                                  <td>' . $correct_answer_1 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>correct_answer_2</td>
+                                  <td>' . $correct_answer_2 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>correct_answer_3</td>
+                                  <td>' . $correct_answer_3 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>user_answer_1</td>
+                                  <td>' . $user_answer_1 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>user_answer_2</td>
+                                  <td>' . $user_answer_2 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>user_answer_3</td>
+                                  <td>' . $user_answer_3 . '</td>
+                                </tr>
+                                <tr>
+                                  <td>score</td>
+                                  <td>' . $score . '</td>
+                                </tr>
+                                <tr>
+                                  <td>creationDate</td>
+                                  <td>' . $creationDate . '</td>
+                                </tr>
+                                <tr class="feedback-hover">
+                                  <td>teacher_feedback</td>
+                                  <td>' . $teacher_feedback . '</td>
+                                </tr>
+                                <tr class="feedback-hover">
+                                  <td>level</td>
+                                  <td>' . $level . '</td>
+                                </tr>
+                                <tr class="feedback-hover">
+                                  <td>certificate</td>
+                                  <td>' . $certificate . '</td>
+                                </tr>
+                                </tbody>
+                                </table>                   
+  
                             </div>
-                            </div>
+  
                             ';
-                          } 
+                        } 
+
+
+
 
                     echo $output;
+                    $output = "";
 
 
                     if($result) {
@@ -435,27 +582,27 @@ function create_student() {
                 
                 // Generate student object
                 $student = new Student($studentID, $first_name, $last_name, $email);
-                echo "<pre class='bg-info p-3'>";
-                echo print_r($student);
-                echo "</pre>";
+                // echo "<pre class='bg-info p-3'>";
+                // echo print_r($student);
+                // echo "</pre>";
                 
                 // Generate test object
                 $test = new Test($testID, $studentID, $questionID, $questionTableValues['1'], $questionTableValues['2'], $questionTableValues['3'], $questionTableValues['4'], $questionTableValues['5'], $questionTableValues['6'], $questionTableValues['7'], $questionTableValues['8'], $questionTableValues['9'], $questionTableValues['10'], $questionTableValues['11'], $questionTableValues['12'], 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL' );
-                echo "<pre class='bg-info p-3'>";
-                echo print_r($test);
-                echo "</pre>";
+                // echo "<pre class='bg-info p-3'>";
+                // echo print_r($test);
+                // echo "</pre>";
 
                 // Generate question_series object
                 $question_series = new Question_Series($questionTableValues[0], $questionTableValues[1], $questionTableValues[2], $questionTableValues[3], $questionTableValues[4], $questionTableValues[5], $questionTableValues[6], $questionTableValues[7], $questionTableValues[8], $questionTableValues[9], $questionTableValues[10], $questionTableValues[11], $questionTableValues[12], $questionTableValues[13], $questionTableValues[14], $questionTableValues[15],); 
-                echo "<pre class='bg-info p-3'>";
-                echo print_r($question_series);
-                echo "</pre>";
+                // echo "<pre class='bg-info p-3'>";
+                // echo print_r($question_series);
+                // echo "</pre>";
                 
                 // Generate reward object
                 $reward = new Reward($rewardID, $studentID, '0', 'NULL');
-                echo "<pre class='bg-info p-3'>";
-                echo print_r($reward);
-                echo "</pre>";
+                // echo "<pre class='bg-info p-3'>";
+                // echo print_r($reward);
+                // echo "</pre>";
                 /******************************/
 
   
@@ -510,18 +657,18 @@ function create_student() {
           $json_data_reward = json_decode($reward,true);
           
           // Display data
-          echo "<pre>";
-          echo print_r($json_data_student);
-          echo "</pre>";
-          echo "<pre>";
-          echo print_r($json_data_question_series);
-          echo "</pre>";
-          echo "<pre>";
-          echo print_r($json_data_test);
-          echo "</pre>";
-          echo "<pre>";
-          echo print_r($json_data_reward);
-          echo "</pre>";
+          // echo "<pre>";
+          // echo print_r($json_data_student);
+          // echo "</pre>";
+          // echo "<pre>";
+          // echo print_r($json_data_question_series);
+          // echo "</pre>";
+          // echo "<pre>";
+          // echo print_r($json_data_test);
+          // echo "</pre>";
+          // echo "<pre>";
+          // echo print_r($json_data_reward);
+          // echo "</pre>";
           
 
                 // Shuffle options
@@ -549,7 +696,7 @@ function create_student() {
              echo "<h3 class='var-header mb-3  shadow-lg p-3 w-50'> Test of Mensa </h3>";
             
                   
-             echo "<table class='table table-dark text-white table-striped table-hover w-75 text-center text-dark table-bordered shadow-lg'>";
+             echo "<table class='table-style table table-dark text-white table-striped table-hover w-75 text-center text-dark table-bordered shadow-lg'>";
              echo "<thead class='shadow'>";
 
                         /// QUESTION 1
@@ -560,17 +707,17 @@ function create_student() {
                       echo "</thead>";
                       echo "<tbody class='shadow-lg'>";
                         echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo "<input class='form-check-input' type='radio' name='question_1' id='answerSerie-1.1' value=" . htmlspecialchars($json_data_question_series[$q1_options[2]]) . ">";
-                          echo "<label class='form-check-label' for='answerSerie-1.1'>" .htmlspecialchars($json_data_question_series[$q1_options[2]]) . "</label>";
+                          echo '<input class="form-check-input" type="radio" name="question_1" id="answerSerie-1.1" value="' . htmlspecialchars($json_data_question_series[$q1_options[2]]) . '"/>';
+                          echo '<label class="form-check-label" for="answerSerie-1.1">' . htmlspecialchars($json_data_question_series[$q1_options[2]]) . '</label>';
                         echo "</td>";
                         echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo "<input class='form-check-input' type='radio' name='question_1' id='answerSerie-1.2' value=" .htmlspecialchars($json_data_question_series[$q1_options[1]]) . ">";
-                          echo "<label class='form-check-label' for='answerSerie-1.2'>" . htmlspecialchars($json_data_question_series[$q1_options[1]]) . "</label>";
+                          echo '<input class="form-check-input" type="radio" name="question_1" id="answerSerie-1.2" value="' . htmlspecialchars($json_data_question_series[$q1_options[1]]) . '"/>';
+                          echo '<label class="form-check-label" for="answerSerie-1.2">' . htmlspecialchars($json_data_question_series[$q1_options[1]]) . '</label>';
                         echo "</td>";
                         echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo "<input class='form-check-input' type='radio' name='question_1' id='answerSerie-1.3' value=" .htmlspecialchars($json_data_question_series[$q1_options[0]]) . ">";
-                          echo "<label class='form-check-label' for='answerSerie-1.3'>" . htmlspecialchars($json_data_question_series[$q1_options[0]]) . "</label>";
-                        echo "</td>";
+                          echo '<input class="form-check-input" type="radio" name="question_1" id="answerSerie-1.3" value="' . htmlspecialchars($json_data_question_series[$q1_options[0]]) . '"/>';
+                          echo '<label class="form-check-label" for="answerSerie-1.3">' . htmlspecialchars($json_data_question_series[$q1_options[0]]) . '</label>';
+                      echo "</td>";
                       echo "</tbody>";
                       echo "<thead>";
 
@@ -582,17 +729,15 @@ function create_student() {
                      echo "</thead>";
                       echo "<tbody>";
                         echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                        echo "<input class='form-check-input' type='radio' name='question_2' id='answerSerie-2.1' value=" . htmlspecialchars($json_data_question_series[$q2_options[2]]) . "/>";
-                          echo "<label class='form-check-label' for='answerSerie-2.1'>" . htmlspecialchars($json_data_question_series[$q2_options[2]]) . "</label>";
-                       echo "</td>";
-                       echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo "<input class='form-check-input' type='radio' name='question_2' id='answerSerie-2.2' value=" . htmlspecialchars($json_data_question_series[$q2_options[1]]) . "/>";
-                          echo "<label class='form-check-label' for='answerSerie-2.2'>" . htmlspecialchars($json_data_question_series[$q2_options[1]]) . "</label>";
-                        echo "</td>";
+                          echo '<input class="form-check-input" type="radio" name="question_2" id="answerSerie-2.1" value="' . htmlspecialchars($json_data_question_series[$q2_options[2]]) . '"/>';
+                          echo '<label class="form-check-label" for="answerSerie-2.1">' . htmlspecialchars($json_data_question_series[$q2_options[2]]) . '</label>';
+                       echo '</td>';
+                       echo '<td class="table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center">';
+                          echo '<input class="form-check-input" type="radio" name="question_2" id="answerSerie-2.2" value="' . htmlspecialchars($json_data_question_series[$q2_options[1]]) . '"/>';
+                          echo '<label class="form-check-label" for="answerSerie-2.2">' . htmlspecialchars($json_data_question_series[$q2_options[1]]) . '</label>';
                         echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                         echo "<input class='form-check-input' type='radio' name='question_2' id='answerSerie-2.3' value=" . htmlspecialchars($json_data_question_series[$q2_options[0]]) . "/>";
-                          echo "<label class='form-check-label' for='answerSerie-2.3'>" .htmlspecialchars($json_data_question_series[$q2_options[0]]) . "</label>";
-                       echo "</td>";
+                          echo '<input class="form-check-input" type="radio" name="question_2" id="answerSerie-2.3" value="' . htmlspecialchars($json_data_question_series[$q2_options[0]]) . '"/>';
+                          echo '<label class="form-check-label" for="answerSerie-2.3">' . htmlspecialchars($json_data_question_series[$q2_options[0]]) . '</label>';
                      echo "</tbody>";
                       echo "<thead>";
 
@@ -604,17 +749,17 @@ function create_student() {
                       echo "</thead>";
                       echo "<tbody>";
                         echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo "<input class='form-check-input' type='radio' name='question_3' id='answerSerie-3.1'" .htmlspecialchars($json_data_question_series[$q3_options[2]]) ."/>";
-                          echo "<label class='form-check-label' for='answerSerie-3.1'>" . htmlspecialchars($json_data_question_series[$q3_options[2]]) . "</label>";
+                          echo '<input class="form-check-input" type="radio" name="question_3" id="answerSerie-3.1" value="' . htmlspecialchars($json_data_question_series[$q3_options[2]]) . '"/>';
+                          echo '<label class="form-check-label" for="answerSerie-3.1">' . htmlspecialchars($json_data_question_series[$q3_options[2]]) . '</label>';
                         echo "</td>";
                         echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                         echo "<input class='form-check-input' type='radio' name='question_3' id='answerSerie-3.2' value=" . htmlspecialchars($json_data_question_series[$q3_options[1]]) . "/>";
-                          echo "<label class='form-check-label' for='answerSerie-3.2'>" .htmlspecialchars($json_data_question_series[$q3_options[1]]) ." </label>";
+                          echo '<input class="form-check-input" type="radio" name="question_3" id="answerSerie-3.2" value="' . htmlspecialchars($json_data_question_series[$q3_options[1]]) . '"/>';
+                          echo '<label class="form-check-label" for="answerSerie-3.2">' . htmlspecialchars($json_data_question_series[$q3_options[1]]) . '</label>';
                         echo "</td>";
                         echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo "<input class='form-check-input' type='radio' name='question_3' id='answerSerie-3.3' value=" .htmlspecialchars($json_data_question_series[$q3_options[0]]) . "/>";
-                          echo "<label class='form-check-label' for='answerSerie-3.3'>" . htmlspecialchars($json_data_question_series[$q3_options[0]]) . "</label>";
-                        echo "</td>";
+                          echo '<input class="form-check-input" type="radio" name="question_3" id="answerSerie-3.3" value="' . htmlspecialchars($json_data_question_series[$q3_options[0]]) . '"/>';
+                          echo '<label class="form-check-label" for="answerSerie-3.3">' . htmlspecialchars($json_data_question_series[$q3_options[0]]) . '</label>';
+                      echo "</td>";
                       echo "</tbody>";
                       
                     echo "</table>";

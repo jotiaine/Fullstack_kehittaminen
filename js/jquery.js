@@ -1,6 +1,31 @@
+const { getJSON } = require("jquery");
+
 // Establshing no conflict just in case. $ for jQuery works only inside ready function
 $.noConflict();
 jQuery(document).ready(function ($) {
+  /* =========================
+  === TEST page link ===
+  ==========================*/
+  // KESKEN
+  function loadTestFromLink(query) {
+    $.ajax({
+      url: "ajax/load_test_page_link.php",
+      method: "POST",
+      data: { query: query },
+      success: function (data) {
+        $("#main-content-container").html(data);
+      },
+    });
+  }
+
+  $("#search-text").keyup(function () {
+    $.getJSON("file/student.json", function (data) {});
+    if (searchTxt != "") {
+      loadTestFromLink(searchTxt);
+    } else {
+      loadTestFromLink();
+    }
+  });
   /* =========================
   === FEEDBACK LOAD TESTS AJAX ===
   ==========================*/
