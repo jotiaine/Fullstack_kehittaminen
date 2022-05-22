@@ -200,7 +200,7 @@ jQuery(document).ready(function ($) {
     $(this).parent().parent().next(".student-body").fadeToggle("400", "swing");
   });
 
-  // $("#student-name-search").click(() => {
-  //   console.log("asdasd");
-  // });
+  $("body").on("click", ".search-tbody-toggle", function () {
+    $(this).next().fadeToggle("400", "swing");
+  });
 });

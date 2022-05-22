@@ -32,14 +32,14 @@
         $teacher_feedback = $row['teacher_feedback'];
         $link = "#" . $studentID;
         $output .= '
-          <thead>;
+          <thead class="search-tbody-toggle">;
             <th colspan="2" class="student-name-search display-4">' . $first_name . " " . $last_name . '
             <a href="' . $link . '" class="text-white">
               <i id="link-to-student" class="fa-solid fa-anchor text-primary hover"></i>
             </a>
             </th>
             </thead>
-            <tbody class="search-table-body d-none">
+            <tbody class="search-table-body">
               <tr>
                 <td>studentID</td>
                 <td>' . $studentID . '</td>
