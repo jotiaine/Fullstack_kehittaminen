@@ -284,18 +284,25 @@ function create_student() {
                                 <td>' . $certificate . '</td>
                               </tr>
                               </tbody>
-                              </table>
-                          <div id="certificate-container" class="text-light border border-primary rounded p-3 shadow">
-                              <h3 class="display-3 text-center shadow">Certificate<h3>
-                              <p>Congratulations for completing the test succesfully!</p>
-                              <p>Here"s your certificate</p>
-                              <div class="d-flex justify-content-center align-items-center">
-                                <span class="me-1">Download</span>
-                                <i class="certificate fa fa-certificate text-primary"></i>                              </div>
-                              </div>
+                              </table>                   
+
                           </div>
 
                           ';
+
+                          if($score == 1) {
+                            $output .= '
+                            <div id="certificate-container" class="mx-auto text-light border border-primary rounded p-3 shadow w-50">
+                            <h3 class="display-3 text-center shadow">Certificate<h3>
+                            <p>Congratulations for completing the test succesfully!</p>
+                            <p>Here"s your certificate</p>
+                            <div class="d-flex justify-content-center align-items-center">
+                              <span class="me-1">Download</span>
+                              <i class="certificate fa fa-certificate text-primary"></i>                              </div>
+                            </div>
+                            </div>
+                            ';
+                          } 
 
                     echo $output;
 
