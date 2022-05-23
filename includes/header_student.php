@@ -23,7 +23,6 @@
             </li>
             <li id="test-page" class="nav-item">
                 <a class="nav-link <?php if($page == 'test') echo 'active' ?>" href="index.php?page=test&user=student">TEST</a>
-              </form>
             </li>
             <li class="nav-item">
               <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=faq&user=student">FAQ</a>
