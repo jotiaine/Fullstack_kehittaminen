@@ -765,7 +765,7 @@ function create_student() {
                     echo "</table>";
                     
                     echo "<div id='submit-btn-container' class='container-fluid py-5 text-center bg-dark'>";
-                      echo "<button id='submit-test-btn' class='btn fs-1 btn-primary' type='submit' name='submit-test'> Submit </button>";
+                      echo "<button id='submit-test-btn' class='btn fs-1 btn-primary py-3 px-5' type='submit' name='submit-test'> Submit </button>";
                     echo "</div>";
             
                      // <!-- Sending studentId and questionId hidden with submit-test -->

@@ -298,11 +298,11 @@
 
                     </div>
 
-                    <div id="certificate-container" class="mx-auto text-light border border-primary rounded p-3 shadow w-50">
-                    <h3 class="display-3 text-center shadow">Certificate<h3>
-                    <p>Congratulations for completing the test succesfully!</p>
+                    <div id="certificate-container" class="text-center mx-auto text-muted border border-primary rounded p-4 shadow w-75 my-5 mb-5">
+                    <h3 class="p-1 display-2 text-center bg-black rounded">Certificate<h3>
+                    <p class="mt-3">Congratulations for completing the test succesfully!</p>
                     <p>Here"s your certificate</p>
-                    <div class="d-flex justify-content-center align-items-center">
+                    <div class="d-flex justify-content-center align-items-center border border-primary p-4 w-50 mx-auto rounded shadow">
                       <span class="me-1">Download</span>
                       <i class="certificate fa fa-certificate text-primary"></i>                              </div>
                     </div>
