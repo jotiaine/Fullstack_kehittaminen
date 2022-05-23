@@ -331,7 +331,7 @@ jQuery(document).ready(function ($) {
         // Pelillistämistä lisää
         // (function testTimer() if)Tässä kohtaan kun aika loppuu niin oikeat vastaukset näkyviin
         // Tai klikkaamalla näkyy vihreet
-        // velin napit Bootstrap buttoneiksi!!!
+        // Raportti napit Bootstrap buttoneiksi!!!
         // Esitelmä
         // Arvioinnit
         // Palautus

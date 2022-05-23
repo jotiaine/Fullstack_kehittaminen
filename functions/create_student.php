@@ -106,23 +106,23 @@ function create_student() {
               
               if($result -> num_rows > 0) {
 
-                echo "<p class='alert alert-warning'>User exists!</p>";
+                // echo "<p class='alert alert-warning'>User exists!</p>";
 
                 // studentID
                 $row = mysqli_fetch_assoc($result);
                 $studentID = $row['studentID'];
-                echo "<p class='alert alert-success'>STudentID" . $studentID . "</p>";
+                // echo "<p class='alert alert-success'>STudentID" . $studentID . "</p>";
 
                 // Get score, creationDate
                 $sql = "SELECT * FROM test WHERE studentID = '$studentID'";
                 
                 // Query result
                 $result = $conn -> query($sql);
-                if($result) {
-                  echo "<p class='alert alert-success'>studentID success</p>";
-                } else {
-                  echo "<p class='alert alert-warning'>studentID failed</p>";
-                }
+                // if($result) {
+                //   echo "<p class='alert alert-success'>studentID success</p>";
+                // } else {
+                //   echo "<p class='alert alert-warning'>studentID failed</p>";
+                // }
                 $row = mysqli_fetch_assoc($result);
 
                 // Variables score & creationDate
@@ -140,11 +140,11 @@ function create_student() {
                     $sql = "SELECT * FROM student INNER JOIN test ON student.studentID = test.studentID INNER JOIN reward ON student.studentID = reward.studentID WHERE student.studentID = '$studentID'";
   
                     $result = $conn -> query($sql);
-                    if($result) {
-                      echo "<p class='alert alert-success'>Kolmosliitos success</p>";
-                    } else {
-                      echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
-                    }
+                    // if($result) {
+                    //   echo "<p class='alert alert-success'>Kolmosliitos success</p>";
+                    // } else {
+                    //   echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
+                    // }
 
                     $row = mysqli_fetch_assoc($result);
                     
@@ -178,11 +178,11 @@ function create_student() {
                         $sql = "SELECT * FROM question WHERE questionID = '$questionID'";
   
                         $result = $conn -> query($sql);
-                        if($result) {
-                          echo "<p class='alert alert-success'>Kolmosliitos success</p>";
-                        } else {
-                          echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
-                        }
+                        // if($result) {
+                        //   echo "<p class='alert alert-success'>Kolmosliitos success</p>";
+                        // } else {
+                        //   echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
+                        // }
       
                         $row = mysqli_fetch_assoc($result);
       
@@ -456,11 +456,11 @@ function create_student() {
                     $output = "";
 
 
-                    if($result) {
-                      echo "<p class='alert alert-success'>Query success</p>";
-                    } else {
-                      echo "<p class='alert alert-warning'>Query failed</p>";
-                    }
+                    // if($result) {
+                    //   echo "<p class='alert alert-success'>Query success</p>";
+                    // } else {
+                    //   echo "<p class='alert alert-warning'>Query failed</p>";
+                    // }
                     
                     return;
                   }
@@ -479,8 +479,8 @@ function create_student() {
                 $result = $conn -> query($sql);
                 
                 // If insert succeeded?
-                if($result) echo "<p class='alert alert-success'>Insert student is a success!</p>";
-                else echo "<p class='alert alert-warning'>Insert student failed</p>";
+                // if($result) echo "<p class='alert alert-success'>Insert student is a success!</p>";
+                // else echo "<p class='alert alert-warning'>Insert student failed</p>";
 
                 // Find studentID
                 $sql = "SELECT studentID FROM student WHERE first_name = '$first_name' AND last_name = '$last_name' AND email = '$email'";
@@ -489,8 +489,8 @@ function create_student() {
 
                 $studentID = $row['studentID'];
                 // If query
-                if($result) echo "<p class='alert alert-success'>Found the studenID!</p>";
-                else echo "<p class='alert alert-warning'>Did not find studentID</p>";
+                // if($result) echo "<p class='alert alert-success'>Found the studenID!</p>";
+                // else echo "<p class='alert alert-warning'>Did not find studentID</p>";
                 
 
                 /*
@@ -542,34 +542,34 @@ function create_student() {
                 // Creating empty test for the student
                 $sql = "INSERT INTO test (studentID, questionID) VALUES ('$studentID', '$questionID')";
                 $result = $conn -> query($sql);
-                if($result) echo "<p class='alert alert-success'>Insert empty test is a success!</p>";
-                else echo "<p class='alert alert-warning'>Empty test addition failed</p>";
+                // if($result) echo "<p class='alert alert-success'>Insert empty test is a success!</p>";
+                // else echo "<p class='alert alert-warning'>Empty test addition failed</p>";
                 // Getting testID also
                 $sql = "SELECT testID FROM test WHERE studentID = '$studentID'";
                 $result = $conn -> query($sql);
                 $row = mysqli_fetch_assoc($result);
 
                 if($result) {
-                  echo "<p class='alert alert-success'>Insert empty test is a success!</p>";
+                  // echo "<p class='alert alert-success'>Insert empty test is a success!</p>";
                   $testID = $row['testID'];
                 }
-                else echo "<p class='alert alert-warning'>Empty test addition failed</p>";
+                // else echo "<p class='alert alert-warning'>Empty test addition failed</p>";
                
                 // Creating empty reward row for student
                 $sql = "INSERT INTO reward (studentID) VALUES ('$studentID')";
                 $result = $conn -> query($sql);
-                if($result) echo "<p class='alert alert-success'>Insert empty reward is a success!</p>";
-                else echo "<p class='alert alert-warning'>Empty reward addition failed</p>";
+                // if($result) echo "<p class='alert alert-success'>Insert empty reward is a success!</p>";
+                // else echo "<p class='alert alert-warning'>Empty reward addition failed</p>";
                 // Getting rewardID also
                 $sql = "SELECT rewardID FROM reward WHERE studentID = '$studentID'";
                 $result = $conn -> query($sql);
                 $row = mysqli_fetch_assoc($result);
 
                 if($result) {
-                  echo "<p class='alert alert-success'>Getting rewardID is a success!</p>";
+                  // echo "<p class='alert alert-success'>Getting rewardID is a success!</p>";
                   $rewardID = $row['rewardID'];
                 }
-                else echo "<p class='alert alert-warning'>Failed to get rewardID!</p>";
+                // else echo "<p class='alert alert-warning'>Failed to get rewardID!</p>";
                 
                 /******************************/
 
@@ -673,7 +673,7 @@ function create_student() {
 
 
 
-              echo "<div id='timer-container' class='alert bg-dark fixed-top text-primary text-center p-0 shadow'><h3 class='timeri display-5 shadow'>00:60</h3></div>";
+              echo "<div id='timer-container' class='alert bg-dark fixed-top text-primary text-center p-0 shadow'><h3 class='timeri display-5'>00:60</h3></div>";
                echo "<div id='start-btn-container' class='container-fluid pb-5 pt-3 text-center bg-dark text-white'>";
                echo "<h2 class='var-header mb-4  shadow-lg p-3'>Ready to start?</h2>";
                echo "<button id='start-test-btn' class='btn btn-dark text-white'> Show nudes! </button>";
@@ -681,7 +681,7 @@ function create_student() {
             
              echo "<div id='test-container' class='container-fluid p-5 text-center bg-dark text-white shadow'>";
              echo "<form action='index.php?page=test&user=student' method='post' class='d-flex flex-column align-items-center justify-content-center'>";
-             echo "<h3 class='var-header mb-3  shadow-lg p-3 w-50'> Test of Mensa </h3>";
+             echo "<h3 class='var-header mb-3  shadow-lg p-3 w-50 mt-5'> Test of Mensa </h3>";
             
                   
              echo "<table class='table-style table table-dark text-white table-striped table-hover w-75 text-center text-dark table-bordered shadow-lg'>";

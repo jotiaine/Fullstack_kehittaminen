@@ -91,11 +91,7 @@
               // Student answers
               $user_answer_1 = $conn->real_escape_string($_POST['question_1']);
               $user_answer_2 = $conn->real_escape_string($_POST['question_2']);
-              $user_answer_3 = $conn->real_escape_string($_POST['question_3']);
-              echo $user_answer_1 . "<br>";
-              echo $user_answer_2 . "<br>";
-              echo $user_answer_3;
-        
+              $user_answer_3 = $conn->real_escape_string($_POST['question_3']);        
         
           
               // Score 
@@ -113,8 +109,8 @@
               $sql = "UPDATE test SET question_1 = '$question_1', question_2 = '$question_2', question_3 = '$question_3', opt_1_1 = '$opt_1_1', opt_1_2 = '$opt_1_2', opt_1_3 = '$opt_1_3', opt_2_1 = '$opt_2_1', opt_2_2 = '$opt_2_2', opt_2_3 = '$opt_2_3', opt_3_1 = '$opt_3_1', opt_3_2 = '$opt_3_2', opt_3_3 = '$opt_3_3', user_answer_1 = '$user_answer_1', user_answer_2 = '$user_answer_2', user_answer_3 = '$user_answer_3', score = '$score', teacher_feedback = 'NULL', creationDate = '$creationDate' WHERE studentID = '$studentID' AND questionID = '$questionID'";
               $result = mysqli_query($conn, $sql);
       
-              if($result) echo "<p class='alert-success'>Update success!</p>";
-              else echo "<p class='alert-warning'>Update failed!</p>";
+              // if($result) echo "<p class='alert-success'>Update success!</p>";
+              // else echo "<p class='alert-warning'>Update failed!</p>";
       
       
               // NEW TEST OBJECT
@@ -129,11 +125,11 @@
               $sql = "SELECT * FROM student INNER JOIN test ON student.studentID = test.studentID INNER JOIN reward ON student.studentID = reward.studentID WHERE student.studentID = '$studentID'";
   
               $result = $conn -> query($sql);
-              if($result) {
-                echo "<p class='alert alert-success'>Kolmosliitos success</p>";
-              } else {
-                echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
-              }
+              // if($result) {
+              //   echo "<p class='alert alert-success'>Kolmosliitos success</p>";
+              // } else {
+              //   echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
+              // }
 
               $row = mysqli_fetch_assoc($result);
               
@@ -155,9 +151,6 @@
                   $opt_3_1 = $row['opt_3_1'];
                   $opt_3_2 = $row['opt_3_2'];
                   $opt_3_3 = $row['opt_3_3'];
-                  $correct_answer_1 = $row['correct_answer_1'];
-                  $correct_answer_1 = $row['correct_answer_1'];
-                  $correct_answer_1 = $row['correct_answer_1'];
                   $user_answer_1 = $row['user_answer_1'];
                   $user_answer_2 = $row['user_answer_2'];
                   $user_answer_3 = $row['user_answer_3'];
@@ -170,11 +163,11 @@
                   $sql = "SELECT * FROM question WHERE questionID = '$questionID'";
   
                   $result = $conn -> query($sql);
-                  if($result) {
-                    echo "<p class='alert alert-success'>Kolmosliitos success</p>";
-                  } else {
-                    echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
-                  }
+                  // if($result) {
+                  //   echo "<p class='alert alert-success'>Kolmosliitos success</p>";
+                  // } else {
+                  //   echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
+                  // }
 
                   $row = mysqli_fetch_assoc($result);
 
@@ -448,11 +441,11 @@
               $output = "";
 
 
-              if($result) {
-                echo "<p class='alert alert-success'>Query success</p>";
-              } else {
-                echo "<p class='alert alert-warning'>Query failed</p>";
-              }
+              // if($result) {
+              //   echo "<p class='alert alert-success'>Query success</p>";
+              // } else {
+              //   echo "<p class='alert alert-warning'>Query failed</p>";
+              // }
 
 
 
