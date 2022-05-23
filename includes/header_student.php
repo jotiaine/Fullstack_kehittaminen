@@ -22,7 +22,7 @@
               <a class="nav-link <?php if($page == 'about') echo 'active' ?>" href="index.php?page=about&user=student">ABOUT</a>
             </li>
             <li id="test-page" class="nav-item">
-              <a class="nav-link <?php if($page == 'test') echo 'active' ?>" href="index.php?page=test&user=student">TEST</a>
+                <a class="nav-link <?php if($page == 'test') echo 'active' ?>" href="index.php?page=test&user=student">TEST</a>
             </li>
             <li class="nav-item">
               <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=faq&user=student">FAQ</a>

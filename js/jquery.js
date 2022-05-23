@@ -2,11 +2,40 @@
 $.noConflict();
 jQuery(document).ready(function ($) {
   /* =========================
+  === TEST page link ===
+  ==========================*/
+  $("#test-page").click(function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: "file/student.json",
+      method: "GET",
+      data: { get_param: "value" },
+      dataType: "json",
+      success: function (data) {
+        let test_link_studentID = data.studentID;
+        console.log(test_link_studentID);
+        $.ajax({
+          url: "ajax/load_test_page_link.php",
+          method: "POST",
+          data: { test_link_studentID: test_link_studentID },
+          success: function (data) {
+            console.log("toimii");
+            $("#main-content-container").html(data);
+          },
+          error: function () {
+            console.log("Ei toimi");
+          },
+        });
+      },
+    });
+  });
+
+  /* =========================
   === FEEDBACK LOAD TESTS AJAX ===
   ==========================*/
-  load_students();
+  loadStudentsSearch();
 
-  function load_students(query) {
+  function loadStudentsSearch(query) {
     $.ajax({
       url: "ajax/load_tests.php",
       method: "POST",
@@ -19,11 +48,11 @@ jQuery(document).ready(function ($) {
 
   $("#search-text").keyup(function () {
     $("#search-result").removeClass("d-none");
-    var searchTxt = $(this).val();
+    let searchTxt = $(this).val();
     if (searchTxt != "") {
-      load_students(searchTxt);
+      loadStudentsSearch(searchTxt);
     } else {
-      load_students();
+      loadStudentsSearch();
     }
     $("html, body").animate(
       {
@@ -200,7 +229,13 @@ jQuery(document).ready(function ($) {
     $(this).parent().parent().next(".student-body").fadeToggle("400", "swing");
   });
 
+  // Dynamic data -> use .on('event', 'selector', 'callback')
   $("body").on("click", ".search-tbody-toggle", function () {
+    $(this).next().fadeToggle("400", "swing");
+  });
+
+  // test.php
+  $("body").on("click", "#student-test-result-heading", function () {
     $(this).next().fadeToggle("400", "swing");
   });
 });

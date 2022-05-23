@@ -203,7 +203,8 @@
   border: none !important;
 }
 
-.student-name-search {
+.student-name-search,
+.student-test-result {
   background-color: var(--feedback-header-color) !important;
 }
 
@@ -234,20 +235,23 @@
   transform: scale(1.05) !important;
 }
 
-.delete-icon {
+.delete-icon,
+.certificate {
   font-size: 1.5rem;
   color: rgb(21, 21, 246) !important;
   opacity: 0.8;
   transition: all 0.2s ease-in-out;
 }
 
-.delete-icon:hover {
+.delete-icon:hover,
+.certificate:hover {
   color: rgb(12, 12, 194) !important;
   opacity: 1;
 }
 
 .delete-icon:active,
-#link-to-student:active {
+#link-to-student:active,
+.certificate:active {
   transform: scale(0.97) !important;
 }
 
@@ -272,6 +276,16 @@
 
 .textarea-feedback:focus {
   border: 1px solid blue !important;
+}
+
+#certificate-container {
+  border: 1px solid black !important;
+  box-shadow: 2px 2px 1rem black !important;
+}
+
+#certificate-container:hover {
+  transform: scale(1.01) !important;
+  border: 2px solid rgb(13, 13, 65) !important;
 }
 
 @media (max-width: 231px) {
