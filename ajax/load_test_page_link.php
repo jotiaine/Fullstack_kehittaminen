@@ -1,22 +1,10 @@
+<?php include('../includes/dbConnect.php') ?>
 <?php
 
-
-
-      // Using JSONS to find studentID, first_name and last_name and email
-      $json_student = file_get_contents('file/student.json');
-      $json_question_series = file_get_contents('file/question_series.json');
-      $json_test = file_get_contents('file/test.json');
-      
-      // Decode the JSON file
-      $student = json_decode($json_student,true);
-      $question_series = json_decode($json_question_series,true);
-      $test = json_decode($json_test,true);
+  if(isset($_POST['test_link_studentID']))
   
-      // All necessary info gathered from jsons
-      $studentID = $student['studentID'];
-      $questionID = $question_series['questionID'];
-      $testID = $test['testID'];
-
+  $output = "";
+  $studentID = $_POST['test_link_studentID'];
   $sql = "SELECT * FROM student INNER JOIN test ON student.studentID = test.studentID INNER JOIN reward ON student.studentID = reward.studentID WHERE student.studentID = '$studentID'";
   
   $result = $conn -> query($sql);
@@ -46,9 +34,6 @@
       $opt_3_1 = $row['opt_3_1'];
       $opt_3_2 = $row['opt_3_2'];
       $opt_3_3 = $row['opt_3_3'];
-      $correct_answer_1 = $row['correct_answer_1'];
-      $correct_answer_1 = $row['correct_answer_1'];
-      $correct_answer_1 = $row['correct_answer_1'];
       $user_answer_1 = $row['user_answer_1'];
       $user_answer_2 = $row['user_answer_2'];
       $user_answer_3 = $row['user_answer_3'];
@@ -73,7 +58,7 @@
       $correct_answer_2 = $row['correct_answer_2'];
       $correct_answer_3 = $row['correct_answer_3'];
 
-      $output = "";
+
 
       if($score == 1) {
         $output = '
@@ -206,9 +191,7 @@
         </div>
         </div>
         ';
-      } 
-
-      else {
+      } else {
 
         $output = '
         <div class="container-fluid d-flex flex-column justify-content-center align-items-center">
@@ -334,7 +317,15 @@
       } 
 
 
+      
+        if($result) {
+          echo "<p class='alert alert-success'>Query success</p>";
+        } else {
+          echo "<p class='alert alert-warning'>Query failed</p>";
+        }
+
 
   echo $output;
-  $output = "";
+
+  
 ?>

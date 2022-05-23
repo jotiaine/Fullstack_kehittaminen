@@ -4,26 +4,31 @@ jQuery(document).ready(function ($) {
   /* =========================
   === TEST page link ===
   ==========================*/
-  // KESKEN
-  // function loadTestFromLink(query) {
-  //   $.ajax({
-  //     url: "ajax/load_test_page_link.php",
-  //     method: "POST",
-  //     data: { query: query },
-  //     success: function (data) {
-  //       $("#main-content-container").html(data);
-  //     },
-  //   });
-  // }
-
-  // $("#search-text").keyup(function () {
-  //   $.getJSON("file/student.json", function (data) {});
-  //   if (searchTxt != "") {
-  //     loadTestFromLink(searchTxt);
-  //   } else {
-  //     loadTestFromLink();
-  //   }
-  // });
+  $("#test-page").click(function (e) {
+    e.preventDefault();
+    $.ajax({
+      url: "file/student.json",
+      method: "GET",
+      data: { get_param: "value" },
+      dataType: "json",
+      success: function (data) {
+        let test_link_studentID = data.studentID;
+        console.log(test_link_studentID);
+        $.ajax({
+          url: "ajax/load_test_page_link.php",
+          method: "POST",
+          data: { test_link_studentID: test_link_studentID },
+          success: function (data) {
+            console.log("toimii");
+            $("#main-content-container").html(data);
+          },
+          error: function () {
+            console.log("Ei toimi");
+          },
+        });
+      },
+    });
+  });
 
   /* =========================
   === FEEDBACK LOAD TESTS AJAX ===
