@@ -1,7 +1,8 @@
 <?php 
 /**
  *  file:   about_teacher.php
- *  desc:   Shows information about the students and exams for the teachers
+ *  desc:   Shows information about the students and exams for the teachers, sorting with buttons.
+ * 
  */
 ?>
 
@@ -13,29 +14,120 @@ FROM test
 INNER JOIN student ON test.studentID = student.studentID
 ORDER by student.last_name, student.first_name, student.studentID';
 
+if(isset($_POST['Koe_ID'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by test.testID';
+}
+
+if(isset($_POST['Oppilaan_ID'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by student.studentID';
+}
+
+if(isset($_POST['Etunimi'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by student.first_name';
+}
+
+if(isset($_POST['Sukunumi'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by student.last_name';
+}
+
+if(isset($_POST['Email'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by student.email';
+}
+
+if(isset($_POST['Pisteet'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by test.score';
+}
+
+if(isset($_POST['Palaute'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by test.teacher_feedback';
+}
+
+if(isset($_POST['Koepaiva'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by test.creationDate';
+}
+
 $result=$conn->query($sql);
 $howMany=mysqli_num_rows($result);
 $examPassed = 0;
 $feedBackMissing = 0;
 $examFailed = 0;
 $failedExamFeedback = 0;
+
 ?>
 <div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100 text-white'>
   <h5>Yhteenvetoa opiskelijoiden tiedoista:</h5><br>
 </div>
 
-<table class="table table-striped table-dark text-white">
+<table class="table table-striped table-dark text-white text-left">
     <thead>
       <tr>
-        <th><a href = "#exams">Koe ID</a></th>
-        <th>Oppilaan ID</th>
-        <th>Etunimi</th>
-        <th>Sukunimi</th>
-        <th>Email</th>
-        <th>Pisteet</th>
-        <th>Palaute</th>
-        <th>Koepäivä</th>
+      <th>
+        <!--<th>Koe ID</th>-->
+        <form method="post">
+            <button class="btn-primary btn-sm"><input type="submit" name="Koe_ID" value="Koe ID"/></button>
+        </form>
+        
+        <!--<th>Oppilaan ID</th>-->
+        <th><form method="post">
+            <button class="btn-primary btn-sm"><input type="submit" name="Oppilaan_ID" value="Oppilaan ID"/></button>
+        </form>
+        
+        <!--<th>Etunimi</th>-->
+        <th><form method="post">
+            <button class="btn-primary btn-sm"><input type="submit" name="Etunimi" value="Etunimi"/></button>
+        </form>
+        
+        <!--<th>Sukunimi</th>-->
+        <th><form method="post">
+            <button class="btn-primary btn-sm"><input type="submit" name="Sukunimi" value="Sukunimi"/></button>
+        </form>
+        
+        <!--<th>Email</th>-->
+        <th><form method="post">
+            <button class="btn-primary btn-sm"><input type="submit" name="Email" value="Email"/></button>
+        </form>
+        
+        <!--<th>Pisteet</th>-->
+        <th><form method="post">
+            <button class="btn-primary btn-sm"><input type="submit" name="Pisteet" value="Pisteet"/></button>
+        </form>
+        
+        <!--<th>Palaute</th>-->
+        <th><form method="post">
+            <button class="btn-primary btn-sm"><input type="submit" name="Palaute" value="Palaute"/></button>
+        </form>
+        
+        <!--<th>Koepäivä</th>-->
+        <th><form method="post">
+            <button class="btn-primary btn-sm"><input type="submit" name="Koepaiva" value="Koepäivä"/></button>
+        </form>        
+
         <th>Sertifikaatti</th>
+
       </tr>
     </thead>
     <tbody>
@@ -53,25 +145,22 @@ $failedExamFeedback = 0;
           
           if ($row['score'] == 1) {
             $examPassed++;
-            if ($row['teacher_feedback'] == "" || $row['teacher_feedback'] == 0 || $row['teacher_feedback'] == NULL) {
+            if ($row['teacher_feedback'] == "" || $row['teacher_feedback'] == 0 || $row['teacher_feedback'] == 'NULL') {
               $feedBackMissing++;
             }
             echo '<td><a href = index.php?page=cerPDF&user=teacher&pID='.$row['studentID'].'><button>Tulosta</button></a></td>';
 
-          } else if ($row['score'] == 0 && $row['score'] != "" && $row['score'] != NULL){
+          } else if ($row['score'] == 0 && $row['score'] != "" && $row['score'] != 'NULL'){
               $examFailed++;
               if ($row['teacher_feedback'] == 'NULL') {
                 $failedExamFeedback++;
-              }
-              
+              }             
               echo '<td>'.'Odottaa uusintaa'.'</td>';
-          }
-          
+          }         
            else {
             echo '<td>'.'Odottaa suoritusta'.'</td>';
           }
-          echo '</tr>';
-          
+          echo '</tr>';        
       }
       ?>
     </tbody>
@@ -145,7 +234,7 @@ $rows=mysqli_num_rows($result);
 <table class="table table-striped table-dark text-white">
     <thead>
       <tr>
-        <th id="exams">Koe_ID</th>
+        <th>Koe_ID</th>
         <th>Koepäivä</th>
         <th>Kysymys 1</th>
         <th>1 Oikea vastaus</th>
@@ -167,8 +256,7 @@ $rows=mysqli_num_rows($result);
           echo '<td>'.$row['correct_answer_2'].'</td>';
           echo '<td>'.$row['question_3'].'</td>';          
           echo '<td>'.$row['correct_answer_3'].'</td>';
-          echo '</tr>';
-          
+          echo '</tr>';        
       }
       ?>
     </tbody>
