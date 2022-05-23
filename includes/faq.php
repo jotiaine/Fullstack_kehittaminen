@@ -1,6 +1,7 @@
 <?php 
   /*
     FAQ page
+    Frequently asked questions about the exam and the functioning of the application
   */
 ?>
 

@@ -10,7 +10,6 @@
           elseif($page == 'faq') include('faq.php');
           elseif($page == 'test') include('test.php');
           elseif($page == 'feedback') include('feedback.php');
-          elseif($page == 'testpage') include('testpage.php');  //väliaikainen testpage
           elseif($page == 'cerPDF') include('cerPDF.php');  
           elseif($page == 'about_teacher') include('about_teacher.php');
           else echo '

@@ -1,8 +1,8 @@
 <?php 
-  /*
-    ABOUT_teacher page
-
-  */
+/**
+ *  file:   about_teacher.php
+ *  desc:   Shows information about the students and exams for the teachers
+ */
 ?>
 
 <?php
@@ -27,7 +27,7 @@ $failedExamFeedback = 0;
 <table class="table table-striped table-dark text-white">
     <thead>
       <tr>
-        <th>Koe ID</th>
+        <th><a href = "#exams">Koe ID</a></th>
         <th>Oppilaan ID</th>
         <th>Etunimi</th>
         <th>Sukunimi</th>
@@ -145,7 +145,7 @@ $rows=mysqli_num_rows($result);
 <table class="table table-striped table-dark text-white">
     <thead>
       <tr>
-        <th>Koe_ID</th>
+        <th id="exams">Koe_ID</th>
         <th>Koepäivä</th>
         <th>Kysymys 1</th>
         <th>1 Oikea vastaus</th>

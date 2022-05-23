@@ -1,7 +1,7 @@
 <?php
 /**
  *  file:   cerPDF.php
- *  desc:   Tulostaa PDF-dokumentin 
+ *  desc:   Prints a PDF document which tells that the student has done the exam
  */
 
 if(!empty($_GET['pID'])) $id=$_GET['pID'];else header('location: index.php?page=faq');

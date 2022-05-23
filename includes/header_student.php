@@ -26,8 +26,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=faq&user=student">FAQ</a>
-            <li class="nav-item">
-              <a class="nav-link <?php if($page == 'testpage') echo 'active' ?>" href="index.php?page=testpage&user=student">TESTPAGE</a> <!--voidaan poistaa kun ei ole enää tarve-->
             </li>
           </ul>
         </div>

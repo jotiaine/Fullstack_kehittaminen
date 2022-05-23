@@ -1,6 +1,7 @@
 <?php 
   /*
     ABOUT page
+    This page will be deleted when the application is ready.
 
   */
 ?>
