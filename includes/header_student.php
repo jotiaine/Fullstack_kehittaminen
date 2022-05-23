@@ -16,16 +16,16 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a id="home-link" class="nav-link <?php if($page == '') echo 'active' ?>" href="index.php?user=student">HOME</a>
+              <a id="home-link" class="test-page-link nav-link <?php if($page == '') echo 'active' ?>" href="index.php?user=student">HOME</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($page == 'about') echo 'active' ?>" href="index.php?page=about&user=student">ABOUT</a>
+              <a class="test-page-link nav-link <?php if($page == 'about') echo 'active' ?>" href="index.php?page=about&user=student">ABOUT</a>
             </li>
             <li id="test-page" class="nav-item">
-                <a class="nav-link <?php if($page == 'test') echo 'active' ?>" href="index.php?page=test&user=student">TEST</a>
+                <a id="test-page-link" class="nav-link <?php if($page == 'test') echo 'active' ?>" href="index.php?page=test&user=student">TEST</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=faq&user=student">FAQ</a>
+              <a class="test-page-link nav-link <?php if($page == 'faq') echo 'active' ?>" href="index.php?page=faq&user=student">FAQ</a>
             </li>
           </ul>
         </div>

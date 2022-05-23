@@ -238,4 +238,10 @@ jQuery(document).ready(function ($) {
   $("body").on("click", "#student-test-result-heading", function () {
     $(this).next().fadeToggle("400", "swing");
   });
+
+  // Test link hover
+  $("#test-page-link").click(function () {
+    console.log("asdasd");
+    $(".test-page-link").css("color", "grey");
+  });
 });
