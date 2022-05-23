@@ -1,7 +1,7 @@
 <?php include('../includes/dbConnect.php') ?>
 <?php
 
-  if(isset($_POST['test_link_studentID']))
+  if(isset($_POST['test_link_studentID'])) {
   
   $output = "";
   $studentID = $_POST['test_link_studentID'];
@@ -326,6 +326,6 @@
 
 
   echo $output;
-
+      }
   
 ?>

@@ -288,6 +288,14 @@
   border: 2px solid rgb(13, 13, 65) !important;
 }
 
+#test-page-link:hover {
+  color: white !important;
+}
+
+#test-page-link:focus {
+  color: white !important;
+}
+
 @media (max-width: 231px) {
   #header-container {
     margin-bottom: 4rem !important;
