@@ -6,7 +6,7 @@
 
 <!-- MODAL -->
 <div id="myModal" class="modal">
-  <div class="modal-dialog ">
+  <div class="modal-dialog">
     <div class="modal-content bg-light">
 
       <!-- MODAL HEADER -->

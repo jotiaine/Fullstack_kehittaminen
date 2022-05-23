@@ -15,19 +15,3 @@ function renderText() {
     setTimeout(renderText, 400);
   }
 }
-
-function timeri (){
-
-  var timer;
-  var id = document.getElementById('timeri');
-
-  var sec = 60;
-  timer = setInterval(() => {
-
-    id.innerHTML = '00:'+sec;
-
-    sec--;
-
-  }, 1000)
-
-};
