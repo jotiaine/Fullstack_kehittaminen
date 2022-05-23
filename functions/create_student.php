@@ -685,7 +685,7 @@ function create_student() {
 
 
 
-              echo "<div id='timer-container' class='d-none bg-warning fixed-top'><h3>TIMER</h3></div>";
+              echo "<div id='timer-container' class='bg-warning fixed-top'><h3 class='timeri'>00:60</h3></div>";
                echo "<div id='start-btn-container' class='container-fluid pb-5 pt-3 text-center bg-dark text-white'>";
                echo "<h2 class='var-header mb-4  shadow-lg p-3'>Ready to start?</h2>";
                echo "<button id='start-test-btn' class='btn btn-dark text-white'> Show nudes! </button>";

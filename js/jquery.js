@@ -133,6 +133,23 @@ jQuery(document).ready(function ($) {
 
   /* test.php */
   // hide test form
+
+  function timeri (){
+
+    var timer;
+    var id = $('timeri');
+  
+    var sec = 60;
+    setInterval(() => {
+  
+      id.html = '00:'+sec;
+  
+      sec--;
+  
+    }, 1000)
+  
+  };
+
   $("#test-container").hide();
 
   // hide submit test btn container
