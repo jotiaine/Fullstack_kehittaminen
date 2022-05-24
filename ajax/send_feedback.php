@@ -3,8 +3,7 @@
 require('../includes/dbConnect.php');
 
 
-if(isset($_POST['t_feedback_SFB']))
-{
+if(isset($_POST['t_feedback_SFB'])) {
     $t_feedback_SFB = $conn -> real_escape_string($_POST['t_feedback_SFB']);
     $hiddenTestID_SFB = $conn -> real_escape_string($_POST['hiddenTestID_SFB']);
 
@@ -12,10 +11,11 @@ if(isset($_POST['t_feedback_SFB']))
 
     $result = $conn->query($query);
 
-    if($result) {
-        echo $t_feedback_SFB;
-    } else echo "<p class='alert alert-danger'>query failed</p>";
+    // if($result) {
+    //     echo $t_feedback_SFB;
+    // } else echo "<p class='alert alert-danger'>query failed</p>";
 
-} else echo "<p class='alert alert-danger'>t_feedback is not set</p>";
+}
+//  else echo "<p class='alert alert-danger'>t_feedback is not set</p>";
 
 ?>

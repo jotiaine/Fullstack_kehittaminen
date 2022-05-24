@@ -135,15 +135,15 @@ $failedExamFeedback = 0;
 
 ?>
 <div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100 text-white'>
-  <h5 id="main-title">Yhteenvetoa opiskelijoiden tiedoista:</h5>
+  <h5 id="main-title" class="display-1 text-light text-center">Yhteenvetoa opiskelijoiden tiedoista:</h5><br>
   <a href = "#report"><button class="button-link">Suora linkki raporttikohtaan</button></a>
   <p><a href = "#exams"><button class="button-link">Suora linkki koekysymyskohtaan</button></a></p>
 </div>
 
-<table class="table table-striped table-dark text-white text-left">
+<table class="table-style table text-muted table-borderless table-dark table-striped table-hover w-75 mb-5 shadow mx-auto">
     <thead>
       <tr>
-        <th>Koe ID</th>
+        <th><a class="btn btn-primary" href = "#exams">Koe ID</a></th>
         <th>Oppilaan ID</th>
         <th>Etunimi</th>
         <th>Sukunimi</th>
@@ -229,7 +229,7 @@ $failedExamFeedback = 0;
             if ($row['teacher_feedback'] == "" || $row['teacher_feedback'] == 0 || $row['teacher_feedback'] == 'NULL') {
               $feedBackMissing++;
             }
-            echo '<td><a href = index.php?page=cerPDF&user=teacher&pID='.$row['studentID'].'><button>Tulosta</button></a></td>';
+            echo '<td><a class="btn btn-primary text-white" href = index.php?page=cerPDF&user=teacher&pID='.$row['studentID'].'>Tulosta</a></td>';
 
           } else if ($row['score'] == 0 && $row['score'] != "" && $row['score'] != 'NULL'){
               $examFailed++;
@@ -246,10 +246,11 @@ $failedExamFeedback = 0;
       ?>
     </tbody>
   </table>
-  <p id="report" class="table table-striped table-dark text-white">Opiskelijoita yhteensä: <?php echo $howMany ?> kpl</p>
 
-      <div class='table table-striped table-dark text-white heading-container-summary'>
-      <h4>Lukuja koesuorituksista:</h4>
+  <h2 id="report" class="display-4 fw-bold text-muted text-black text-center">Opiskelijoita yhteensä: <?php echo $howMany ?> kpl</h2>
+
+      <div class='table-style table text-muted table-borderless table-dark table-striped table-hover w-50 mb-5 shadow mx-auto heading-container-summary'>
+      <h4 class="display-5 text-muted text-center">Lukuja koesuorituksista:</h4>
       <div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100'>
         <div class='text-box'>
           <p>Kokeen hyväksytysti suorittaneita opiskelijoita:
@@ -310,10 +311,10 @@ $result=$conn->query($sql);
 $rows=mysqli_num_rows($result);
 ?>
 <div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100 text-white'>
-  <h5 id="exams">Muodostettujen kokeiden kysymykset ja oikeat vastaukset:</h5>
+  <h5 id="exams" class="display-4 fw-bold text-muted text-center">Muodostettujen kokeiden kysymykset ja oikeat vastaukset:</h5>
 </div>
-<h6 class="table table-dark text-white">Kokeita yhteensä: <?php echo $rows ?>kpl</h6>
-<table class="table table-striped table-dark text-white">
+<h6 class="display-5 text-muted text-center">Kokeita yhteensä: <?php echo $rows ?>kpl</h6>
+<table class="table-style table text-muted table-borderless table-dark table-striped table-hover w-75 mb-5 shadow mx-auto">
     <thead>
       <tr>
         <th>Koe_ID</th>

@@ -14,8 +14,8 @@ $result=$conn->query($sql);
 $rows=mysqli_num_rows($result);
 
 ?>
-<h3>All Students  (<?php echo $rows ?>kpl)</h3>
-<table class="table table-striped table-dark text-white shadow">
+<h3 class="text-light display-3 text-center shadow p-2 mb-4">All Students  (<?php echo $rows ?>kpl)</h3>
+<table class="table-style table gy-3 text-muted table-borderless table-dark table-striped table-hover w-75 mb-5 shadow mx-auto">
     <thead>
       <tr>
         <th>StudentID</th>
@@ -33,7 +33,7 @@ $rows=mysqli_num_rows($result);
           echo '<td>'.$row['last_name'].'</td>';
           echo '<td>'.$row['email'].'</td>';
           echo '</tr>';
-          echo '<td><a href = index.php?page=cerPDF&user=teacher&pID='.$row['studentID'].'><button>Sertifikaatti</button></a></td>';
+          echo '<td><a class="btn btn-primary text-white" href = index.php?page=cerPDF&user=teacher&pID='.$row['studentID'].'>Sertifikaatti</a></td>';
       }
       //$conn->close(); 
       ?>
@@ -47,7 +47,7 @@ $result=$conn->query($sql);
 $rows=mysqli_num_rows($result);
 ?>
 <br><h3>All Tests (<?php echo $rows ?>kpl)</h3>
-<table class="table table-striped table-dark text-white">
+<table class="table-style table gy-3 text-muted table-borderless table-dark table-striped table-hover w-75 mb-5 shadow mx-auto">
     <thead>
       <tr>
         <th>TestID</th>
@@ -78,7 +78,7 @@ $result=$conn->query($sql);
 $rows=mysqli_num_rows($result);
 ?>
 <br><h3>All Questions (<?php echo $rows ?>kpl)</h3>
-<table class="table table-striped table-dark text-white">
+<table class="table-style table gy-3 text-muted table-borderless table-dark table-striped table-hover w-75 mb-5 shadow mx-auto">
     <thead>
       <tr>
         <th>questionID</th>
@@ -115,7 +115,7 @@ $result=$conn->query($sql);
 $rows=mysqli_num_rows($result);
 ?>
 <br><h3>All Rewards (<?php echo $rows ?>kpl)</h3>
-<table class="table table-striped table-dark text-white">
+<table class="table-style table gy-3 text-muted table-borderless table-dark table-striped table-hover w-75 mb-5 shadow mx-auto">
     <thead>
       <tr>
         <th>rewardID</th>

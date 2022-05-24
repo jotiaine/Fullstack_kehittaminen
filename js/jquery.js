@@ -126,6 +126,30 @@ jQuery(document).ready(function ($) {
       alert("Feedback is empty already!");
     }
   });
+  /* =========================
+  === TEST AJAX ===
+  ==========================*/
+  // function deleteFeedback(hiddenTestID, t_feedbackEl) {
+  //   $.ajax({
+  //     url: "ajax/delete_feedback.php",
+  //     method: "POST",
+  //     data: { hiddenTestID: hiddenTestID, t_feedback: t_feedbackEl.html() },
+  //     success: function (data) {
+  //       t_feedbackEl.html(data);
+  //     },
+  //   });
+  // }
+
+  // $(".form-check-input").click(function () {
+  //   const answer = $(this).val();
+  //   let t_feedbackEl = $(this).parent().prev();
+
+  //   if (t_feedbackEl.html() != "") {
+  //     deleteFeedback(hiddenTestID, t_feedbackEl);
+  //   } else {
+  //     alert("Feedback is empty already!");
+  //   }
+  // });
 
   /*===========================*/
   /*===========================*/
@@ -133,19 +157,7 @@ jQuery(document).ready(function ($) {
 
   /* test.php */
   // hide test form
-  $("#test-container").hide();
 
-  // hide submit test btn container
-  $("#submit-btn-container").hide();
-
-  /* test.php slides */
-  $("#start-test-btn").click(() => {
-    $("#start-btn-container").hide("slow", "linear", () => {
-      $("#test-container").slideToggle("slow", "linear", () => {
-        $("#submit-btn-container").show("slow");
-      });
-    });
-  });
   /****END test.php*****/
 
   /* index.php */
@@ -237,5 +249,155 @@ jQuery(document).ready(function ($) {
   // test.php
   $("body").on("click", "#student-test-result-heading", function () {
     $(this).next().fadeToggle("400", "swing");
+  });
+
+  // Test link hover
+  $("#test-page-link").click(function () {
+    console.log("asdasd");
+    $(".test-page-link").css("color", "grey");
+  });
+
+  $("#test-container").hide();
+
+  // hide submit test btn container
+  $("#submit-btn-container").hide();
+
+  // Timer
+  $("#timer-container").hide();
+  $("#start-test-btn").click(function () {
+    // test slides
+    $("#start-btn-container").hide("slow", "linear", () => {
+      $("#test-container").fadeIn("slow", "linear");
+    });
+    $("#header-container").fadeOut("slow");
+    $("#timer-container").fadeIn("slow");
+    // Hiding questions 2 & 3
+    $(".hide-questions").hide();
+    $(".lock-the-answer-1").fadeOut("slow");
+    $(".lock-the-answer-2").fadeOut("slow");
+    // $("#thead-2").fadeOut("slow");
+    // $("#tbody-2").fadeOut("slow");
+    // $("#tbody-3").fadeOut("slow");
+    // $("#tbody-3").fadeOut("slow");
+
+    let timeri = $(".timeri");
+    let sec = 10;
+    const interval = setInterval(testTimer, 1000);
+
+    function testTimer() {
+      // Time runs out
+      if (sec < 0) {
+        alert("Aika loppui! Et voi enää lähettää testiä!");
+        stopInterval();
+        $("#header-container").fadeToggle("slow");
+        $("#timer-container").fadeToggle("slow");
+        $("#submit-test-btn").prop("disabled", true);
+        $("#thead-2").fadeIn("slow");
+        $("#tbody-2").fadeIn("slow");
+        $("#thead-3").fadeIn("slow");
+        $("#tbody-3").fadeIn("slow");
+
+        $(".test-input-1-disabled").prop("disabled", false);
+        $(".test-input-2-disabled").prop("disabled", false);
+        $(".lock-the-answer-2").prop("disabled", true);
+
+        // Checking and showing correct answer with effect
+        $(".question_1_td").click(function () {
+          let user_answer_1 = $(this).find("input").val();
+          let correct_answer_1 = $("#correct_answer_1").val();
+
+          if (user_answer_1 == correct_answer_1) {
+            $(this).find("input").attr("checked", true);
+            $(this).removeClass("text-white");
+            $(this).addClass("text-success");
+            $(this).addClass("fw-bold");
+            $(this).addClass("fs-3");
+            $(".test-input-1-disabled").prop("disabled", true);
+          }
+        });
+
+        $(".question_2_td").click(function () {
+          let user_answer_2 = $(this).find("input").val();
+          let correct_answer_2 = $("#correct_answer_2").val();
+
+          if (user_answer_2 == correct_answer_2) {
+            $(this).find("input").attr("checked", true);
+            $(this).removeClass("text-white");
+            $(this).addClass("text-success");
+            $(this).addClass("fw-bold");
+            $(this).addClass("fs-3");
+            $(".test-input-2-disabled").prop("disabled", true);
+          }
+        });
+
+        $(".question_3_td").click(function () {
+          let user_answer_3 = $(this).find("input").val();
+          let correct_answer_3 = $("#correct_answer_3").val();
+
+          if (user_answer_3 == correct_answer_3) {
+            $(this).find("input").attr("checked", true);
+            $(this).removeClass("text-white");
+            $(this).addClass("text-success");
+            $(this).addClass("fw-bold");
+            $(this).addClass("fs-3");
+            $(".test-input-3-disabled").prop("disabled", true);
+          }
+        });
+        return;
+      } else {
+        timeri.html("00:" + sec);
+        sec--;
+      }
+    }
+
+    function stopInterval() {
+      clearInterval(interval);
+    }
+
+    // Locking the answer 1
+    $(".question_1_td").click(function () {
+      $(".lock-the-answer-1").fadeIn("slow");
+      $(".lock-the-answer-1").click(function () {
+        // $(this).fadeOut();
+        $(this).prop("disabled", true);
+        $("#thead-2").fadeIn("slow");
+        $("#tbody-2").fadeIn("slow");
+        $(".test-input-1-disabled").prop("disabled", true);
+      });
+    });
+
+    // Locking the answer 2
+    $(".question_2_td").click(function () {
+      $(".lock-the-answer-2").fadeIn("slow");
+      $(".lock-the-answer-2").click(function () {
+        // $(this).fadeOut();
+        $(this).prop("disabled", true);
+        $("#thead-3").fadeIn("slow");
+        $("#tbody-3").fadeIn("slow");
+        $(".test-input-2-disabled").prop("disabled", true);
+      });
+    });
+
+    // Show submit test btn
+    $(".question_3_td").click(function () {
+      $("#submit-btn-container").fadeIn("slow");
+    });
+
+    // const answerSerie2_1 = $("#answerSerie-2.1").is(":checked");
+    // const answerSerie2_2 = $("#answerSerie-2.2").is(":checked");
+    // const answerSerie2_3 = $("#answerSerie-2.3").is(":checked");
+    // const correct_answer_2 = $("#correct_answer_2").val();
+    // const user_answer_2 = "";
+
+    // What input is checked?
+    // if (answerSerie1_1) {
+    //   user_answer_1 = $(this).val();
+    // }
+    // if (answerSerie1_2) {
+    //   user_answer_1 = $(this).val();
+    // }
+    // if (answerSerie1_3) {
+    //   user_answer_1 = $(this).val();
+    // }
   });
 });

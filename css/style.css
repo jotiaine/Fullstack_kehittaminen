@@ -214,7 +214,8 @@
 #tr-feedback,
 #btn-feedback,
 #start-test-btn,
-#submit-test-btn {
+#submit-test-btn,
+.lock-the-answer {
   background-color: var(--feedback-header-color) !important;
   color: gray !important;
   border: none !important;

@@ -8,11 +8,11 @@
   $sql = "SELECT * FROM student INNER JOIN test ON student.studentID = test.studentID INNER JOIN reward ON student.studentID = reward.studentID WHERE student.studentID = '$studentID'";
   
   $result = $conn -> query($sql);
-  if($result) {
-    echo "<p class='alert alert-success'>Kolmosliitos success</p>";
-  } else {
-    echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
-  }
+  // if($result) {
+  //   echo "<p class='alert alert-success'>Kolmosliitos success</p>";
+  // } else {
+  //   echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
+  // }
 
   $row = mysqli_fetch_assoc($result);
   
@@ -46,11 +46,11 @@
       $sql = "SELECT * FROM question WHERE questionID = '$questionID'";
 
       $result = $conn -> query($sql);
-      if($result) {
-        echo "<p class='alert alert-success'>Kolmosliitos success</p>";
-      } else {
-        echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
-      }
+      // if($result) {
+      //   echo "<p class='alert alert-success'>Kolmosliitos success</p>";
+      // } else {
+      //   echo "<p class='alert alert-warning'>Kolmosliitos failed</p>";
+      // }
 
       $row = mysqli_fetch_assoc($result);
 
@@ -318,11 +318,11 @@
 
 
       
-        if($result) {
-          echo "<p class='alert alert-success'>Query success</p>";
-        } else {
-          echo "<p class='alert alert-warning'>Query failed</p>";
-        }
+        // if($result) {
+        //   echo "<p class='alert alert-success'>Query success</p>";
+        // } else {
+        //   echo "<p class='alert alert-warning'>Query failed</p>";
+        // }
 
 
   echo $output;
