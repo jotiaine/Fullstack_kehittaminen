@@ -281,7 +281,7 @@ jQuery(document).ready(function ($) {
     // $("#tbody-3").fadeOut("slow");
 
     let timeri = $(".timeri");
-    let sec = 10;
+    let sec = 60;
     const interval = setInterval(testTimer, 1000);
 
     function testTimer() {
@@ -297,8 +297,8 @@ jQuery(document).ready(function ($) {
         $("#thead-3").fadeIn("slow");
         $("#tbody-3").fadeIn("slow");
 
-        $(".test-input-1-disabled").prop("disabled", false);
-        $(".test-input-2-disabled").prop("disabled", false);
+        // $(".test-input-1-disabled").prop("disabled", false);
+        // $(".test-input-2-disabled").prop("disabled", false);
         $(".lock-the-answer-2").prop("disabled", true);
 
         // Checking and showing correct answer with effect
@@ -312,7 +312,7 @@ jQuery(document).ready(function ($) {
             $(this).addClass("text-success");
             $(this).addClass("fw-bold");
             $(this).addClass("fs-3");
-            $(".test-input-1-disabled").prop("disabled", true);
+            // $(".test-input-1-disabled").prop("disabled", true);
           }
         });
 
@@ -326,7 +326,7 @@ jQuery(document).ready(function ($) {
             $(this).addClass("text-success");
             $(this).addClass("fw-bold");
             $(this).addClass("fs-3");
-            $(".test-input-2-disabled").prop("disabled", true);
+            // $(".test-input-2-disabled").prop("disabled", true);
           }
         });
 
@@ -362,7 +362,7 @@ jQuery(document).ready(function ($) {
         $(this).prop("disabled", true);
         $("#thead-2").fadeIn("slow");
         $("#tbody-2").fadeIn("slow");
-        $(".test-input-1-disabled").prop("disabled", true);
+        // $(".test-input-1-disabled").prop("disabled", true);
       });
     });
 
@@ -374,7 +374,7 @@ jQuery(document).ready(function ($) {
         $(this).prop("disabled", true);
         $("#thead-3").fadeIn("slow");
         $("#tbody-3").fadeIn("slow");
-        $(".test-input-2-disabled").prop("disabled", true);
+        // $(".test-input-2-disabled").prop("disabled", true);
       });
     });
 
