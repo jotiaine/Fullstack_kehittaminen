@@ -32,7 +32,7 @@
     <td colspan="2" class="fs-3">Näkeekö opettaja kaikkien oppilaiden ja tenttien tiedot sovelluksesta?</td>
   </tr>
   <tr id=answer4 class='answer-area'>
-    <td colspan="2" class="fs-3">Kyllä näkee, menun Data-kohdassa on kaikkien oppilaiden ja tenttien tietoja.</td> 
+    <td colspan="2" class="fs-3">Kyllä näkee, menun Report-kohdassa on kaikkien oppilaiden ja tenttien tietoja.</td> 
   </tr>
   <tr id=question5 class='question-area' >
     <td colspan="2" class="fs-3">Tallentuuko sovellukseen kirjautuneen oppilaan tiedot talteen?</td>

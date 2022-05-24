@@ -81,7 +81,9 @@
   display: flex;
 }
 
-
+.red {
+  color: red!important;
+}
 
 /* About_teacher ends */
 

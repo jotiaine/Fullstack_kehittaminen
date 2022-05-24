@@ -214,7 +214,14 @@ $failedExamFeedback = 0;
           echo '<td>'.$row['last_name'].'</td>';
           echo '<td>'.$row['email'].'</td>';
           echo '<td>'.$row['score'].'</td>';
+
+          if (($row['teacher_feedback'] == 0 || $row['teacher_feedback'] == 'NULL') && $row['teacher_feedback'] != "") {
+            echo '<td class="red">'.'Palaute puuttuu'.'</td>';  //Sql search produces results according to database values:
+          }                                                     //"", 0, NULL, or feedback String ->some "Palaute puuttuu"
+          else {                                                //lines after feedback Strings bacause of this.
           echo '<td>'.$row['teacher_feedback'].'</td>';
+          }
+
           echo '<td>'.$row['creationDate'].'</td>';
           
           if ($row['score'] == 1) {
