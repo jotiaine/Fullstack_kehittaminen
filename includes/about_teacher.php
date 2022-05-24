@@ -88,14 +88,14 @@ if(isset($_POST['Pisteet'])) {
   $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
   FROM test
   INNER JOIN student ON test.studentID = student.studentID
-  ORDER by test.score';
-}
+  ORDER by test.score, student.studentID DESC';   //studentID is another search parameter because score is 1 or 0 or empty,
+}                                                  //assumption is that latest students are without feedback -> studentID DESC
 
 if(isset($_POST['Pisteet2'])) {
   $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
   FROM test
   INNER JOIN student ON test.studentID = student.studentID
-  ORDER by test.score DESC';
+  ORDER by test.score DESC, student.studentID DESC';
 }
 
 if(isset($_POST['Palaute'])) {
@@ -217,8 +217,8 @@ $failedExamFeedback = 0;
 
           if (($row['teacher_feedback'] == 0 || $row['teacher_feedback'] == 'NULL') && $row['teacher_feedback'] != "") {
             echo '<td class="red">'.'Palaute puuttuu'.'</td>';  //Sql search produces results according to database values:
-          }                                                     //"", 0, NULL, or feedback String ->some "Palaute puuttuu"
-          else {                                                //lines after feedback Strings bacause of this.
+          }                                                     //"", 0, NULL, or feedback texts ->some "Palaute puuttuu"
+          else {                                                //lines after feedback texts bacause of this.
           echo '<td>'.$row['teacher_feedback'].'</td>';
           }
 

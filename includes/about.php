@@ -7,7 +7,7 @@
 ?>
 
 
-<?php
+<?php/*
 include('dbConnect.php'); 
 $sql='SELECT * FROM student ORDER by last_name, first_name';  
 $result=$conn->query($sql);
@@ -133,7 +133,7 @@ $rows=mysqli_num_rows($result);
           echo '<td>'.$row['level'].'</td>';
           echo '<td>'.$row['certificate'].'</td>';
 
-      }
+      }*/
       ?>
     </tbody>
   </table>

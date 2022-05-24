@@ -18,9 +18,9 @@
             <li class="nav-item">
               <a id="home-link" class="nav-link <?php if($page == '') echo 'active' ?>" href="index.php?user=student">HOME</a>
             </li>
-            <li class="nav-item">
+      <!--      <li class="nav-item">
               <a class="nav-link <?php if($page == 'about') echo 'active' ?>" href="index.php?page=about&user=student">ABOUT</a>
-            </li>
+            </li>-->
             <li id="test-page" class="nav-item">
                 <a id="test-page-link" class="nav-link <?php if($page == 'test') echo 'active' ?>" href="index.php?page=test&user=student">TEST</a>
             </li>
