@@ -304,7 +304,8 @@
                     <p>Here"s your certificate</p>
                     <div class="d-flex justify-content-center align-items-center border border-primary p-4 w-50 mx-auto rounded shadow">
                       <span class="me-1">Download</span>
-                      <i class="certificate fa fa-certificate text-primary"></i>                              </div>
+                      <a href = index.php?page=cerPDF&user=teacher&pID='. $studentID .'><i class="certificate fa fa-certificate text-primary"></i></a>
+                      </div>
                     </div>
                     </div>
                     ';
