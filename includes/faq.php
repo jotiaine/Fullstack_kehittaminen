@@ -5,7 +5,7 @@
   */
 ?>
 
-<table class="table-style table table-borderless table-dark table-striped table-hover w-75 mx-auto text-center text-black shadow">
+<table class="table-style table table-borderless table-dark table-striped table-hover w-75 mx-auto text-center text-light shadow">
   <thead class='FAQ-header'>
     <td class="fs-1 fw-bold">FAQ - Usein kysytyt kysymykset</td>
   </thead>

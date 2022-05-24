@@ -14,7 +14,7 @@ $result=$conn->query($sql);
 $rows=mysqli_num_rows($result);
 
 ?>
-<h3>All Students  (<?php echo $rows ?>kpl)</h3>
+<h3 class="text-light display-3 text-center shadow p-2 mb-4">All Students  (<?php echo $rows ?>kpl)</h3>
 <table class="table-style table gy-3 text-muted table-borderless table-dark table-striped table-hover w-75 mb-5 shadow mx-auto">
     <thead>
       <tr>
@@ -33,7 +33,7 @@ $rows=mysqli_num_rows($result);
           echo '<td>'.$row['last_name'].'</td>';
           echo '<td>'.$row['email'].'</td>';
           echo '</tr>';
-          echo '<td><a class="btn btn-outline-primary text-white" href = index.php?page=cerPDF&user=teacher&pID='.$row['studentID'].'>Sertifikaatti</a></td>';
+          echo '<td><a class="btn btn-primary text-white" href = index.php?page=cerPDF&user=teacher&pID='.$row['studentID'].'>Sertifikaatti</a></td>';
       }
       //$conn->close(); 
       ?>

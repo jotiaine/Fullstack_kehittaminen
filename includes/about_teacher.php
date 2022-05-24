@@ -21,7 +21,7 @@ $examFailed = 0;
 $failedExamFeedback = 0;
 ?>
 <div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100 text-white'>
-  <h5 class="display-1 text-muted text-center">Yhteenvetoa opiskelijoiden tiedoista:</h5><br>
+  <h5 class="display-1 text-light text-center">Yhteenvetoa opiskelijoiden tiedoista:</h5><br>
 </div>
 
 <table class="table-style table text-muted table-borderless table-dark table-striped table-hover w-75 mb-5 shadow mx-auto">
@@ -56,7 +56,7 @@ $failedExamFeedback = 0;
             if ($row['teacher_feedback'] == "" || $row['teacher_feedback'] == 0 || $row['teacher_feedback'] == NULL) {
               $feedBackMissing++;
             }
-            echo '<td><a class="btn btn-outline-primary text-white" href = index.php?page=cerPDF&user=teacher&pID='.$row['studentID'].'>Tulosta</a></td>';
+            echo '<td><a class="btn btn-primary text-white" href = index.php?page=cerPDF&user=teacher&pID='.$row['studentID'].'>Tulosta</a></td>';
 
           } else if ($row['score'] == 0 && $row['score'] != "" && $row['score'] != NULL){
               $examFailed++;
@@ -79,7 +79,7 @@ $failedExamFeedback = 0;
   <h2 class="display-4 fw-bold text-muted text-black text-center">Opiskelijoita yhteensä: <?php echo $howMany ?> kpl</h2>
 
       <div class='table-style table text-muted table-borderless table-dark table-striped table-hover w-50 mb-5 shadow mx-auto heading-container-summary'>
-      <h4 class="display-5 text-black text-center">Lukuja koesuorituksista:</h4>
+      <h4 class="display-5 text-muted text-center">Lukuja koesuorituksista:</h4>
       <div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100'>
         <div class='text-box'>
           <p>Kokeen hyväksytysti suorittaneita opiskelijoita:
@@ -141,7 +141,7 @@ $rows=mysqli_num_rows($result);
 <div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100 text-white'>
   <h5 class="display-4 fw-bold text-muted text-center">Muodostettujen kokeiden kysymykset ja oikeat vastaukset:</h5>
 </div>
-<h6 class="display-5 text-black text-center">Kokeita yhteensä: <?php echo $rows ?>kpl</h6>
+<h6 class="display-5 text-muted text-center">Kokeita yhteensä: <?php echo $rows ?>kpl</h6>
 <table class="table-style table text-muted table-borderless table-dark table-striped table-hover w-75 mb-5 shadow mx-auto">
     <thead>
       <tr>

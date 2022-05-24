@@ -673,37 +673,41 @@ function create_student() {
 
 
 
-              echo "<div id='timer-container' class='alert bg-dark fixed-top text-primary text-center p-0 shadow'><h3 class='timeri display-5'>00:60</h3></div>";
-               echo "<div id='start-btn-container' class='container-fluid pb-5 pt-3 text-center bg-dark text-white'>";
-               echo "<h2 class='var-header mb-4  shadow-lg p-3'>Ready to start?</h2>";
-               echo "<button id='start-test-btn' class='btn btn-dark text-white'> Show nudes! </button>";
+                echo "<div id='timer-container' class='alert bg-dark fixed-top text-primary text-center p-0 shadow'><h3 class='timeri display-5'>00:60</h3></div>";
+               echo "<div id='start-btn-container' class='w-75 container-fluid pb-5 pt-3 text-center bg-dark'>";
+               echo "<h2 class='display-1 mb-4 shadow p-3 text-light'>Oletko valmis?</h2>";
+               echo "<p class='display-4 w-75 var-header mb-4 shadow p-3 mx-auto'>Suorita tentti hyväksytysti vastaamalla kaikkiin kysymyksiin oikein ja saat itsellesi <span class='text-primary fw-bold'>DATADRIVERS sertifikaatin</span></p>";
+               echo "<p class='display-4 w-75 var-header mb-4 shadow p-3 mx-auto'>Testiä ei voi uusia, mutta näet oikeat vastaukset jos testi epäonnistuu</p>";
+               echo "<p class='display-4 w-75 var-header mb-4 shadow p-3 mx-auto'>Huom. Testissä on aikaraja, joka näkyy ylhäällä!</p>";
+               echo "<h3 class='display-5 var-header mb-4 shadow p-3'>Valmiina?</h3>";
+               echo "<button id='start-test-btn' class='btn btn-dark text-light fs-5 fw-bold'> ALOITA TESTI </button>";
               echo "</div>";
             
              echo "<div id='test-container' class='container-fluid p-5 text-center bg-dark text-white shadow'>";
              echo "<form action='index.php?page=test&user=student' method='post' class='d-flex flex-column align-items-center justify-content-center'>";
-             echo "<h3 class='var-header mb-3  shadow-lg p-3 w-50 mt-5'> Test of Mensa </h3>";
+             echo "<h3 class='display-3 text-light mb-3 shadow-lg p-3 w-50 mt-5'> Onnea matkaan! </h3>";
             
                   
              echo "<table class='table-style table table-dark text-white table-striped table-hover w-75 text-center text-dark table-bordered shadow-lg'>";
-             echo "<thead class='shadow'>";
-
-                        /// QUESTION 1
-
-                        echo "<th colspan='3' class='var-header p-5 fs-4'>";
+             
+             /// QUESTION 1
+             
+                        echo "<thead class='shadow'>";
+                        echo "<th colspan='3' class='var-header p-5 display-5'>";
                         echo htmlspecialchars($json_data_question_series["question_1"]); 
                         echo "</th>";
                       echo "</thead>";
-                      echo "<tbody class='shadow-lg'>";
-                        echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo '<input class="form-check-input" type="radio" name="question_1" id="answerSerie-1.1" value="' . htmlspecialchars($json_data_question_series[$q1_options[2]]) . '" required/>';
-                          echo '<label class="form-check-label" for="answerSerie-1.1">' . htmlspecialchars($json_data_question_series[$q1_options[2]]) . '</label>';
+                      echo "<tbody id='tbody-1' class='shadow-lg'>";
+                        echo "<td class='question_1_td table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
+                          echo '<input class="form-check-input test-input-1-disabled" type="radio" name="question_1" id="answerSerie-1.1" value="' . htmlspecialchars($json_data_question_series[$q1_options[2]]) . '" required/>';
+                          echo '<label id="answerSerie-1.1-label" class="form-check-label" for="answerSerie-1.1">' . htmlspecialchars($json_data_question_series[$q1_options[2]]) . '</label>';
                         echo "</td>";
-                        echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo '<input class="form-check-input" type="radio" name="question_1" id="answerSerie-1.2" value="' . htmlspecialchars($json_data_question_series[$q1_options[1]]) . '" required/>';
+                        echo "<td class='question_1_td table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
+                          echo '<input class="form-check-input test-input-1-disabled" type="radio" name="question_1" id="answerSerie-1.2" value="' . htmlspecialchars($json_data_question_series[$q1_options[1]]) . '" required/>';
                           echo '<label class="form-check-label" for="answerSerie-1.2">' . htmlspecialchars($json_data_question_series[$q1_options[1]]) . '</label>';
                         echo "</td>";
-                        echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo '<input class="form-check-input" type="radio" name="question_1" id="answerSerie-1.3" value="' . htmlspecialchars($json_data_question_series[$q1_options[0]]) . '" required/>';
+                        echo "<td class='question_1_td table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
+                          echo '<input class="form-check-input test-input-1-disabled" type="radio" name="question_1" id="answerSerie-1.3" value="' . htmlspecialchars($json_data_question_series[$q1_options[0]]) . '" required/>';
                           echo '<label class="form-check-label" for="answerSerie-1.3">' . htmlspecialchars($json_data_question_series[$q1_options[0]]) . '</label>';
                       echo "</td>";
                         echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
@@ -715,21 +719,21 @@ function create_student() {
                       // QUESTION 2 
                       
                       echo "<thead id='thead-2' class='hide-questions'>";
-                        echo "<th colspan='3' class='var-header p-5 fs-4'>";
+                        echo "<th colspan='3' class='var-header p-5 display-5'>";
                         echo htmlspecialchars($json_data_question_series['question_2']);
                         echo "</th>";
                      echo "</thead>";
                       echo "<tbody id='tbody-2' class='hide-questions'>";
-                        echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo '<input class="form-check-input" type="radio" name="question_2" id="answerSerie-2.1" value="' . htmlspecialchars($json_data_question_series[$q2_options[2]]) . '" required/>';
+                        echo "<td class='question_2_td table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
+                          echo '<input class="form-check-input test-input-2-disabled" type="radio" name="question_2" id="answerSerie-2.1" value="' . htmlspecialchars($json_data_question_series[$q2_options[2]]) . '" required/>';
                           echo '<label class="form-check-label" for="answerSerie-2.1">' . htmlspecialchars($json_data_question_series[$q2_options[2]]) . '</label>';
                        echo '</td>';
-                       echo '<td class="table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center">';
-                          echo '<input class="form-check-input" type="radio" name="question_2" id="answerSerie-2.2" value="' . htmlspecialchars($json_data_question_series[$q2_options[1]]) . '" required/>';
+                       echo '<td class="question_2_td table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center">';
+                          echo '<input class="form-check-input test-input-2-disabled" type="radio" name="question_2" id="answerSerie-2.2" value="' . htmlspecialchars($json_data_question_series[$q2_options[1]]) . '" required/>';
                           echo '<label class="form-check-label" for="answerSerie-2.2">' . htmlspecialchars($json_data_question_series[$q2_options[1]]) . '</label>';
                       echo '</td>';
-                      echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo '<input class="form-check-input" type="radio" name="question_2" id="answerSerie-2.3" value="' . htmlspecialchars($json_data_question_series[$q2_options[0]]) . '" required/>';
+                      echo "<td class='question_2_td table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
+                          echo '<input class="form-check-input test-input-2-disabled" type="radio" name="question_2" id="answerSerie-2.3" value="' . htmlspecialchars($json_data_question_series[$q2_options[0]]) . '" required/>';
                           echo '<label class="form-check-label" for="answerSerie-2.3">' . htmlspecialchars($json_data_question_series[$q2_options[0]]) . '</label>';
                       echo '</td>';
                       echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
@@ -741,24 +745,25 @@ function create_student() {
                       // QUESTION 3 
                       
                       echo "<thead id='thead-3' class='hide-questions'>";
-                        echo "<th colspan='3' class='var-header p-5 fs-4'>";
+                        echo "<th colspan='3' class='var-header p-5 display-5'>";
                         echo htmlspecialchars($json_data_question_series["question_3"]);
                         echo "</th>";
                       echo "</thead>";
                       echo "<tbody id='tbody-3' class='hide-questions'>";
-                        echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo '<input class="form-check-input" type="radio" name="question_3" id="answerSerie-3.1" value="' . htmlspecialchars($json_data_question_series[$q3_options[2]]) . '" required/>';
+                        echo "<td class='question_3_td table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
+                          echo '<input class="form-check-input test-input-3-disabled" type="radio" name="question_3" id="answerSerie-3.1" value="' . htmlspecialchars($json_data_question_series[$q3_options[2]]) . '" required/>';
                           echo '<label class="form-check-label" for="answerSerie-3.1">' . htmlspecialchars($json_data_question_series[$q3_options[2]]) . '</label>';
                         echo "</td>";
-                        echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo '<input class="form-check-input" type="radio" name="question_3" id="answerSerie-3.2" value="' . htmlspecialchars($json_data_question_series[$q3_options[1]]) . '" required/>';
+                        echo "<td class='question_3_td table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
+                          echo '<input class="form-check-input test-input-3-disabled" type="radio" name="question_3" id="answerSerie-3.2" value="' . htmlspecialchars($json_data_question_series[$q3_options[1]]) . '" required/>';
                           echo '<label class="form-check-label" for="answerSerie-3.2">' . htmlspecialchars($json_data_question_series[$q3_options[1]]) . '</label>';
                         echo "</td>";
-                        echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
-                          echo '<input class="form-check-input" type="radio" name="question_3" id="answerSerie-3.3" value="' . htmlspecialchars($json_data_question_series[$q3_options[0]]) . '" required/>';
+                        echo "<td class='question_3_td table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
+                          echo '<input class="form-check-input test-input-3-disabled" type="radio" name="question_3" id="answerSerie-3.3" value="' . htmlspecialchars($json_data_question_series[$q3_options[0]]) . '" required/>';
                           echo '<label class="form-check-label" for="answerSerie-3.3">' . htmlspecialchars($json_data_question_series[$q3_options[0]]) . '</label>';
                       echo "</td>";
                       echo "<td class='table-dark text-white p-5 d-flex gap-3 justify-content-left align-items-center'>";
+                      echo '<input id="correct_answer_3" type="hidden" name="correct_answer_3" value="' . $correct_answer_3 . '">';
                       echo "</td>";
                       echo "</tbody>";
                       
@@ -778,6 +783,7 @@ function create_student() {
   
   
   return $student;
+  
               }
                       
               
