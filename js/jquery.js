@@ -308,12 +308,14 @@ jQuery(document).ready(function ($) {
           let correct_answer_1 = $("#correct_answer_1").val();
 
           if (user_answer_1 == correct_answer_1) {
-            $(this).find("input").attr("checked", true);
+            $(this).find("input").attr("checked", "checked");
             $(this).removeClass("text-white");
             $(this).addClass("text-success");
             $(this).addClass("fw-bold");
             $(this).addClass("fs-3");
-            // $(".test-input-1-disabled").prop("disabled", true);
+            setTimeout(function () {
+              $(".test-input-1-disabled").prop("disabled", true);
+            }, 10);
           }
         });
 
@@ -322,12 +324,14 @@ jQuery(document).ready(function ($) {
           let correct_answer_2 = $("#correct_answer_2").val();
 
           if (user_answer_2 == correct_answer_2) {
-            $(this).find("input").attr("checked", true);
+            $(this).find("input").attr("checked", "checked");
             $(this).removeClass("text-white");
             $(this).addClass("text-success");
             $(this).addClass("fw-bold");
             $(this).addClass("fs-3");
-            // $(".test-input-2-disabled").prop("disabled", true);
+            setTimeout(function () {
+              $(".test-input-2-disabled").prop("disabled", true);
+            }, 10);
           }
         });
 
@@ -336,12 +340,14 @@ jQuery(document).ready(function ($) {
           let correct_answer_3 = $("#correct_answer_3").val();
 
           if (user_answer_3 == correct_answer_3) {
-            $(this).find("input").attr("checked", true);
+            $(this).find("input").attr("checked", "checked");
             $(this).removeClass("text-white");
             $(this).addClass("text-success");
             $(this).addClass("fw-bold");
             $(this).addClass("fs-3");
-            $(".test-input-3-disabled").prop("disabled", true);
+            setTimeout(function () {
+              $(".test-input-3-disabled").prop("disabled", true);
+            }, 10);
           }
         });
         return;
@@ -359,11 +365,12 @@ jQuery(document).ready(function ($) {
     $(".question_1_td").click(function () {
       $(".lock-the-answer-1").fadeIn("slow");
       $(".lock-the-answer-1").click(function () {
+        $("#progress-bar").css("width", "33.33%");
         // $(this).fadeOut();
         $(this).prop("disabled", true);
         $("#thead-2").fadeIn("slow");
         $("#tbody-2").fadeIn("slow");
-        // $(".test-input-1-disabled").prop("disabled", true);
+        $(".test-input-1-disabled").prop("disabled", true);
       });
     });
 
@@ -371,17 +378,23 @@ jQuery(document).ready(function ($) {
     $(".question_2_td").click(function () {
       $(".lock-the-answer-2").fadeIn("slow");
       $(".lock-the-answer-2").click(function () {
+        $("#progress-bar").css("width", "66.66%");
         // $(this).fadeOut();
         $(this).prop("disabled", true);
         $("#thead-3").fadeIn("slow");
         $("#tbody-3").fadeIn("slow");
-        // $(".test-input-2-disabled").prop("disabled", true);
+        $(".test-input-2-disabled").prop("disabled", true);
       });
     });
 
     // Show submit test btn
     $(".question_3_td").click(function () {
+      $("#progress-bar").css("width", "99.99%");
       $("#submit-btn-container").fadeIn("slow");
+      $("#submit-btn-container").mouseover(function () {
+        $(".test-input-1-disabled").prop("disabled", false);
+        $(".test-input-2-disabled").prop("disabled", false);
+      });
     });
 
     // const answerSerie2_1 = $("#answerSerie-2.1").is(":checked");

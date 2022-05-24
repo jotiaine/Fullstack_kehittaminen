@@ -671,8 +671,13 @@ function create_student() {
           $correct_answer_3 = $json_data_question_series['correct_answer_3'];
 
 
+                /* THE TEST */
 
-                echo "<div id='timer-container' class='alert bg-dark fixed-top text-primary text-center p-0 shadow'><h3 class='timeri display-5'>00:60</h3></div>";
+              echo "<div id='timer-container' class='alert bg-dark fixed-top text-primary text-center p-0 shadow'><h3 class='timeri display-5'>00:60</h3>";
+              echo "<div class='progress-dark'>";
+              echo "<div id='progress-bar' class='progress-bar border border-primary bg-primary' role='progressbar' style='width: 1%' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100'></div>";
+              echo "</div>";
+              echo "</div>";
                echo "<div id='start-btn-container' class='w-75 container-fluid pb-5 pt-3 text-center bg-dark'>";
                echo "<h2 class='display-1 mb-4 shadow p-3 text-light'>Oletko valmis?</h2>";
                echo "<p class='display-4 w-75 var-header mb-4 shadow p-3 mx-auto'>Suorita tentti hyväksytysti vastaamalla kaikkiin kysymyksiin oikein ja saat itsellesi <span class='text-primary fw-bold'>DATADRIVERS sertifikaatin</span></p>";
@@ -769,7 +774,7 @@ function create_student() {
                     echo "</table>";
                     
                     echo "<div id='submit-btn-container' class='container-fluid py-5 text-center bg-dark'>";
-                      echo "<button id='submit-test-btn' class='btn fs-1 btn-primary py-3 px-5' type='submit' name='submit-test'> Submit </button>";
+                      echo "<button id='submit-test-btn' class='btn fs-1 btn-primary py-3 px-5' type='submit' name='submit-test'> Lähetä Testi </button>";
                     echo "</div>";
             
                      // <!-- Sending studentId and questionId hidden with submit-test -->
