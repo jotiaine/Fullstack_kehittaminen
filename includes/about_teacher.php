@@ -21,11 +21,25 @@ if(isset($_POST['Koe_ID'])) {
   ORDER by test.testID';
 }
 
+if(isset($_POST['Koe_ID2'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by test.testID DESC';
+}
+
 if(isset($_POST['Oppilaan_ID'])) {
   $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
   FROM test
   INNER JOIN student ON test.studentID = student.studentID
   ORDER by student.studentID';
+}
+
+if(isset($_POST['Oppilaan_ID2'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by student.studentID DESC';
 }
 
 if(isset($_POST['Etunimi'])) {
@@ -35,11 +49,25 @@ if(isset($_POST['Etunimi'])) {
   ORDER by student.first_name';
 }
 
-if(isset($_POST['Sukunumi'])) {
+if(isset($_POST['Etunimi2'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by student.first_name DESC';
+}
+
+if(isset($_POST['Sukunimi'])) {
   $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
   FROM test
   INNER JOIN student ON test.studentID = student.studentID
   ORDER by student.last_name';
+}
+
+if(isset($_POST['Sukunimi2'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by student.last_name DESC';
 }
 
 if(isset($_POST['Email'])) {
@@ -49,11 +77,25 @@ if(isset($_POST['Email'])) {
   ORDER by student.email';
 }
 
+if(isset($_POST['Email2'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by student.email DESC';
+}
+
 if(isset($_POST['Pisteet'])) {
   $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
   FROM test
   INNER JOIN student ON test.studentID = student.studentID
   ORDER by test.score';
+}
+
+if(isset($_POST['Pisteet2'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by test.score DESC';
 }
 
 if(isset($_POST['Palaute'])) {
@@ -63,11 +105,25 @@ if(isset($_POST['Palaute'])) {
   ORDER by test.teacher_feedback';
 }
 
+if(isset($_POST['Palaute2'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by test.teacher_feedback DESC';
+}
+
 if(isset($_POST['Koepaiva'])) {
   $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
   FROM test
   INNER JOIN student ON test.studentID = student.studentID
   ORDER by test.creationDate';
+}
+
+if(isset($_POST['Koepaiva2'])) {
+  $sql='SELECT test.testID, student.studentID, student.first_name, student.last_name, student.email, test.score, test.teacher_feedback, test.creationDate
+  FROM test
+  INNER JOIN student ON test.studentID = student.studentID
+  ORDER by test.creationDate DESC';
 }
 
 $result=$conn->query($sql);
@@ -79,55 +135,73 @@ $failedExamFeedback = 0;
 
 ?>
 <div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100 text-white'>
-  <h5>Yhteenvetoa opiskelijoiden tiedoista:</h5><br>
+  <h5 id="main-title">Yhteenvetoa opiskelijoiden tiedoista:</h5>
+  <a href = "#report"><button class="button-link">Suora linkki raporttikohtaan</button></a>
+  <p><a href = "#exams"><button class="button-link">Suora linkki koekysymyskohtaan</button></a></p>
 </div>
 
 <table class="table table-striped table-dark text-white text-left">
     <thead>
       <tr>
+        <th>Koe ID</th>
+        <th>Oppilaan ID</th>
+        <th>Etunimi</th>
+        <th>Sukunimi</th>
+        <th>Email</th>
+        <th>Pisteet</th>
+        <th>Palaute</th>
+        <th>Koepäivä</th>
+        <th>Sertifikaatti</th>
+      </tr>
+      <tr>
       <th>
         <!--<th>Koe ID</th>-->
         <form method="post">
-            <button class="btn-primary btn-sm"><input type="submit" name="Koe_ID" value="Koe ID"/></button>
+            <button class="btn-primary"><input type="submit" name="Koe_ID" value="<"/></button>
+            <button class="btn-primary"><input type="submit" name="Koe_ID2" value=">"/></button>
         </form>
         
         <!--<th>Oppilaan ID</th>-->
         <th><form method="post">
-            <button class="btn-primary btn-sm"><input type="submit" name="Oppilaan_ID" value="Oppilaan ID"/></button>
+            <button class="btn-primary"><input type="submit" name="Oppilaan_ID" value="<"/></button>
+            <button class="btn-primary"><input type="submit" name="Oppilaan_ID2" value=">"/></button>
         </form>
         
         <!--<th>Etunimi</th>-->
         <th><form method="post">
-            <button class="btn-primary btn-sm"><input type="submit" name="Etunimi" value="Etunimi"/></button>
+            <button class="btn-primary"><input type="submit" name="Etunimi" value="<"/></button>
+            <button class="btn-primary"><input type="submit" name="Etunimi2" value=">"/></button>
         </form>
         
         <!--<th>Sukunimi</th>-->
         <th><form method="post">
-            <button class="btn-primary btn-sm"><input type="submit" name="Sukunimi" value="Sukunimi"/></button>
+            <button class="btn-primary"><input type="submit" name="Sukunimi" value="<"/></button>
+            <button class="btn-primary"><input type="submit" name="Sukunimi2" value=">"/></button>
         </form>
         
         <!--<th>Email</th>-->
         <th><form method="post">
-            <button class="btn-primary btn-sm"><input type="submit" name="Email" value="Email"/></button>
+            <button class="btn-primary"><input type="submit" name="Email" value="<"/></button>
+            <button class="btn-primary"><input type="submit" name="Email2" value=">"/></button>
         </form>
         
         <!--<th>Pisteet</th>-->
         <th><form method="post">
-            <button class="btn-primary btn-sm"><input type="submit" name="Pisteet" value="Pisteet"/></button>
+            <button class="btn-primary"><input type="submit" name="Pisteet" value="<"/></button>
+            <button class="btn-primary"><input type="submit" name="Pisteet2" value=">"/></button>
         </form>
         
         <!--<th>Palaute</th>-->
         <th><form method="post">
-            <button class="btn-primary btn-sm"><input type="submit" name="Palaute" value="Palaute"/></button>
+            <button class="btn-primary"><input type="submit" name="Palaute" value="<"/></button>
+            <button class="btn-primary"><input type="submit" name="Palaute2" value=">"/></button>
         </form>
         
         <!--<th>Koepäivä</th>-->
         <th><form method="post">
-            <button class="btn-primary btn-sm"><input type="submit" name="Koepaiva" value="Koepäivä"/></button>
+            <button class="btn-primary"><input type="submit" name="Koepaiva" value="<"/></button>
+            <button class="btn-primary"><input type="submit" name="Koepaiva2" value=">"/></button>
         </form>        
-
-        <th>Sertifikaatti</th>
-
       </tr>
     </thead>
     <tbody>
@@ -165,7 +239,7 @@ $failedExamFeedback = 0;
       ?>
     </tbody>
   </table>
-  <p class="table table-striped table-dark text-white">Opiskelijoita yhteensä: <?php echo $howMany ?> kpl</p>
+  <p id="report" class="table table-striped table-dark text-white">Opiskelijoita yhteensä: <?php echo $howMany ?> kpl</p>
 
       <div class='table table-striped table-dark text-white heading-container-summary'>
       <h4>Lukuja koesuorituksista:</h4>
@@ -216,6 +290,7 @@ $failedExamFeedback = 0;
       </div>
       <div class='table table-striped table-dark text-white'></div><br>
     </div>
+    <a href = "#main-title"><button class="button-link">Takaisin ylös</button></a>
 
 <?php
 
@@ -228,7 +303,7 @@ $result=$conn->query($sql);
 $rows=mysqli_num_rows($result);
 ?>
 <div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100 text-white'>
-  <h5>Muodostettujen kokeiden kysymykset ja oikeat vastaukset:</h5>
+  <h5 id="exams">Muodostettujen kokeiden kysymykset ja oikeat vastaukset:</h5>
 </div>
 <h6 class="table table-dark text-white">Kokeita yhteensä: <?php echo $rows ?>kpl</h6>
 <table class="table table-striped table-dark text-white">
@@ -261,5 +336,6 @@ $rows=mysqli_num_rows($result);
       ?>
     </tbody>
   </table>
+  <a href = "#main-title"><button class="button-link">Takaisin ylös</button></a>
 
 

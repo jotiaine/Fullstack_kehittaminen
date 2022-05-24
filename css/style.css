@@ -12,6 +12,9 @@
   box-sizing: border-box;
 }*/
 
+
+
+
 #mainlogo {
   max-width: 6rem;
   width: 100%;
@@ -49,6 +52,16 @@
 
 /* About_teacher starts */
 
+.button-link {
+  background: none!important;
+  border: none!important;
+  padding: 2!important;
+  color: lightslategray;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: normal;
+}
+
 .heading-container-summary {
   padding: 25px 0;
   display: flex;
@@ -68,10 +81,12 @@
   display: flex;
 }
 
+
+
 /* About_teacher ends */
 
 /* Testpage starts */
-
+/*
 .heading-container {
   color: #fff;
   background-color: #83b2ba;
@@ -175,7 +190,7 @@
 .button-container button:active {
   background-color: #407fc7;
 }
-
+*/
 /* Testpage ends */
 
 #hero-container {
