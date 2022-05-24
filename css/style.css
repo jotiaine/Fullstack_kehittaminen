@@ -12,9 +12,6 @@
   box-sizing: border-box;
 }*/
 
-
-
-
 #mainlogo {
   max-width: 6rem;
   width: 100%;
@@ -53,9 +50,9 @@
 /* About_teacher starts */
 
 .button-link {
-  background: none!important;
-  border: none!important;
-  padding: 2!important;
+  background: none !important;
+  border: none !important;
+  padding: 2 !important;
   color: lightslategray;
   text-decoration: underline;
   cursor: pointer;
@@ -82,7 +79,7 @@
 }
 
 .red {
-  color: red!important;
+  color: red !important;
 }
 
 /* About_teacher ends */
@@ -250,10 +247,11 @@
 }
 
 .feedback-hover:hover {
-  transform: scale(1.05) !important;
+  font-weight: bold !important;
+  border: 1px solid rgb(21, 21, 246) !important;
+  transform: scale(1.07) !important;
 }
 
-.delete-icon,
 .certificate {
   font-size: 1.5rem;
   color: rgb(21, 21, 246) !important;
@@ -261,9 +259,20 @@
   transition: all 0.2s ease-in-out;
 }
 
-.delete-icon:hover,
+.delete-icon {
+  font-size: 2.2rem;
+  color: rgba(248, 0, 0, 0.79) !important;
+  opacity: 0.8;
+  transition: all 0.2s ease-in-out;
+}
+
+.delete-icon:hover {
+  color: rgba(197, 95, 95, 0.89) !important;
+  opacity: 1 !important;
+}
+
 .certificate:hover {
-  color: rgb(12, 12, 194) !important;
+  color: rgb(15, 15, 16) !important;
   opacity: 1;
 }
 

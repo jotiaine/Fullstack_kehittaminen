@@ -84,6 +84,7 @@ jQuery(document).ready(function ($) {
   $(".submit-feedback").click(function () {
     let hiddenTestID = $(this).next().val();
     let t_feedbackEl = $(this).parent().prev();
+
     let t_feedback_TD = $(this)
       .parent()
       .parent()
