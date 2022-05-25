@@ -134,14 +134,15 @@ $examFailed = 0;
 $failedExamFeedback = 0;
 
 ?>
-<div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark text-white'>
-  <h5 id="main-title" class="display-1 text-light text-center">Yhteenvetoa opiskelijoiden tiedoista:</h5>
-  <a href = "#report" id="report-heading1" class="btn mb-3 mt-3">Suora linkki raporttikohtaan</a>
-  <a href = "#exams" id="report-heading2" class="btn ">Suora linkki koekysymyskohtaan</a>
+<div class="container-fluid">
+<div class="d-flex flex-column justify-center-center align-items-center">
+  <h5 id="main-title" class="mx-auto display-1 text-light text-center">Yhteenvetoa opiskelijoiden tiedoista:</h5>
+  <a href = "#report" id="report-heading1" class="mx-auto btn mb-3 mt-3">Suora linkki raporttikohtaan</a>
+  <a href = "#exams" id="report-heading2" class="mx-auto btn ">Suora linkki koekysymyskohtaan</a>
 </div>
 
-<div class="container-fluid">
-<table class="table-style table text-muted table-borderless table-dark table-striped table-hover w-75 mb-5 shadow mx-auto">
+<div class='container table-responsive'>
+<table class="table text-muted table-borderless table-dark table-striped table-hover mb-5 shadow  mx-auto">
     <thead>
       <tr>
         <th>Koe ID</th>
@@ -155,54 +156,62 @@ $failedExamFeedback = 0;
         <th>Sertifikaatti</th>
       </tr>
       <tr>
-      <th>
-        <!--<th>Koe ID</th>-->
+        <td>
         <form class="d-flex gap-1" method="post">
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Koe_ID" value="<"/>
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Koe_ID2" value=">"/>
         </form>
+        </td>
         
-        <!--<th>Oppilaan ID</th>-->
-        <th><form class="d-flex gap-1" method="post">
+        <td>
+        <form class="d-flex gap-1" method="post">
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Oppilaan_ID" value="<"/>
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Oppilaan_ID2" value=">"/>
         </form>
-        
-        <!--<th>Etunimi</th>-->
-        <th><form class="d-flex gap-1" method="post">
+        </td>
+
+        <td>
+        <form class="d-flex gap-1" method="post">
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Etunimi" value="<"/>
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Etunimi2" value=">"/>
         </form>
+        </td>
         
-        <!--<th>Sukunimi</th>-->
-        <th><form class="d-flex gap-1" method="post">
+        <td>
+        <form class="d-flex gap-1" method="post">
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Sukunimi" value="<"/>
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Sukunimi2" value=">"/>
         </form>
+        </td>
+
         
-        <!--<th>Email</th>-->
-        <th><form class="d-flex gap-1" method="post">
+        <td>
+        <form class="d-flex gap-1" method="post">
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Email" value="<"/>
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Email2" value=">"/>
         </form>
+        </td>
         
-        <!--<th>Pisteet</th>-->
-        <th><form class="d-flex gap-1" method="post">
+        <td>
+        <form class="d-flex gap-1" method="post">
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Pisteet" value="<"/>
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Pisteet2" value=">"/>
         </form>
+        </td>
         
-        <!--<th>Palaute</th>-->
-        <th><form class="d-flex gap-1" method="post">
+        <td>
+        <form class="d-flex gap-1" method="post">
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Palaute" value="<"/>
             <input class="btn btn-secondary text-dark fw-bold"  type="submit" name="Palaute2" value=">"/>
         </form>
+        </td>
         
-        <!--<th>Koepäivä</th>-->
-        <th><form class="d-flex gap-1" method="post">
+        <td>
+        <form class="d-flex gap-1" method="post">
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Koepaiva" value="<"/>
             <input class="btn btn-secondary text-dark fw-bold" type="submit" name="Koepaiva2" value=">"/>
-        </form>        
+        </form>
+        </td>
       </tr>
     </thead>
     <tbody>
@@ -247,13 +256,14 @@ $failedExamFeedback = 0;
       ?>
     </tbody>
   </table>
-  </div>
-
+    </div>
+<div>
   <h2 id="report" class="display-4 text-light text-center">Opiskelijoita yhteensä: <?php echo $howMany ?> kpl</h2>
+
+  <h4 class="display-5 text-light text-center">Lukuja koesuorituksista:</h4>
+    </div>
  
- <div class='table-style table text-muted table-borderless table-dark table-striped table-hover w-50 mb-5 shadow mx-auto heading-container-summary'>
- <h4 class="display-5 text-light text-center">Lukuja koesuorituksista:</h4>
- <div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100'>
+ <div class='container-fluid text-muted d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100'>
    <div class='text-box'>
      <p>Kokeen hyväksytysti suorittaneita opiskelijoita:
      </p>
@@ -298,8 +308,6 @@ $failedExamFeedback = 0;
    </div>
    </div>
  </div>
- <div class='table table-striped table-dark text-white'></div><br>
-</div>
 <div class="d-flex justify-content-center">
  <a href = "#main-title" class="btn btn-primary text-dark mx-auto">Takaisin ylös</a>
 </div>
@@ -314,12 +322,13 @@ $result=$conn->query($sql);
 $rows=mysqli_num_rows($result);
 ?>
 
-<div class="container-fluid">
-<div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark h-100 text-white mt-5'>
-  <h5 id="exams" class="display-4 text-light text-center">Muodostettujen kokeiden kysymykset ja oikeat vastaukset:</h5>
-</div>
+<div> 
+<h5 id="exams" class="display-4 text-light text-center">Muodostettujen kokeiden kysymykset ja oikeat vastaukset:</h5>
+<!-- </div> -->
 <h6 class="display-5 text-light text-center">Kokeita yhteensä: <?php echo $rows ?>kpl</h6>
-<table class="table-style table text-muted table-borderless table-dark table-striped table-hover w-75 mb-5 shadow mx-auto">
+    </div>
+<div class='container table-responsive'>
+<table class="table  text-muted table-borderless table-dark table-striped table-hover mb-5 shadow">
     <thead>
       <tr>
         <th>Koe_ID</th>
@@ -349,10 +358,13 @@ $rows=mysqli_num_rows($result);
       ?>
     </tbody>
   </table>
+  </div>
   <div class="d-flex justify-content-center mb-5">
     <a href = "#main-title" class="btn btn-primary text-dark mx-auto">Takaisin ylös</a>
   </div>
-</div>
+    </div>
+
+
 
 
 
