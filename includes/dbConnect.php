@@ -1,6 +1,6 @@
 <?php
 
-// Nämä muuttujat constanteiksi?
+// DB user info
 $dbHost = 'localhost';
 $dbUser = 'datadrivers_v2';
 $dbPass = 'datadrivers_v2';
