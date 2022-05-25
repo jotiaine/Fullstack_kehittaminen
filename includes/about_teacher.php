@@ -135,9 +135,9 @@ $failedExamFeedback = 0;
 
 ?>
 <div class='container-fluid d-flex flex-column align-items-center justify-content-center text-center bg-dark text-white'>
-  <h5 class="display-1 text-light text-center">Yhteenvetoa opiskelijoiden tiedoista:</h5>
-  <a href = "#report" id="report" class="btn border-0 text-light mb-3 mt-3">Suora linkki raporttikohtaan</a>
-  <a href = "#exams" id="exams" class="btn text-light">Suora linkki koekysymyskohtaan</a>
+  <h5 id="main-title" class="display-1 text-light text-center">Yhteenvetoa opiskelijoiden tiedoista:</h5>
+  <a href = "#report" id="report-heading1" class="btn mb-3 mt-3">Suora linkki raporttikohtaan</a>
+  <a href = "#exams" id="report-heading2" class="btn ">Suora linkki koekysymyskohtaan</a>
 </div>
 
 <div class="container-fluid">

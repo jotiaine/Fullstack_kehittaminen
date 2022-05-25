@@ -82,13 +82,14 @@
   color: red !important;
 }
 
-#report,
-#exams {
+#report-heading1,
+#report-heading2 {
+  color: #fff !important;
   background: black !important;
 }
 
-#report:hover,
-#exams:hover {
+#report-heading1:hover,
+#report-heading2:hover {
   background: rgb(17, 17, 17) !important;
 }
 /* About_teacher ends */
