@@ -13,7 +13,7 @@
     <td colspan="2" class="fs-3 text-muted">Montako kertaa tentin saa uusia?</td>
   </tr>
   <tr id=answer1 class='answer-area'>
-    <td colspan="2" class="fs-3  text-muted">Tentin saa uusia rajattomasti niin kauan, että se menee läpi.</td> 
+    <td colspan="2" class="fs-3  text-muted">Tenttiä ei voi uusia ilman olematta yhteydessä opettajaan. Tentin kysymykset ja oikeat vastaukset on kuitenkin nähtävissä testin jälkeen.</td> 
   </tr>
   <tr id=question2 class='question-area text-muted' >
     <td colspan="2" class="fs-3 text-muted">Saako hyväksysytysti suoritetusta tentistä itselleen todistuksen?</td>

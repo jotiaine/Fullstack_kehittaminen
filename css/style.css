@@ -82,6 +82,15 @@
   color: red !important;
 }
 
+#report,
+#exams {
+  background: black !important;
+}
+
+#report:hover,
+#exams:hover {
+  background: rgb(17, 17, 17) !important;
+}
 /* About_teacher ends */
 
 /* Testpage starts */

@@ -6,7 +6,6 @@
         <!-- PHP scripts render here -->
         <?php 
           if($page == '' && $user == '') include('indexmodal.php');   
-          //elseif($page == 'about') include('about.php');
           elseif($page == 'faq') include('faq.php');
           elseif($page == 'test') include('test.php');
           elseif($page == 'feedback') include('feedback.php');
