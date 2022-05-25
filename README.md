@@ -70,5 +70,7 @@
                               - testien teosta ja palautteista(SQL:UPDATE)
 
 
-
+## Fullstack Project Info
+- This was a 3-week school project to develop a fullstack solution/webapp for students to be able to do tests regarding driving and teachers to be able to give feedback to students. We ended up making different features for different users: default, student & teacher. This responsive fullstack solution was done with: HTML, CSS, Bootstrap, JS, jQuery, MySQL & PHP.
+- Project management was Agile/Kanban & done with the help of Trello & daily Teams-meetings & live pair coding    
 
