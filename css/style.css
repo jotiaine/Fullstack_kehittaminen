@@ -6,12 +6,6 @@
   --light-grey-text: #808080 !important;
 }
 
-/* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}*/
-
 #mainlogo {
   max-width: 6rem;
   width: 100%;
@@ -92,115 +86,6 @@
 #report-heading2:hover {
   background: rgb(17, 17, 17) !important;
 }
-/* About_teacher ends */
-
-/* Testpage starts */
-/*
-.heading-container {
-  color: #fff;
-  background-color: #83b2ba;
-  padding: 25px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2px solid red;
-}
-
-.heading-container h1 {
-  margin-bottom: 20px;
-  border: 2px solid yellow;
-}
-
-.heading {
-  border: 2px solid violet;
-  width: 630px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.studentName {
-  width: 100px;
-  height: 100px;
-  border: 1px solid #fff;
-  display: flex;
-}
-
-.question-container {
-  color: #5995da;
-  background-color: #d6e9fe;
-  border: 2px solid blue;
-  display: flex;
-  justify-content: center;
-}
-
-.question {
-  width: 700px;
-  height: 100px;
-  border: 5px solid #fff;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.answer-container {
-  color: #5995da;
-  background-color: #d6e9fe;
-  display: flex;
-  justify-content: center;
-  border: 5px solid green;
-}
-
-.answer {
-  width: 600px;
-  height: 120px;
-  border: 5px solid violet;
-  display: flex;
-  justify-content: flex-start;
-  align-items: left;
-  flex-direction: column;
-}
-
-.radio-button-box {
-  display: flex;
-  justify-content: flex-start;
-  border: 3px solid yellow;
-}
-
-.resultCheck {
-  color: blue;
-  font-size: 12px;
-  border: 3px solid brown;
-}
-
-.button-container {
-  border: 3px solid red;
-  display: flex;
-  justify-content: center;
-  padding: 50px;
-  background-color: #d6e9fe;
-}
-
-.button-container button {
-  border: 5px solid green;
-  font-size: 16px;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: #5995da;
-  border: none;
-  border-radius: 50px;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.button-container button:hover {
-  background-color: #76aeed;
-}
-
-.button-container button:active {
-  background-color: #407fc7;
-}
-*/
-/* Testpage ends */
 
 #hero-container {
   position: relative !important;
@@ -209,7 +94,6 @@
 #hero-text {
   position: absolute !important;
   top: 25% !important;
-  /* transform: translateY(-75%); */
 }
 
 #driver-text {
@@ -378,30 +262,8 @@
 }
 
 @media (max-width: 800px) {
-  /* #search-bar {
-    top: 18% !important;
-  } */
-
   #feedback-table,
   #search-result {
     width: 80% !important;
   }
 }
-/* 
-@media (min-width: 900px) {
-  #search-bar {
-    top: 16% !important;
-  }
-}
-
-@media (min-width: 1100px) and (orientation: portrait) {
-  #search-bar {
-    top: 20% !important;
-  }
-}
-
-@media (min-width: 1150px) and (orientation: landscape) {
-  #search-bar {
-    top: 10% !important;
-  }
-} */
